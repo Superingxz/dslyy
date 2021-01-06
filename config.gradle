@@ -188,7 +188,7 @@ dependencies {
     implementation 'com.umeng.umsdk:oaid_vivo:1.0.0.1' // (可选)
 
     //高德地图定位SDK
-    implementation 'com.amap.api:location:5.1.0'
+    implementation 'com.amap.api:location:5.2.0'
     //高德地图搜索SDK
     implementation 'com.amap.api:search:7.6.0'
     //可以右滑删除的recyclerview https://github.com/yanzhenjie/SwipeRecyclerView 已提取到com.dsl.doctorplus.widget.swipe
