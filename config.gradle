@@ -1,0 +1,203 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+//apply plugin: 'com.huawei.agconnect'
+
+kapt{
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    sourceSets {
+        main {
+            if (isBuildModule.toBoolean()) {
+                //独立运行
+                manifest.srcFile 'src/main/alone/AndroidManifest.xml'
+            } else {
+                //合并到宿主
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias 'dsl_hospital'
+            keyPassword '123456'
+            storeFile file('../dsl_hospital.jks')
+            storePassword '123456'
+        }
+        release {
+            keyAlias 'dsl_hospital'
+            keyPassword '123456'
+            storeFile file('../dsl_hospital.jks')
+            storePassword '123456'
+        }
+    }
+    buildTypes {
+        //jenkins配置读取
+        def buildVariants = System.getenv("buildVariants")
+        if (buildVariants == null || buildVariants.isEmpty()) {
+            buildVariants = 0
+        }
+        def baseUrl = ""
+        //初始化Bugly时候是否使用正式的appKey
+        def mIsReleases = "false"
+        switch (buildVariants) {
+            case 1:
+                //正式环境
+                baseUrl = "https://plus.dsl-hospital.com/"
+                mIsReleases = "true"
+                break
+            case 2:
+                //仿真环境
+                baseUrl = "https://hospitalplus-uat.dslbuy.com/"
+                mIsReleases = "false"
+                break
+            default:
+                //测试环境
+                baseUrl = "https://hospitalplus-test.dslbuy.com/"
+                mIsReleases = "false"
+                break
+        }
+
+        release {
+            buildConfigField "String", "BASE_URL", "\"$baseUrl\""
+            buildConfigField "boolean", "BUILD_VARIANTS_RELEASES", mIsReleases
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", "\"$baseUrl\""
+            buildConfigField "boolean", "BUILD_VARIANTS_RELEASES", mIsReleases
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion"
+    // Annotation processor
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+
+    //Glide
+    implementation('com.github.bumptech.glide:glide:4.9.0') {
+        exclude group: "com.android.support"
+    }
+    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //RxJava
+    implementation "io.reactivex.rxjava3:rxjava:3.0.6"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
+    //在Android上使用flexbox https://github.com/google/flexbox-layout
+    implementation 'com.google.android:flexbox:2.0.1'
+
+    //RecyclerView Adapter框架 https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    //图片选择器 https://github.com/LuckSiege/PictureSelector
+    implementation('com.github.LuckSiege.PictureSelector:picture_library:v2.2.3') {
+        exclude group: "com.android.support"
+    }
+    //时间选择滚轮  https://github.com/Bigkoo/Android-PickerView 文档
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+    //腾讯云实时音视频SDK,用于视频问诊
+//    implementation 'com.tencent.liteav:LiteAVSDK_TRTC:7.0.8670'
+    implementation 'com.tencent.liteav:LiteAVSDK_TRTC:7.9.9568'
+    //腾讯云即时通信 IM,用于图文问诊
+    api 'com.tencent.imsdk:imsdk:4.8.10'
+    //腾讯Bugly
+    implementation 'com.tencent.bugly:crashreport:3.1.9'
+    //极光推送
+//    implementation 'cn.jiguang.sdk:jpush:3.8.0'
+//    implementation 'cn.jiguang.sdk:jcore:2.4.2'
+//    implementation 'cn.jiguang.sdk.plugin:xiaomi:3.8.0'
+//    implementation 'cn.jiguang.sdk.plugin:huawei:3.8.0'
+    //华为AppGallery Connect插件，用于华为推送服务
+//    implementation 'com.huawei.agconnect:agconnect-core:1.3.1.300'
+//    implementation 'com.huawei.hms:push:5.0.0.300'
+    //屏幕适配
+    api 'me.jessyan:autosize:1.1.2'
+    //微信分享、登录、收藏、支付等功能需要的库
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    // 友盟统计SDK
+    implementation 'com.umeng.umsdk:common:9.1.0' // (必选)
+    implementation 'com.umeng.umsdk:asms:1.1.3' // asms包依赖(必选)
+    implementation 'com.umeng.umsdk:crash:0.0.4' // native crash包依赖(必选)
+    implementation 'com.umeng.umsdk:oaid_lenovo:1.0.0' // (可选)
+    implementation 'com.umeng.umsdk:oaid_mi:1.0.0' // (可选)
+    implementation 'com.umeng.umsdk:oaid_oppo:1.0.4' // (可选)
+    implementation 'com.umeng.umsdk:oaid_vivo:1.0.0.1' // (可选)
+
+    //高德地图定位SDK
+    implementation 'com.amap.api:location:5.1.0'
+    //高德地图搜索SDK
+    implementation 'com.amap.api:search:7.6.0'
+    //可以右滑删除的recyclerview https://github.com/yanzhenjie/SwipeRecyclerView 已提取到com.dsl.doctorplus.widget.swipe
+//    implementation 'com.yanzhenjie.recyclerview:x:1.3.2'
+
+    implementation 'com.alibaba:arouter-api:1.5.1'
+    kapt 'com.alibaba:arouter-compiler:1.5.1'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

@@ -1,0 +1,48 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext{
+        compileSdkVersion = 28
+        minSdkVersion = 19
+        targetSdkVersion = 28
+
+        kotlinVersion = '1.4.10'
+        lifecycleVersion = "2.2.0"
+        retrofitVersion = '2.6.4'
+        kotlin_version = '1.3.72'
+    }
+    repositories {
+        google()
+        jcenter()
+        //友盟 maven仓库地址
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        //华为远程仓库
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.1"
+        classpath 'com.huawei.agconnect:agcp:1.3.1.300'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        //因为rxjava3:rxandroid
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
+        //友盟 maven仓库地址
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        //华为远程仓库
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

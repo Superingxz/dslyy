@@ -1,0 +1,34 @@
+apply plugin: 'com.android.library'
+apply from: '../config.gradle'
+
+android {
+    defaultConfig {
+        if (isBuildModule.toBoolean()) {
+            //作为独立App应用运行
+            apply plugin: 'com.android.application'
+        } else {
+            //作为组件运行
+            apply plugin: 'com.android.library'
+        }
+        //如果是独立模块，则使用当前组件的包名
+        if (isBuildModule.toBoolean()) {
+            applicationId "com.dsl.doctor"
+        }
+    }
+
+    //统一资源前缀，规范资源引用
+    resourcePrefix "doctor_"
+
+    sourceSets {
+        main {
+            res {
+                srcDirs "libs",'src/main/res', 'src/main/res/layout', 'src/main/res/values'
+            }
+        }
+    }
+}
+
+dependencies {
+//组件依赖基础库
+    api project(':library-base')
+}

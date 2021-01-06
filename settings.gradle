@@ -1,0 +1,4 @@
+include ':module-doctor'
+include ':library-base'
+include ':app'
+rootProject.name = "dslyy"

@@ -1,0 +1,98 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimaryDark">@color/white</item>
+    </style>
+
+    <!--标题栏样式-->
+    <style name="TitleColume">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:background">#fff</item>
+    </style>
+
+    <!--标题栏返回-->
+    <style name="TitleBack">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:src">@drawable/icon_back_black</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <!--标题栏字体样式-->
+    <style name="TitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">#4A4A4A</item>
+        <item name="android:textSize">19dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BasePaddingStyle">
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!-- SlidingTabLayout -->
+    <declare-styleable name="MsgView">
+        <attr name="mv_backgroundColor" format="color" />
+        <attr name="mv_cornerRadius" format="dimension" />
+        <attr name="mv_strokeWidth" format="dimension" />
+        <attr name="mv_strokeColor" format="color" />
+        <attr name="mv_isRadiusHalfHeight" format="boolean" />
+        <attr name="mv_isWidthHeightEqual" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="SlidingTabLayout">
+        <attr name="tl_indicator_color"  format="color" />
+        <attr name="tl_indicator_height"  format="dimension" />
+        <attr name="tl_indicator_width"  format="dimension" />
+        <attr name="tl_indicator_margin_left"  format="dimension" />
+        <attr name="tl_indicator_margin_top"  format="dimension" />
+        <attr name="tl_indicator_margin_right"  format="dimension" />
+        <attr name="tl_indicator_margin_bottom"  format="dimension" />
+        <attr name="tl_indicator_corner_radius"  format="dimension" />
+        <attr name="tl_indicator_gravity" format="integer"/>
+        <attr name="tl_indicator_style" format="integer"/>
+        <attr name="tl_indicator_width_equal_title" format="boolean"/>
+        <attr name="tl_underline_color" format="color"/>
+        <attr name="tl_underline_height" format="dimension"/>
+        <attr name="tl_underline_gravity" format="integer"/>
+        <attr name="tl_divider_color" format="dimension"/>
+        <attr name="tl_divider_width" format="dimension"/>
+        <attr name="tl_divider_padding" format="dimension"/>
+        <attr name="tl_tab_padding" format="dimension"/>
+        <attr name="tl_tab_space_equal" format="boolean"/>
+        <attr name="tl_tab_width" format="dimension"/>
+        <attr name="tl_textsize" format="dimension"/>
+        <attr name="tl_textSelectColor" format="color"/>
+        <attr name="tl_textUnselectColor" format="color"/>
+        <attr name="tl_textBold" format="integer"/>
+        <attr name="tl_textAllCaps" format="boolean"/>
+    </declare-styleable>
+
+    <style name="CustomDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="CustomSpinnerStyle">
+        <item name="colorAccent">#999999</item>
+        <item name="colorControlNormal">#1AAD19</item> <!--改变了spinner的颜色  -->
+    </style>
+</resources>

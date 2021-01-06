@@ -1,0 +1,24 @@
+apply plugin: 'com.android.application'
+apply from: '../config.gradle'
+
+android {
+    defaultConfig {
+        applicationId "com.dsl.yy"
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    sourceSets {
+        main {
+            res {
+                srcDirs "libs",'src/main/res', 'src/main/res/layout', 'src/main/res/values'
+            }
+        }
+    }
+}
+
+dependencies {
+    //组件依赖基础库
+    api project(':module-doctor')
+}

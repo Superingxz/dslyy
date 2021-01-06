@@ -1,0 +1,5 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">大参林</string>
+    <string name="post_loading" tools:ignore="ExtraTranslation">提交数据中&#8230;</string>
+    <string name="fetch_loading" tools:ignore="ExtraTranslation">请求数据中&#8230;</string>
+</resources>
