@@ -11,7 +11,7 @@ package com.dsl.constant
 class RouterActivityPath private constructor(){
     companion object Main {
         private const val MAIN = "/main"
-        const val DOCTOR = "/doctor"
+        private const val DOCTOR = "/doctor"
         /*主业务界面*/
         const val PAGER_MAIN = "$MAIN/Main"
 

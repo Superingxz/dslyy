@@ -38,13 +38,13 @@ abstract class BaseActivity<E : BaseAndroidViewModel> : AppCompatActivity(), Vie
         ViewModelProvider(this)[type as Class<E>]
     }
 
-    protected var compositeDisposable: CompositeDisposable? = null
+    var compositeDisposable: CompositeDisposable? = null
     private var loadingDialog: LoadingDialog? = null
 
     /**
      * 当前activity的生命周期，用于广播接收器监听时候是否弹出视频接听dailog
      */
-    protected var nowLifeEvent: Lifecycle.Event = Lifecycle.Event.ON_CREATE
+    var nowLifeEvent: Lifecycle.Event = Lifecycle.Event.ON_CREATE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,12 +94,12 @@ abstract class BaseActivity<E : BaseAndroidViewModel> : AppCompatActivity(), Vie
         loadingDialog?.show(supportFragmentManager, "PostLoading")
     }
 
-    fun showfetchLoading() {
+    fun showFetchLoading() {
         loadingDialog = LoadingDialog.onNewInstance(getString(R.string.fetch_loading))
         loadingDialog?.show(supportFragmentManager, "PostLoading")
     }
 
-    fun dismissLoading() {
+    private fun dismissLoading() {
         loadingDialog?.dismiss()
     }
 }
