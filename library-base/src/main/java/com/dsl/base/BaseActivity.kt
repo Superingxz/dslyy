@@ -6,10 +6,13 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.dsl.network.manager.NetworkStateManager
 import com.dsl.util.StatusBarUtil
 import com.dsl.widget.LoadingDialog
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import com.dsl.network.manager.NetState
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
@@ -53,7 +56,15 @@ abstract class BaseActivity<E : BaseAndroidViewModel> : AppCompatActivity(), Vie
         compositeDisposable = CompositeDisposable()
         subscribeBaseUi()
         initView()
+        NetworkStateManager.instance.mNetworkStateCallback.observe(this, Observer {
+            onNetworkStateChanged(it)
+        })
     }
+
+    /**
+     * 网络变化监听 子类重写
+     */
+    open fun onNetworkStateChanged(netState: NetState) {}
 
     override fun onDestroy() {
         super.onDestroy()

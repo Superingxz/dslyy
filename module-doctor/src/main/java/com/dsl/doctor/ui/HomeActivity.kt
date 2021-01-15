@@ -25,8 +25,7 @@ import kotlinx.android.synthetic.main.doctor_activity_main.*
  * </pre>
  */
 @Route(path = RouterActivityPath.PAGER_DOCTOR_MAIN)
-class HomeActivity : BaseActivity<HomepageViewModel>(),
-    BaseQuickAdapter.RequestLoadMoreListener {
+class HomeActivity : BaseActivity<HomepageViewModel>(){
     private lateinit var tacticsAdapter: TacticsAdapter
     override fun getContentViewId(): Int {
         return R.layout.doctor_activity_main
@@ -35,25 +34,25 @@ class HomeActivity : BaseActivity<HomepageViewModel>(),
     override fun subscribeUi(viewModel: HomepageViewModel) {
         viewModel.fetchTacticsResponse.observe(this, Observer {
             when (it?.status) {
-                Status.SUCCESS -> {
-                    it.data?.let { data ->
-                        tacticsAdapter.loadMoreEnd(
-                            !data.next || data.list.isEmpty()
-                        )
-                        if (data.pageNum == 1L) {
-                            tacticsAdapter.setNewData(data.list)
-                        } else {
-                            tacticsAdapter.addData(data.list)
-                        }
-                        mViewModel.nextPageNum = data.pageNum + 1
-                        tacticsAdapter.loadMoreComplete()
-                    }
-                }
-                Status.ERROR -> {
-                    showToast(it.message)
-                }
-                Status.LOADING -> {
-                }
+//                Status.SUCCESS -> {
+//                    it.data?.let { data ->
+//                        tacticsAdapter.loadMoreEnd(
+//                            !data.next || data.list.isEmpty()
+//                        )
+//                        if (data.pageNum == 1L) {
+//                            tacticsAdapter.setNewData(data.list)
+//                        } else {
+//                            tacticsAdapter.addData(data.list)
+//                        }
+//                        mViewModel.nextPageNum = data.pageNum + 1
+//                        tacticsAdapter.loadMoreComplete()
+//                    }
+//                }
+//                Status.ERROR -> {
+//                    showToast(it.message)
+//                }
+//                Status.LOADING -> {
+//                }
             }
         })
     }
@@ -64,7 +63,7 @@ class HomeActivity : BaseActivity<HomepageViewModel>(),
         tactics_recyclerview.layoutManager = LinearLayoutManager(this)
         tactics_recyclerview.addItemDecoration(DividerLine())
         tacticsAdapter = TacticsAdapter(null)
-        tacticsAdapter.setOnLoadMoreListener(this, tactics_recyclerview)
+//        tacticsAdapter.setOnLoadMoreListener(this, tactics_recyclerview)
         tacticsAdapter.setOnItemClickListener { adapter, _, position ->
             val itemData = adapter.getItem(position) as TacticsBean
             ToastKit.show(this, itemData.title)
@@ -81,7 +80,7 @@ class HomeActivity : BaseActivity<HomepageViewModel>(),
     override fun onClick(v: View?) {
     }
 
-    override fun onLoadMoreRequested() {
-        mViewModel.fetchTacticsPageNum.value = mViewModel.nextPageNum
-    }
+//    override fun onLoadMoreRequested() {
+//        mViewModel.fetchTacticsPageNum.value = mViewModel.nextPageNum
+//    }
 }

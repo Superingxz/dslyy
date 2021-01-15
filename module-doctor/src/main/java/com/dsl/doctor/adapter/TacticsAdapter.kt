@@ -2,11 +2,12 @@ package com.dsl.doctor.adapter
 
 import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.dsl.doctor.R
 import com.dsl.doctor.bean.TacticsBean
 import com.dsl.extend.loadImageExtend
 import com.dsl.util.DateTimeUtil
+import com.umeng.commonsdk.stateless.UMSLEnvelopeBuild.mContext
 
 /**
  * 互联网攻略列表适配器
@@ -14,9 +15,9 @@ import com.dsl.util.DateTimeUtil
  * on 2020/03/03.
  */
 class TacticsAdapter(dataList: List<TacticsBean>?) : BaseQuickAdapter<TacticsBean, BaseViewHolder>(
-    R.layout.doctor_item_tactics, dataList
+    R.layout.doctor_item_tactics, dataList as MutableList<TacticsBean>?
 ) {
-    override fun convert(helper: BaseViewHolder, item: TacticsBean?) {
+    override fun convert(helper: BaseViewHolder, item: TacticsBean) {
         item?.run {
             val image = helper.getView<ImageView>(R.id.image)
             image.loadImageExtend(mContext, top)
