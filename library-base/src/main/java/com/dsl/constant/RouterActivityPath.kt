@@ -16,5 +16,6 @@ class RouterActivityPath private constructor(){
         const val PAGER_MAIN = "$MAIN/Main"
 
         const val PAGER_DOCTOR_MAIN = "$DOCTOR/Home"
+        const val PAGER_DOCTOR_MAIN2 = "$DOCTOR/Home2"
     }
 }

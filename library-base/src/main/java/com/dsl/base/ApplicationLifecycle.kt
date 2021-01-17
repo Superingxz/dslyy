@@ -36,7 +36,7 @@ class ApplicationLifecycle : Application.ActivityLifecycleCallbacks {
         started--
         if (started == 0) {
             DebugLog.e("应用在后台了！！！")
-            if (!BaseApplication.isInVideoActivity) {
+            if (!BaseApp.isInVideoActivity) {
 
             }
         }

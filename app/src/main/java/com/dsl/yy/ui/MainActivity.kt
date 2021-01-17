@@ -26,11 +26,14 @@ class MainActivity : BaseActivity<HomeViewModel>() {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.jump->{
-                ARouter.getInstance().build(RouterActivityPath.PAGER_DOCTOR_MAIN)
+                ARouter.getInstance().build(RouterActivityPath.PAGER_DOCTOR_MAIN2)
                     .navigation()
 //                startActivity(Intent(this@MainActivity, HomeActivity::class.java))
             }
         }
+    }
+
+    override fun showLoading(message: String) {
     }
 
 }

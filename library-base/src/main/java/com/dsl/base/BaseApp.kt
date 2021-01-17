@@ -1,5 +1,8 @@
 package com.dsl.base
 
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 
@@ -8,9 +11,17 @@ import com.alibaba.android.arouter.launcher.ARouter
  * @author dsl-abben
  * on 2020/02/20.
  */
-open class BaseApplication : MultiDexApplication() {
+open class BaseApp : MultiDexApplication() , ViewModelStoreOwner {
+    private lateinit var mAppViewModelStore: ViewModelStore
+
+    private var mFactory: ViewModelProvider.Factory? = null
+
+    override fun getViewModelStore(): ViewModelStore {
+        return mAppViewModelStore
+    }
+
     companion object {
-        private var appInstance: BaseApplication? = null
+        private var appInstance: BaseApp? = null
 
         var bindJpush = false
         var imConnected: Boolean = false
@@ -27,7 +38,7 @@ open class BaseApplication : MultiDexApplication() {
         var windowRoomId = ""
         var userCancelVideoOrderId = mutableListOf<String>()
 
-        fun getInstance(): BaseApplication {
+        fun getInstance(): BaseApp {
             if (appInstance == null) {
                 throw IllegalStateException("Configure Application class in AndroidManifest.xml")
             }
@@ -38,6 +49,7 @@ open class BaseApplication : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        mAppViewModelStore = ViewModelStore()
         appInstance = this
         registerActivityLifecycleCallbacks(ApplicationLifecycle())
         //判断是否是在主线程
@@ -69,5 +81,19 @@ open class BaseApplication : MultiDexApplication() {
             ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this) // 尽可能早，推荐在Application中初始化
+    }
+
+    /**
+     * 获取一个全局的ViewModel
+     */
+    fun getAppViewModelProvider(): ViewModelProvider {
+        return ViewModelProvider(this, this.getAppFactory())
+    }
+
+    private fun getAppFactory(): ViewModelProvider.Factory {
+        if (mFactory == null) {
+            mFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(this)
+        }
+        return mFactory as ViewModelProvider.Factory
     }
 }

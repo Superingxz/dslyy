@@ -1,6 +1,6 @@
 package com.dsl.util.compress
 
-import com.dsl.base.BaseApplication
+import com.dsl.base.BaseApp
 import com.dsl.doctorplus.util.compress.UploadFileBean
 import com.dsl.util.DebugLog
 import com.dsl.util.SavePathBuilder
@@ -91,7 +91,7 @@ class CompressImageManager {
         ).savePath
         try {
             val compressFIle =
-                PictureCompressor.with(BaseApplication.getInstance().applicationContext)
+                PictureCompressor.with(BaseApp.getInstance().applicationContext)
                     .savePath(saveDirectoryPath)
                     .load(file)
                     .get()

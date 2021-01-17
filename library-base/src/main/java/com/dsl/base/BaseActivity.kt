@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.network.manager.NetworkStateManager
 import com.dsl.util.StatusBarUtil
 import com.dsl.widget.LoadingDialog
@@ -20,7 +21,7 @@ import java.lang.reflect.Type
  * @author dsl-abben
  * on 2020/02/14.
  */
-abstract class BaseActivity<E : BaseAndroidViewModel> : AppCompatActivity(), View.OnClickListener {
+abstract class BaseActivity<E : BaseViewModel> : AppCompatActivity(), View.OnClickListener {
     protected abstract fun getContentViewId(): Int
 
     /**
@@ -80,6 +81,20 @@ abstract class BaseActivity<E : BaseAndroidViewModel> : AppCompatActivity(), Vie
         subscribeUi(mViewModel)
     }
 
+    /**
+     * 注册UI 事件
+     */
+    private fun registerUiChange() {
+        //显示弹窗
+        mViewModel.loadingChange.showDialog.observe(this, Observer {
+            showLoading(it)
+        })
+        //关闭弹窗
+        mViewModel.loadingChange.dismissDialog.observe(this, Observer {
+            dismissLoading()
+        })
+    }
+
     override fun onRestart() {
         super.onRestart()
         nowLifeEvent = Lifecycle.Event.ON_CREATE
@@ -109,6 +124,8 @@ abstract class BaseActivity<E : BaseAndroidViewModel> : AppCompatActivity(), Vie
         loadingDialog = LoadingDialog.onNewInstance(getString(R.string.fetch_loading))
         loadingDialog?.show(supportFragmentManager, "PostLoading")
     }
+
+    abstract fun showLoading(message: String = "请求网络中...")
 
     private fun dismissLoading() {
         loadingDialog?.dismiss()

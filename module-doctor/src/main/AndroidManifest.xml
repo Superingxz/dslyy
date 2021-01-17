@@ -2,5 +2,6 @@
     package="com.dsl.doctor">
     <application>
         <activity android:name=".ui.HomeActivity" />
+        <activity android:name=".ui.Home2Activity" />
     </application>
 </manifest>

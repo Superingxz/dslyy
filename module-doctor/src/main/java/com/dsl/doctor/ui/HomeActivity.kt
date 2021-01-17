@@ -4,7 +4,6 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.dsl.base.BaseActivity
 import com.dsl.constant.RouterActivityPath
 import com.dsl.doctor.R
@@ -34,8 +33,8 @@ class HomeActivity : BaseActivity<HomepageViewModel>(){
     override fun subscribeUi(viewModel: HomepageViewModel) {
         viewModel.fetchTacticsResponse.observe(this, Observer {
             when (it?.status) {
-//                Status.SUCCESS -> {
-//                    it.data?.let { data ->
+                Status.SUCCESS -> {
+                    it.data?.let { data ->
 //                        tacticsAdapter.loadMoreEnd(
 //                            !data.next || data.list.isEmpty()
 //                        )
@@ -46,13 +45,13 @@ class HomeActivity : BaseActivity<HomepageViewModel>(){
 //                        }
 //                        mViewModel.nextPageNum = data.pageNum + 1
 //                        tacticsAdapter.loadMoreComplete()
-//                    }
-//                }
-//                Status.ERROR -> {
-//                    showToast(it.message)
-//                }
-//                Status.LOADING -> {
-//                }
+                    }
+                }
+                Status.ERROR -> {
+                    showToast(it.message)
+                }
+                Status.LOADING -> {
+                }
             }
         })
     }
@@ -62,7 +61,7 @@ class HomeActivity : BaseActivity<HomepageViewModel>(){
         tactics_recyclerview.isNestedScrollingEnabled = false
         tactics_recyclerview.layoutManager = LinearLayoutManager(this)
         tactics_recyclerview.addItemDecoration(DividerLine())
-        tacticsAdapter = TacticsAdapter(null)
+        tacticsAdapter = TacticsAdapter( null)
 //        tacticsAdapter.setOnLoadMoreListener(this, tactics_recyclerview)
         tacticsAdapter.setOnItemClickListener { adapter, _, position ->
             val itemData = adapter.getItem(position) as TacticsBean
@@ -78,6 +77,10 @@ class HomeActivity : BaseActivity<HomepageViewModel>(){
     }
 
     override fun onClick(v: View?) {
+    }
+
+    override fun showLoading(message: String) {
+
     }
 
 //    override fun onLoadMoreRequested() {

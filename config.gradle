@@ -153,6 +153,8 @@ dependencies {
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    //动态替换BaseUrl库 使用可参考 https://github.com/JessYanCoding/RetrofitUrlManager
+    implementation 'me.jessyan:retrofit-url-manager:1.4.0'
 
     //RxJava
     implementation "io.reactivex.rxjava3:rxjava:3.0.6"
@@ -188,6 +190,8 @@ dependencies {
     api 'me.jessyan:autosize:1.1.2'
     //微信分享、登录、收藏、支付等功能需要的库
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
     //util
     implementation 'com.blankj:utilcodex:1.26.0'
