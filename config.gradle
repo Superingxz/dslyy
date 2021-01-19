@@ -137,7 +137,7 @@ dependencies {
     // Saved state module for ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion"
     //navigation
-    api 'androidx.navigation:navigation-runtime:2.3.0'
+    api 'androidx.navigation:navigation-runtime:2.3.1'
     // Annotation processor
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
@@ -145,7 +145,7 @@ dependencies {
     implementation 'com.kingja.loadsir:loadsir:1.3.8'
 
     //Glide
-    implementation('com.github.bumptech.glide:glide:4.9.0') {
+    implementation('com.github.bumptech.glide:glide:4.11.0') {
         exclude group: "com.android.support"
     }
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
@@ -177,7 +177,7 @@ dependencies {
     //腾讯云即时通信 IM,用于图文问诊
     api 'com.tencent.imsdk:imsdk:4.8.10'
     //腾讯Bugly
-    implementation 'com.tencent.bugly:crashreport:3.1.9'
+    implementation 'com.tencent.bugly:crashreport:3.2.422'
     //极光推送
 //    implementation 'cn.jiguang.sdk:jpush:3.8.0'
 //    implementation 'cn.jiguang.sdk:jcore:2.4.2'
@@ -187,7 +187,7 @@ dependencies {
 //    implementation 'com.huawei.agconnect:agconnect-core:1.3.1.300'
 //    implementation 'com.huawei.hms:push:5.0.0.300'
     //屏幕适配
-    api 'me.jessyan:autosize:1.1.2'
+    api 'me.jessyan:autosize:1.2.1'
     //微信分享、登录、收藏、支付等功能需要的库
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
@@ -228,7 +228,7 @@ dependencies {
     implementation 'com.alibaba:arouter-api:1.5.1'
     kapt 'com.alibaba:arouter-compiler:1.5.1'
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
