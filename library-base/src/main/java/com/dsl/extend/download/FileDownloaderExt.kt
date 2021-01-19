@@ -1,8 +1,8 @@
-package com.dsl.download
+package com.dsl.extend.download
 
 import androidx.lifecycle.MutableLiveData
-import com.dsl.download.DownloadResultState
-import com.dsl.download.OnDownLoadListener
+import com.dsl.extend.download.DownloadResultState
+import com.dsl.extend.download.OnDownLoadListener
 
 /**
  * @author : hgj

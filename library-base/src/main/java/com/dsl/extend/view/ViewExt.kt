@@ -1,4 +1,4 @@
-package com.dsl.extend
+package com.dsl.extend.view
 
 import android.graphics.Bitmap
 import android.graphics.Canvas

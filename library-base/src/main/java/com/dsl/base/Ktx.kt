@@ -8,8 +8,8 @@ import android.database.Cursor
 import android.net.ConnectivityManager
 import android.net.Uri
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.dsl.lifecycle.KtxAppLifeObserver
-import com.dsl.lifecycle.KtxLifeCycleCallBack
+import com.dsl.extend.lifecycle.KtxAppLifeObserver
+import com.dsl.extend.lifecycle.KtxLifeCycleCallBack
 import com.dsl.network.manager.NetworkStateReceive
 
 /**

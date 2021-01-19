@@ -1,11 +1,11 @@
-package com.dsl.download
+package com.dsl.extend.download
 
 import android.os.Looper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withContext
-import com.dsl.util.logi
+import com.dsl.extend.util.logi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import java.io.File
@@ -46,7 +46,15 @@ object DownLoadManager {
         loadListener: OnDownLoadListener
     ) {
         withContext(Dispatchers.IO) {
-            doDownLoad(tag, url, savePath, saveName, reDownload, loadListener, this)
+            doDownLoad(
+                tag,
+                url,
+                savePath,
+                saveName,
+                reDownload,
+                loadListener,
+                this
+            )
         }
     }
 
@@ -70,7 +78,8 @@ object DownLoadManager {
      * @param key String 暂停的标识
      */
     fun pause(key: String) {
-        val listener = DownLoadPool.getListenerFromKey(key)
+        val listener =
+            DownLoadPool.getListenerFromKey(key)
         listener?.onDownLoadPause(key)
         DownLoadPool.pause(key)
     }
@@ -158,7 +167,8 @@ object DownLoadManager {
             withContext(Dispatchers.Main) {
                 loadListener.onDownLoadPrepare(key = tag)
             }
-            val response = retrofitBuilder.create(DownLoadService::class.java)
+            val response = retrofitBuilder.create(
+                DownLoadService::class.java)
                 .downloadFile("bytes=$currentLength-", url)
             val responseBody = response.body()
             if (responseBody == null) {

@@ -6,7 +6,7 @@ import com.dsl.base.activity.BaseVmActivity
 import com.dsl.base.fragment.BaseVmFragment
 import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.network.AppException
-import com.dsl.util.loge
+import com.dsl.extend.util.loge
 import kotlinx.coroutines.*
 import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
 import me.hgj.jetpackmvvm.network.BaseResponse

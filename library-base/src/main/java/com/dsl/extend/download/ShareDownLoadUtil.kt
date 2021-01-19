@@ -1,4 +1,4 @@
-package com.dsl.download
+package com.dsl.extend.download
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -16,7 +16,8 @@ object ShareDownLoadUtil {
 
 
     init {
-        sp = appContext.getSharedPreferences(path, Context.MODE_PRIVATE)
+        sp = appContext.getSharedPreferences(
+            path, Context.MODE_PRIVATE)
     }
 
 

@@ -19,13 +19,13 @@ import androidx.viewpager2.widget.ViewPager2
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.dsl.base.R
 import com.dsl.base.appContext
+import com.dsl.extend.util.toHtml
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import com.kingja.loadsir.core.LoadService
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import com.dsl.util.SettingUtil
 import com.dsl.widget.recyclerview.DefineLoadMoreView
-import com.dsl.util.toHtml
 
 /**
  * 作者　: hegaojian

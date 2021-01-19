@@ -1,4 +1,4 @@
-package com.dsl.util
+package com.dsl.extend.util
 
 import android.content.ClipData
 import android.content.Context
@@ -7,7 +7,7 @@ import android.text.Html
 import android.text.Spanned
 import android.text.TextUtils
 import android.view.View
-import com.dsl.extend.clickNoRepeat
+import com.dsl.extend.view.clickNoRepeat
 
 /**
  * 获取屏幕宽度

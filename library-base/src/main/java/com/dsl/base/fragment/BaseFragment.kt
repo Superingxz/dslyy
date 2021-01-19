@@ -7,8 +7,8 @@ import com.dsl.extend.dismissLoadingExt
 import com.dsl.extend.getAppViewModel
 import com.dsl.extend.hideSoftKeyboard
 import com.dsl.extend.showLoadingExt
-import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
-import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
+import com.dsl.base.event.AppViewModel
+import com.dsl.base.event.EventViewModel
 
 
 /**

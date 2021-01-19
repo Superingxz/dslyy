@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.dsl.base.BaseActivity
 import com.dsl.constant.RouterActivityPath
 import com.dsl.doctor.R
@@ -24,7 +25,7 @@ import kotlinx.android.synthetic.main.doctor_activity_main.*
  * </pre>
  */
 @Route(path = RouterActivityPath.PAGER_DOCTOR_MAIN)
-class HomeActivity : BaseActivity<HomepageViewModel>(){
+class HomeActivity : BaseActivity<HomepageViewModel>(), OnLoadMoreListener {
     private lateinit var tacticsAdapter: TacticsAdapter
     override fun getContentViewId(): Int {
         return R.layout.doctor_activity_main
@@ -35,16 +36,14 @@ class HomeActivity : BaseActivity<HomepageViewModel>(){
             when (it?.status) {
                 Status.SUCCESS -> {
                     it.data?.let { data ->
-//                        tacticsAdapter.loadMoreEnd(
-//                            !data.next || data.list.isEmpty()
-//                        )
-//                        if (data.pageNum == 1L) {
-//                            tacticsAdapter.setNewData(data.list)
-//                        } else {
-//                            tacticsAdapter.addData(data.list)
-//                        }
-//                        mViewModel.nextPageNum = data.pageNum + 1
-//                        tacticsAdapter.loadMoreComplete()
+                        tacticsAdapter.loadMoreModule.loadMoreEnd(
+                            !data.next || data.list.isEmpty()
+                        )
+                        if (data.pageNum == 1L) {
+                            tacticsAdapter.setNewInstance(data.list.toMutableList())
+                        } else {
+                            tacticsAdapter.addData(data.list.toMutableList())
+                        }
                     }
                 }
                 Status.ERROR -> {
@@ -61,8 +60,8 @@ class HomeActivity : BaseActivity<HomepageViewModel>(){
         tactics_recyclerview.isNestedScrollingEnabled = false
         tactics_recyclerview.layoutManager = LinearLayoutManager(this)
         tactics_recyclerview.addItemDecoration(DividerLine())
-        tacticsAdapter = TacticsAdapter( null)
-//        tacticsAdapter.setOnLoadMoreListener(this, tactics_recyclerview)
+        tacticsAdapter = TacticsAdapter(null)
+        tacticsAdapter.loadMoreModule.setOnLoadMoreListener(this)
         tacticsAdapter.setOnItemClickListener { adapter, _, position ->
             val itemData = adapter.getItem(position) as TacticsBean
             ToastKit.show(this, itemData.title)
@@ -83,7 +82,7 @@ class HomeActivity : BaseActivity<HomepageViewModel>(){
 
     }
 
-//    override fun onLoadMoreRequested() {
-//        mViewModel.fetchTacticsPageNum.value = mViewModel.nextPageNum
-//    }
+    override fun onLoadMore() {
+        mViewModel.fetchTacticsPageNum.value = mViewModel.nextPageNum
+    }
 }

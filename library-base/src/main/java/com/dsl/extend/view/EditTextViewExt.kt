@@ -1,4 +1,4 @@
-package com.dsl.extend
+package com.dsl.extend.view
 
 import android.text.Editable
 import android.text.TextWatcher

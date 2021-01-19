@@ -1,4 +1,4 @@
-package com.dsl.lifecycle
+package com.dsl.extend.lifecycle
 
 import android.os.Handler
 import androidx.lifecycle.Lifecycle

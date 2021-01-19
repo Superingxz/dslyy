@@ -2,6 +2,7 @@ package com.dsl.util
 
 import android.text.TextUtils
 import android.util.Log
+import com.dsl.extend.util.jetpackMvvmLog
 
 /**
  * 作者　: hegaojian
@@ -9,7 +10,7 @@ import android.util.Log
  * 描述　:
  */
 object LogUtils {
-    private const val DEFAULT_TAG = "JetpackMvvm"
+    private const val DEFAULT_TAG = "dslPlus_"
     fun debugInfo(tag: String?, msg: String?) {
         if (!jetpackMvvmLog || TextUtils.isEmpty(msg)) {
             return
@@ -24,7 +25,7 @@ object LogUtils {
         )
     }
 
-    fun warnInfo(tag: String?, msg: String?) {
+    private fun warnInfo(tag: String?, msg: String?) {
         if (!jetpackMvvmLog || TextUtils.isEmpty(msg)) {
             return
         }
@@ -44,7 +45,7 @@ object LogUtils {
      * @param tag 标签
      * @param msg 日志内容
      */
-    fun debugLongInfo(tag: String?, msg: String) {
+    private fun debugLongInfo(tag: String?, msg: String) {
         var msg = msg
         if (!jetpackMvvmLog || TextUtils.isEmpty(msg)) {
             return

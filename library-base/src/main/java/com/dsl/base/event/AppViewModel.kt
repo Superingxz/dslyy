@@ -1,4 +1,4 @@
-package me.hgj.jetpackmvvm.demo.app.event
+package com.dsl.base.event
 
 import com.dsl.base.appContext
 import com.dsl.base.viewmodel.BaseViewModel

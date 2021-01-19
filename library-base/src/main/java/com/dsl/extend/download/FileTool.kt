@@ -1,4 +1,4 @@
-package com.dsl.download
+package com.dsl.extend.download
 
 import com.dsl.base.appContext
 import kotlinx.coroutines.Dispatchers
@@ -42,7 +42,8 @@ object FileTool {
         responseBody: ResponseBody,
         loadListener: OnDownLoadListener
     ) {
-        val filePath = getFilePath(savePath, saveName)
+        val filePath =
+            getFilePath(savePath, saveName)
         try {
             if (filePath == null) {
                 withContext(Dispatchers.Main) {
@@ -52,7 +53,13 @@ object FileTool {
                 return
             }
             //保存到文件
-            saveToFile(currentLength, responseBody, filePath, key, loadListener)
+            saveToFile(
+                currentLength,
+                responseBody,
+                filePath,
+                key,
+                loadListener
+            )
         } catch (throwable: Throwable) {
             withContext(Dispatchers.Main) {
                 loadListener.onDownLoadError(key, throwable)
@@ -77,7 +84,10 @@ object FileTool {
         loadListener: OnDownLoadListener
     ) {
         val fileLength =
-            getFileLength(currentLength, responseBody)
+            getFileLength(
+                currentLength,
+                responseBody
+            )
         val inputStream = responseBody.byteStream()
         val accessFile = RandomAccessFile(File(filePath), "rwd")
         val channel = accessFile.channel
@@ -99,7 +109,10 @@ object FileTool {
             if (lastProgress != progress) {
                 lastProgress = progress
                 //记录已经下载的长度
-                ShareDownLoadUtil.putLong(key, currentSaveLength)
+                ShareDownLoadUtil.putLong(
+                    key,
+                    currentSaveLength
+                )
                 withContext(Dispatchers.Main) {
                     loadListener.onUpdate(
                         key,

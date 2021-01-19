@@ -44,14 +44,12 @@ open class BaseApp : MultiDexApplication() , ViewModelStoreOwner {
             }
             return appInstance!!
         }
-
     }
 
     override fun onCreate() {
         super.onCreate()
         mAppViewModelStore = ViewModelStore()
         appInstance = this
-        registerActivityLifecycleCallbacks(ApplicationLifecycle())
         //判断是否是在主线程
 //        if (SessionWrapper.isMainProcess(applicationContext)) {
 //            //初始化腾讯云IM
