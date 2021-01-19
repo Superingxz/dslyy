@@ -28,7 +28,6 @@ class MainActivity : BaseActivity<HomeViewModel>() {
             R.id.jump->{
                 ARouter.getInstance().build(RouterActivityPath.PAGER_DOCTOR_MAIN2)
                     .navigation()
-//                startActivity(Intent(this@MainActivity, HomeActivity::class.java))
             }
         }
     }
