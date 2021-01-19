@@ -57,7 +57,7 @@ class Home2Activity : BaseActivity<HomepageViewModel, DoctorActivityMainBinding>
                     tacticsAdapter.addData(it.list.toMutableList())
                 }
             }, {
-                ToastUtils.showShort(it.errorMsg)
+                showToast(it.errorMsg)
             })
         })
         mViewModel.refreshTactics()

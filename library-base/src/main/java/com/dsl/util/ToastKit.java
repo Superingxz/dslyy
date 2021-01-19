@@ -8,14 +8,20 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
+
 import com.dsl.base.R;
 
 
 public class ToastKit {
-
     private static View toastView;
     private static TextView textView;
     private static Toast toast;
+
+    public static void show(Context context, @StringRes int resId) {
+        show(context, context.getString(resId));
+    }
 
     public static void show(Context context, String message) {
         if (context == null) {
