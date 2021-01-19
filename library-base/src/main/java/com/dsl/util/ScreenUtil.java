@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
-import com.dsl.base.BaseApplication;
+import com.dsl.base.BaseApp;
 
 
 public class ScreenUtil {
@@ -13,14 +13,14 @@ public class ScreenUtil {
     private static int navigationBarHeight = 0;
 
     public static int getPxByDp(float dp) {
-        float scale = BaseApplication.Companion.getInstance().getResources().getDisplayMetrics().density;
+        float scale = BaseApp.Companion.getInstance().getResources().getDisplayMetrics().density;
         return (int) (dp * scale + 0.5f);
     }
 
     public static int getNavigationBarHeight() {
         if (navigationBarHeight != 0)
             return navigationBarHeight;
-        Resources resources = BaseApplication.Companion.getInstance().getResources();
+        Resources resources = BaseApp.Companion.getInstance().getResources();
         int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
         int height = resources.getDimensionPixelSize(resourceId);
         navigationBarHeight = height;

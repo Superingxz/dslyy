@@ -119,22 +119,33 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
-
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.multidex:multidex:2.0.1'
 
+    //底部bottomBar
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+    //第三方recyclerview
+    implementation 'com.yanzhenjie.recyclerview:x:1.3.2'
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     // Lifecycles only (without ViewModel or LiveData)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    api 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     // Saved state module for ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion"
+    //navigation
+    api 'androidx.navigation:navigation-runtime:2.3.1'
     // Annotation processor
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
+    //管理界面状态库
+    implementation 'com.kingja.loadsir:loadsir:1.3.8'
+
     //Glide
-    implementation('com.github.bumptech.glide:glide:4.9.0') {
+    implementation('com.github.bumptech.glide:glide:4.11.0') {
         exclude group: "com.android.support"
     }
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
@@ -142,6 +153,8 @@ dependencies {
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    //动态替换BaseUrl库 使用可参考 https://github.com/JessYanCoding/RetrofitUrlManager
+    implementation 'me.jessyan:retrofit-url-manager:1.4.0'
 
     //RxJava
     implementation "io.reactivex.rxjava3:rxjava:3.0.6"
@@ -151,7 +164,7 @@ dependencies {
     implementation 'com.google.android:flexbox:2.0.1'
 
     //RecyclerView Adapter框架 https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     //图片选择器 https://github.com/LuckSiege/PictureSelector
     implementation('com.github.LuckSiege.PictureSelector:picture_library:v2.2.3') {
         exclude group: "com.android.support"
@@ -164,7 +177,7 @@ dependencies {
     //腾讯云即时通信 IM,用于图文问诊
     api 'com.tencent.imsdk:imsdk:4.8.10'
     //腾讯Bugly
-    implementation 'com.tencent.bugly:crashreport:3.1.9'
+    implementation 'com.tencent.bugly:crashreport:3.2.422'
     //极光推送
 //    implementation 'cn.jiguang.sdk:jpush:3.8.0'
 //    implementation 'cn.jiguang.sdk:jcore:2.4.2'
@@ -174,9 +187,27 @@ dependencies {
 //    implementation 'com.huawei.agconnect:agconnect-core:1.3.1.300'
 //    implementation 'com.huawei.hms:push:5.0.0.300'
     //屏幕适配
-    api 'me.jessyan:autosize:1.1.2'
+    api 'me.jessyan:autosize:1.2.1'
     //微信分享、登录、收藏、支付等功能需要的库
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+
+    //util
+    implementation 'com.blankj:utilcodex:1.26.0'
+
+    //微信开源项目，替代SP
+    implementation 'com.tencent:mmkv:1.0.22'
+
+    //指示器库
+    implementation 'com.github.hackware1993:MagicIndicator:1.6.0'
+
+    //dialog
+    implementation "com.afollestad.material-dialogs:lifecycle:3.3.0"
+    implementation "com.afollestad.material-dialogs:core:3.3.0"
+    implementation "com.afollestad.material-dialogs:color:3.3.0"
+    implementation "com.afollestad.material-dialogs:datetime:3.3.0"
+    implementation "com.afollestad.material-dialogs:bottomsheets:3.3.0"
 
     // 友盟统计SDK
     implementation 'com.umeng.umsdk:common:9.1.0' // (必选)
@@ -197,7 +228,7 @@ dependencies {
     implementation 'com.alibaba:arouter-api:1.5.1'
     kapt 'com.alibaba:arouter-compiler:1.5.1'
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.dsl.base.BaseActivity
 import com.dsl.constant.RouterActivityPath
 import com.dsl.doctor.R
@@ -25,8 +25,7 @@ import kotlinx.android.synthetic.main.doctor_activity_main.*
  * </pre>
  */
 @Route(path = RouterActivityPath.PAGER_DOCTOR_MAIN)
-class HomeActivity : BaseActivity<HomepageViewModel>(),
-    BaseQuickAdapter.RequestLoadMoreListener {
+class HomeActivity : BaseActivity<HomepageViewModel>(), OnLoadMoreListener {
     private lateinit var tacticsAdapter: TacticsAdapter
     override fun getContentViewId(): Int {
         return R.layout.doctor_activity_main
@@ -37,16 +36,14 @@ class HomeActivity : BaseActivity<HomepageViewModel>(),
             when (it?.status) {
                 Status.SUCCESS -> {
                     it.data?.let { data ->
-                        tacticsAdapter.loadMoreEnd(
+                        tacticsAdapter.loadMoreModule.loadMoreEnd(
                             !data.next || data.list.isEmpty()
                         )
                         if (data.pageNum == 1L) {
-                            tacticsAdapter.setNewData(data.list)
+                            tacticsAdapter.setNewInstance(data.list.toMutableList())
                         } else {
-                            tacticsAdapter.addData(data.list)
+                            tacticsAdapter.addData(data.list.toMutableList())
                         }
-                        mViewModel.nextPageNum = data.pageNum + 1
-                        tacticsAdapter.loadMoreComplete()
                     }
                 }
                 Status.ERROR -> {
@@ -64,7 +61,7 @@ class HomeActivity : BaseActivity<HomepageViewModel>(),
         tactics_recyclerview.layoutManager = LinearLayoutManager(this)
         tactics_recyclerview.addItemDecoration(DividerLine())
         tacticsAdapter = TacticsAdapter(null)
-        tacticsAdapter.setOnLoadMoreListener(this, tactics_recyclerview)
+        tacticsAdapter.loadMoreModule.setOnLoadMoreListener(this)
         tacticsAdapter.setOnItemClickListener { adapter, _, position ->
             val itemData = adapter.getItem(position) as TacticsBean
             ToastKit.show(this, itemData.title)
@@ -81,7 +78,11 @@ class HomeActivity : BaseActivity<HomepageViewModel>(),
     override fun onClick(v: View?) {
     }
 
-    override fun onLoadMoreRequested() {
+    override fun showLoading(message: String) {
+
+    }
+
+    override fun onLoadMore() {
         mViewModel.fetchTacticsPageNum.value = mViewModel.nextPageNum
     }
 }

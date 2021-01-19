@@ -1,5 +1,6 @@
 package com.dsl.network
 
+import com.dsl.network.interceptor.logging.LogInterceptor
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLContext
@@ -61,6 +62,7 @@ object OkHttpHelper {
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .addInterceptor(HeaderInterceptor())
+                .addInterceptor(LogInterceptor())
                 .sslSocketFactory(sslContext.socketFactory)
                 .hostnameVerifier { _, _ ->
                     true

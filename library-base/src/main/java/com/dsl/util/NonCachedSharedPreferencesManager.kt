@@ -2,7 +2,7 @@ package com.dsl.doctorplus.util
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.dsl.base.BaseApplication
+import com.dsl.base.BaseApp
 import com.dsl.util.DateTimeUtil
 
 /**
@@ -62,7 +62,7 @@ object NonCachedSharedPreferencesManager {
 
     private fun getNonCachedSharedPreferences(): SharedPreferences {
         return sharedPreferences ?: synchronized(this) {
-            sharedPreferences ?: BaseApplication.getInstance().getSharedPreferences(
+            sharedPreferences ?: BaseApp.getInstance().getSharedPreferences(
                 sharedprefeName,
                 Context.MODE_PRIVATE
             )

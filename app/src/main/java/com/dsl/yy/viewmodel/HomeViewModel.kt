@@ -1,6 +1,7 @@
 package com.dsl.yy.viewmodel
 
 import com.dsl.base.BaseAndroidViewModel
+import com.dsl.base.viewmodel.BaseViewModel
 
 /**
  * <pre>
@@ -10,5 +11,5 @@ import com.dsl.base.BaseAndroidViewModel
  *     desc  :
  * </pre>
  */
-class HomeViewModel : BaseAndroidViewModel() {
+class HomeViewModel : BaseViewModel() {
 }

@@ -1,6 +1,6 @@
 package com.dsl.yy
 
-import com.dsl.base.BaseApplication
+import com.dsl.base.BaseApp
 
 /**
  * <pre>
@@ -10,4 +10,4 @@ import com.dsl.base.BaseApplication
  *     desc  :
  * </pre>
  */
-class App : BaseApplication()
+class App : BaseApp()
