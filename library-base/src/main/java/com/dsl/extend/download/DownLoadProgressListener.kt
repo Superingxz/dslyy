@@ -15,7 +15,7 @@ interface DownLoadProgressListener {
      * @param count 总共长度
      * @param done  是否完成
      */
-    fun onUpdate( key: String,progress: Int, read: Long,count: Long,done: Boolean)
+    fun onUpdate(key: String, progress: Int, read: Long, count: Long, done: Boolean)
 }
 
 
@@ -28,7 +28,7 @@ interface OnDownLoadListener : DownLoadProgressListener {
     fun onDownLoadError(key: String, throwable: Throwable)
 
     //下载成功
-    fun onDownLoadSuccess(key: String, path: String,size:Long)
+    fun onDownLoadSuccess(key: String, path: String, size: Long)
 
     //下载暂停
     fun onDownLoadPause(key: String)

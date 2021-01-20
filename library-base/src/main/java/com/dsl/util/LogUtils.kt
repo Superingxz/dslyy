@@ -2,7 +2,7 @@ package com.dsl.util
 
 import android.text.TextUtils
 import android.util.Log
-import com.dsl.extend.util.jetpackMvvmLog
+import com.dsl.extend.util.dslPlusLog
 
 /**
  * 作者　: hegaojian
@@ -12,10 +12,12 @@ import com.dsl.extend.util.jetpackMvvmLog
 object LogUtils {
     private const val DEFAULT_TAG = "dslPlus_"
     fun debugInfo(tag: String?, msg: String?) {
-        if (!jetpackMvvmLog || TextUtils.isEmpty(msg)) {
+        if (!dslPlusLog || TextUtils.isEmpty(msg)) {
             return
         }
-        Log.d(tag, msg)
+        if (msg != null) {
+            Log.d(tag, msg)
+        }
     }
 
     fun debugInfo(msg: String?) {
@@ -26,10 +28,12 @@ object LogUtils {
     }
 
     private fun warnInfo(tag: String?, msg: String?) {
-        if (!jetpackMvvmLog || TextUtils.isEmpty(msg)) {
+        if (!dslPlusLog || TextUtils.isEmpty(msg)) {
             return
         }
-        Log.w(tag, msg)
+        if (msg != null) {
+            Log.w(tag, msg)
+        }
     }
 
     fun warnInfo(msg: String?) {
@@ -47,7 +51,7 @@ object LogUtils {
      */
     private fun debugLongInfo(tag: String?, msg: String) {
         var msg = msg
-        if (!jetpackMvvmLog || TextUtils.isEmpty(msg)) {
+        if (!dslPlusLog || TextUtils.isEmpty(msg)) {
             return
         }
         msg = msg.trim { it <= ' ' }

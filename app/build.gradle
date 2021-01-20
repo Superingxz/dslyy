@@ -12,7 +12,7 @@ android {
     sourceSets {
         main {
             res {
-                srcDirs "libs",'src/main/res', 'src/main/res/layout', 'src/main/res/values'
+                srcDirs "libs", 'src/main/res', 'src/main/res/layout', 'src/main/res/values'
             }
         }
     }

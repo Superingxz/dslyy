@@ -53,31 +53,31 @@
         <attr name="mv_isWidthHeightEqual" format="boolean" />
     </declare-styleable>
     <declare-styleable name="SlidingTabLayout">
-        <attr name="tl_indicator_color"  format="color" />
-        <attr name="tl_indicator_height"  format="dimension" />
-        <attr name="tl_indicator_width"  format="dimension" />
-        <attr name="tl_indicator_margin_left"  format="dimension" />
-        <attr name="tl_indicator_margin_top"  format="dimension" />
-        <attr name="tl_indicator_margin_right"  format="dimension" />
-        <attr name="tl_indicator_margin_bottom"  format="dimension" />
-        <attr name="tl_indicator_corner_radius"  format="dimension" />
-        <attr name="tl_indicator_gravity" format="integer"/>
-        <attr name="tl_indicator_style" format="integer"/>
-        <attr name="tl_indicator_width_equal_title" format="boolean"/>
-        <attr name="tl_underline_color" format="color"/>
-        <attr name="tl_underline_height" format="dimension"/>
-        <attr name="tl_underline_gravity" format="integer"/>
-        <attr name="tl_divider_color" format="dimension"/>
-        <attr name="tl_divider_width" format="dimension"/>
-        <attr name="tl_divider_padding" format="dimension"/>
-        <attr name="tl_tab_padding" format="dimension"/>
-        <attr name="tl_tab_space_equal" format="boolean"/>
-        <attr name="tl_tab_width" format="dimension"/>
-        <attr name="tl_textsize" format="dimension"/>
-        <attr name="tl_textSelectColor" format="color"/>
-        <attr name="tl_textUnselectColor" format="color"/>
-        <attr name="tl_textBold" format="integer"/>
-        <attr name="tl_textAllCaps" format="boolean"/>
+        <attr name="tl_indicator_color" format="color" />
+        <attr name="tl_indicator_height" format="dimension" />
+        <attr name="tl_indicator_width" format="dimension" />
+        <attr name="tl_indicator_margin_left" format="dimension" />
+        <attr name="tl_indicator_margin_top" format="dimension" />
+        <attr name="tl_indicator_margin_right" format="dimension" />
+        <attr name="tl_indicator_margin_bottom" format="dimension" />
+        <attr name="tl_indicator_corner_radius" format="dimension" />
+        <attr name="tl_indicator_gravity" format="integer" />
+        <attr name="tl_indicator_style" format="integer" />
+        <attr name="tl_indicator_width_equal_title" format="boolean" />
+        <attr name="tl_underline_color" format="color" />
+        <attr name="tl_underline_height" format="dimension" />
+        <attr name="tl_underline_gravity" format="integer" />
+        <attr name="tl_divider_color" format="dimension" />
+        <attr name="tl_divider_width" format="dimension" />
+        <attr name="tl_divider_padding" format="dimension" />
+        <attr name="tl_tab_padding" format="dimension" />
+        <attr name="tl_tab_space_equal" format="boolean" />
+        <attr name="tl_tab_width" format="dimension" />
+        <attr name="tl_textsize" format="dimension" />
+        <attr name="tl_textSelectColor" format="color" />
+        <attr name="tl_textUnselectColor" format="color" />
+        <attr name="tl_textBold" format="integer" />
+        <attr name="tl_textAllCaps" format="boolean" />
     </declare-styleable>
 
     <style name="CustomDialog" parent="android:style/Theme.Dialog">

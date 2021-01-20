@@ -1,6 +1,6 @@
 package com.dsl.base
 
-import me.hgj.jetpackmvvm.network.BaseResponse
+import com.dsl.network.BaseResponse
 
 /**
  * 作者　: hegaojian

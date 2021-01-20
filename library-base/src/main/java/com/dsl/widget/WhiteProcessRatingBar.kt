@@ -21,21 +21,30 @@ class WhiteProcessRatingBar : View {
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs, 0)
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
     /**
      * 正常、选中的星星
      */
-    private var mStarNormal: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.icon_start_normal_gray)
-    private var mStarSelected: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.icon_start_selected_white)
+    private var mStarNormal: Bitmap =
+        BitmapFactory.decodeResource(resources, R.drawable.icon_start_normal_gray)
+    private var mStarSelected: Bitmap =
+        BitmapFactory.decodeResource(resources, R.drawable.icon_start_selected_white)
+
     /**
      * 星星的总数
      */
     private var mStartTotalNumber = 5
+
     /**
      * 选中的星星个数
      */
     private var mSelectedNumber = 0
+
     /**
      * 星星之间的间距
      */
@@ -61,7 +70,8 @@ class WhiteProcessRatingBar : View {
         // 用正常的一个星星图片去测量高
         val height = paddingTop + paddingBottom + mStarNormal.height
         // 宽 = 星星的宽度*总数 + 星星的间距*（总数-1） +padding
-        val width = paddingLeft + paddingRight + mStarNormal.width * mStartTotalNumber + mStartDistance * (mStartTotalNumber - 1)
+        val width =
+            paddingLeft + paddingRight + mStarNormal.width * mStartTotalNumber + mStartDistance * (mStartTotalNumber - 1)
         setMeasuredDimension(width, height)
     }
 

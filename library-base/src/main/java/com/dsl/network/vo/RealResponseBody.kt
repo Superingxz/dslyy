@@ -5,7 +5,7 @@ package com.dsl.network.vo
  * on 2020/02/14.
  */
 data class RealResponseBody<T>(
-val status: Int,
-val data: T,
-val message: String
+    val status: Int,
+    val data: T,
+    val message: String
 )

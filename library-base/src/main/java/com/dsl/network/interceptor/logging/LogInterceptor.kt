@@ -13,6 +13,7 @@ import java.net.URLDecoder
 import java.nio.charset.Charset
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.jvm.Throws
 
 
 class LogInterceptor : Interceptor {
@@ -46,7 +47,7 @@ class LogInterceptor : Interceptor {
         originalResponse = try {
             chain.proceed(request)
         } catch (e: Exception) {
-            Log.d("Http Error: %s", e.message)
+            e.message?.let { Log.d("Http Error: %s", it) }
             throw e
         }
         val t2 = if (logResponse) System.nanoTime() else 0

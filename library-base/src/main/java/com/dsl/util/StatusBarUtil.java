@@ -2,10 +2,11 @@ package com.dsl.util;
 
 import android.app.Activity;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.RequiresApi;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

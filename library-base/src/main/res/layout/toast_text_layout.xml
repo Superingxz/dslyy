@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:paddingStart="20dp"
-        android:paddingTop="16.67dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="16.67dp"
+        android:paddingStart="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_17"
+        android:paddingEnd="@dimen/dp_20"
+        android:paddingBottom="@dimen/dp_17"
         android:textColor="#ffffff"
-        android:textSize="14.67sp"
+        android:textSize="@dimen/text_size_15"
         tools:text="Toast" />
 </LinearLayout>

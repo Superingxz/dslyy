@@ -2,4 +2,11 @@
     <string name="app_name">大参林</string>
     <string name="post_loading" tools:ignore="ExtraTranslation">提交数据中&#8230;</string>
     <string name="fetch_loading" tools:ignore="ExtraTranslation">请求数据中&#8230;</string>
+    <string name="string_base_cancel">取消</string>
+    <string name="string_base_ok">确认</string>
+    <string name="string_net_requesting">请求网络中...</string>
+    <string name="string_data_empty">暂时没有数据</string>
+    <string name="string_click_retry">点击我重试</string>
+    <string name="string_data_error">数据获取失败</string>
+    <string name="string_net_check_click_retry">请检查网络后点击重新加载</string>
 </resources>

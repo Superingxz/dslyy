@@ -41,11 +41,11 @@ class HomepageViewModel : BaseViewModel() {
         }
     }
 
-    fun refreshTactics(){
+    fun refreshTactics() {
         fetchTacticsData(1L)
     }
 
-    fun nextTactics(){
+    fun nextTactics() {
         fetchTacticsData(nextPageNum + 1)
     }
 

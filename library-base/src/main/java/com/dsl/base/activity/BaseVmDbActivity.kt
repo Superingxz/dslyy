@@ -1,9 +1,8 @@
-package me.hgj.jetpackmvvm.base.activity
+package com.dsl.base.activity
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.dsl.base.activity.BaseVmActivity
 import com.dsl.base.viewmodel.BaseViewModel
 
 /**

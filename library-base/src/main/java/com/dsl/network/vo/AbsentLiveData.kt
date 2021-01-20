@@ -9,7 +9,6 @@ import androidx.lifecycle.LiveData
  * on 2020/02/17.
  */
 class AbsentLiveData<T : Any?> : LiveData<T>() {
-
     init {
         postValue(null)
     }

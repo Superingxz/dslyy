@@ -3,26 +3,26 @@
     style="@style/BasePaddingStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="@dimen/dp_10"
     android:background="@drawable/bg_round5_white"
     android:gravity="center"
-    android:minWidth="300dp"
+    android:minWidth="@dimen/dp_300"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/dialog_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginBottom="@dimen/dp_5"
         android:gravity="center"
         android:textColor="#4A4A4A"
-        android:textSize="16dp" />
+        android:textSize="@dimen/text_size_16" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dp_10"
         android:gravity="bottom"
         android:orientation="horizontal">
 
@@ -30,29 +30,29 @@
             android:id="@+id/negative"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="@dimen/dp_5"
             android:layout_weight="1"
             android:background="@drawable/bg_border_round5_green"
             android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="取消"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="@string/string_base_cancel"
             android:textColor="#ff4a4a4a"
-            android:textSize="14dp" />
+            android:textSize="@dimen/text_size_14" />
 
         <TextView
             android:id="@+id/positive"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="@dimen/dp_5"
             android:layout_weight="1"
             android:background="@drawable/bg_round5_green"
             android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="确认"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="@string/string_base_ok"
             android:textColor="#ffffffff"
-            android:textSize="14dp" />
+            android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
 

@@ -28,7 +28,7 @@ class LoadingDialog : BaseDialogFragment() {
 
     @SuppressLint("InflateParams")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = Dialog(context!!)
+        val dialog = Dialog(requireContext())
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_loading, null, false)
         val messageView: TextView = view.findViewById(R.id.message)
         arguments?.let { messageView.text = it.getString(KEY_MESSAGE) }

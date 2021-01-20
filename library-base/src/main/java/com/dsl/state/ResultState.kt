@@ -1,7 +1,8 @@
 package com.dsl.state
+
 import androidx.lifecycle.MutableLiveData
 import com.dsl.network.AppException
-import me.hgj.jetpackmvvm.network.BaseResponse
+import com.dsl.network.BaseResponse
 import com.dsl.network.ExceptionHandle
 
 /**
@@ -12,10 +13,11 @@ import com.dsl.network.ExceptionHandle
 sealed class ResultState<out T> {
     companion object {
         fun <T> onAppSuccess(data: T): ResultState<T> = Success(data)
-        fun <T> onAppLoading(loadingMessage:String): ResultState<T> = Loading(loadingMessage)
+        fun <T> onAppLoading(loadingMessage: String): ResultState<T> = Loading(loadingMessage)
         fun <T> onAppError(error: AppException): ResultState<T> = Error(error)
     }
-    data class Loading(val loadingMessage:String) : ResultState<Nothing>()
+
+    data class Loading(val loadingMessage: String) : ResultState<Nothing>()
     data class Success<out T>(val data: T) : ResultState<T>()
     data class Error(val error: AppException) : ResultState<Nothing>()
 }

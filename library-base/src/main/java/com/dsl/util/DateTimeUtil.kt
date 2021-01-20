@@ -15,10 +15,10 @@ object DateTimeUtil {
      * 格式化日期 从左至右分别为-年-月-日 时:分:秒.毫秒 {yyyy-MM-dd HH:mm:ss.fff}:使用24小时制格式化日期
      */
     fun formatDate(datetime: String, format: String = "yyyy-MM-dd"): String {
-        val formater = SimpleDateFormat(format, Locale.getDefault())
+        val dateFormat = SimpleDateFormat(format, Locale.getDefault())
         return try {
-            val date = formater.parse(datetime);
-            formater.format(date)
+            val date = dateFormat.parse(datetime);
+            dateFormat.format(date)
         } catch (e: ParseException) {
             datetime
         }
@@ -78,7 +78,7 @@ object DateTimeUtil {
     /**
      * 根据秒数获得格式化后的字符串，形如"00:12:54"
      */
-    fun fetFormtString(seconds: Long): String {
+    fun fetFormatString(seconds: Long): String {
         val hour = seconds / 3600
         var minutes = seconds % 3600
         val second = minutes % 60

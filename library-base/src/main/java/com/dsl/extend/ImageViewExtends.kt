@@ -25,7 +25,11 @@ fun ImageView.loadImageExtend(context: Context, path: String) {
 /**
  * 加载图片带占位图
  */
-fun ImageView.loadImageExtendWithPlaceholder(context: Context, path: String,@DrawableRes resourceId:Int = R.mipmap.icon_default_protrait) {
+fun ImageView.loadImageExtendWithPlaceholder(
+    context: Context,
+    path: String,
+    @DrawableRes resourceId: Int = R.mipmap.icon_default_protrait
+) {
     Glide.with(context).load(path).apply(RequestOptions.placeholderOf(resourceId)).into(this)
 }
 

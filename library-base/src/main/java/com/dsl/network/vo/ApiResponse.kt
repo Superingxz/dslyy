@@ -19,5 +19,4 @@ class ApiResponse<T>(
         if (response.isSuccessful) response.body() else null,
         if (response.isSuccessful) null else response.errorBody()?.string() ?: "unknown error"
     )
-
 }

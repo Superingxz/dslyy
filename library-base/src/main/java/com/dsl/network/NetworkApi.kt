@@ -28,6 +28,7 @@ import java.util.concurrent.TimeUnit
 val apiService: PlusApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     NetworkApi.INSTANCE.getApi(PlusApi::class.java, BuildConfig.BASE_URL)
 }
+
 //测试的
 val apiService1: PlusApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     NetworkApi.INSTANCE.getApi(PlusApi::class.java, BuildConfig.BASE_URL)

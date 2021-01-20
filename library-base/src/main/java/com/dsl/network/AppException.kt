@@ -1,7 +1,5 @@
 package com.dsl.network
 
-import me.hgj.jetpackmvvm.network.Error
-
 /**
  * 作者　: hegaojian
  * 时间　: 2019/12/17
@@ -16,7 +14,7 @@ class AppException : Exception {
     constructor(errCode: Int, error: String?, errorLog: String? = "") : super(error) {
         this.errorMsg = error ?: "请求失败，请稍后再试"
         this.errCode = errCode
-        this.errorLog = errorLog?:this.errorMsg
+        this.errorLog = errorLog ?: this.errorMsg
     }
 
     constructor(error: Error, e: Throwable?) {

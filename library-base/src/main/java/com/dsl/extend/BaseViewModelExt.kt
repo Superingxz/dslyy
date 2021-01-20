@@ -3,18 +3,19 @@ package com.dsl.extend
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dsl.base.activity.BaseVmActivity
+import com.dsl.base.activity.BaseVmDbActivity
 import com.dsl.base.fragment.BaseVmFragment
 import com.dsl.base.viewmodel.BaseViewModel
-import com.dsl.network.AppException
 import com.dsl.extend.util.loge
-import kotlinx.coroutines.*
-import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
-import me.hgj.jetpackmvvm.network.BaseResponse
+import com.dsl.network.AppException
+import com.dsl.network.BaseResponse
 import com.dsl.network.ExceptionHandle
 import com.dsl.state.ResultState
-
 import com.dsl.state.paresException
 import com.dsl.state.paresResult
+import com.dsl.util.DebugLog
+import com.dsl.util.NonCachedSharedPreferencesManager
+import kotlinx.coroutines.*
 
 /**
  * 作者　: hegaojian
@@ -48,6 +49,19 @@ fun <T> BaseVmDbActivity<*, *>.parseState(
         is ResultState.Error -> {
             dismissLoading()
             onError?.run { this(resultState.error) }
+            when (resultState.error.errCode) {
+                300 -> {
+                    //token失效
+                    NonCachedSharedPreferencesManager.setToken("")
+                    //跳转登录页面
+                }
+                else -> {
+                    DebugLog.e("BaseViewModelExt->服务器自定义错误message:" + resultState.error.errorMsg + "\n响应体:" + resultState.error.errorLog)
+                    if (resultState.error.errorMsg == "?") {//自定义错误类型判断
+
+                    }
+                }
+            }
         }
     }
 }
@@ -77,7 +91,10 @@ fun <T> BaseVmActivity<*>.parseState(
         }
         is ResultState.Error -> {
             dismissLoading()
-            onError?.run { this(resultState.error) }
+            onError?.run {
+                this(resultState.error)
+                parseAppException(resultState.error)
+            }
         }
     }
 }
@@ -107,10 +124,14 @@ fun <T> BaseVmFragment<*>.parseState(
         }
         is ResultState.Error -> {
             dismissLoading()
-            onError?.run { this(resultState.error) }
+            onError?.run {
+                this(resultState.error)
+                parseAppException(resultState.error)
+            }
         }
     }
 }
+
 fun <T> BaseVmFragment<*>.parseStateNull(
     resultState: ResultState<T?>,
     onSuccess: (T?) -> Unit,
@@ -128,7 +149,10 @@ fun <T> BaseVmFragment<*>.parseStateNull(
         }
         is ResultState.Error -> {
             dismissLoading()
-            onError?.run { this(resultState.error) }
+            onError?.run {
+                this(resultState.error)
+                parseAppException(resultState.error)
+            }
         }
     }
 }
@@ -279,11 +303,34 @@ suspend fun <T> executeResponse(
 ) {
     coroutineScope {
         if (response.isSucces()) success(response.getResponseData())
-        else throw AppException(
-            response.getResponseCode(),
-            response.getResponseMsg(),
-            response.getResponseMsg()
-        )
+        else {
+            val appException: AppException = AppException(
+                response.getResponseCode(),
+                response.getResponseMsg(),
+                response.getResponseMsg()
+            )
+            parseAppException(appException)
+            throw appException
+        }
+    }
+}
+
+/**
+ * 解析AppException(非200)
+ */
+fun parseAppException(error: AppException) {
+    when (error.errCode) {
+        300 -> {
+            //token失效
+            NonCachedSharedPreferencesManager.setToken("")
+            //跳转登录页面
+        }
+        else -> {
+            DebugLog.e("BaseViewModelExt->服务器自定义错误message:" + error.errorMsg + "\n响应体:" + error.errorLog)
+            if (error.errorMsg == "?") {//自定义错误类型判断
+
+            }
+        }
     }
 }
 

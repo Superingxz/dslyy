@@ -39,18 +39,18 @@ class HeaderInterceptor : Interceptor {
             requestBodyString?.let {
                 val segmentSize = 3 * 1024
                 val length = it.length
-                if (length <= segmentSize ) {
+                if (length <= segmentSize) {
                     // 长度小于等于限制直接打印
-                    DebugLog.i(String.format("请求body：%s",it))
-                }else {
+                    DebugLog.i(String.format("请求body：%s", it))
+                } else {
                     var msg = it
-                    while (msg.length > segmentSize ) {
+                    while (msg.length > segmentSize) {
                         //循环分段打印日志
-                        val logContent = msg.substring(0, segmentSize )
+                        val logContent = msg.substring(0, segmentSize)
                         msg = msg.replace(logContent, "")
-                        DebugLog.i(String.format("请求body：%s",logContent))
+                        DebugLog.i(String.format("请求body：%s", logContent))
                     }
-                    DebugLog.i(String.format("%s",it))
+                    DebugLog.i(String.format("%s", it))
                 }
             }
         }

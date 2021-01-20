@@ -1,9 +1,8 @@
-package com.dsl.doctorplus.util
+package com.dsl.util
 
 import android.content.Context
 import android.content.SharedPreferences
 import com.dsl.base.BaseApp
-import com.dsl.util.DateTimeUtil
 
 /**
  * 非缓存类SharedPreferences，清除缓存功能并不会清除该xml文件

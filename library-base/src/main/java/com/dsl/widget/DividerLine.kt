@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
  * @author dsl-abben
  * on 2020/02/25.
  */
-class DividerLine(private val orientation: Int,private val color: Int) :
+class DividerLine(private val orientation: Int, private val color: Int) :
     RecyclerView.ItemDecoration() {
     /**
      * 画笔

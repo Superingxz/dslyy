@@ -25,10 +25,10 @@ fun View.invisible() {
 /**
  * 根据条件设置view显示隐藏 为true 显示，为false 隐藏
  */
-fun View.visibleOrGone(flag:Boolean) {
-    visibility = if(flag){
+fun View.visibleOrGone(flag: Boolean) {
+    visibility = if (flag) {
         View.VISIBLE
-    }else{
+    } else {
         View.GONE
     }
 }
@@ -36,10 +36,10 @@ fun View.visibleOrGone(flag:Boolean) {
 /**
  * 根据条件设置view显示隐藏 为true 显示，为false 隐藏
  */
-fun View.visibleOrInvisible(flag:Boolean) {
-    visibility = if(flag){
+fun View.visibleOrInvisible(flag: Boolean) {
+    visibility = if (flag) {
         View.VISIBLE
-    }else{
+    } else {
         View.INVISIBLE
     }
 }
@@ -117,10 +117,10 @@ fun View.clickNoRepeat(interval: Long = 500, action: (view: View) -> Unit) {
 }
 
 
-fun Any?.notNull(notNullAction:(value:Any) ->Unit,nullAction1:() ->Unit){
-    if(this!=null){
+fun Any?.notNull(notNullAction: (value: Any) -> Unit, nullAction1: () -> Unit) {
+    if (this != null) {
         notNullAction.invoke(this)
-    }else{
+    } else {
         nullAction1.invoke()
     }
 }

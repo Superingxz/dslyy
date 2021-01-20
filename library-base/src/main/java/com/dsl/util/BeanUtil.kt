@@ -8,7 +8,6 @@ import com.google.gson.reflect.TypeToken
  * on 2020/02/19.
  */
 object BeanUtil {
-
     /**
      * 将bean类转换为带token的Map
      *
@@ -22,5 +21,4 @@ object BeanUtil {
             object : TypeToken<MutableMap<String, Any>>() {}.type
         )
     }
-
 }

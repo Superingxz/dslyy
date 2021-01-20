@@ -8,24 +8,24 @@
 
     <ImageView
         android:id="@+id/loading_emptyimg"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
         android:background="@drawable/load_empty" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        android:text="暂时没有数据"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:text="@string/string_data_empty"
         android:textColor="#333333"
-        android:textSize="14dp" />
+        android:textSize="@dimen/text_size_14" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:text="点击我重试"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:text="@string/string_click_retry"
         android:textColor="#666666"
-        android:textSize="14dp" />
+        android:textSize="@dimen/text_size_14" />
 </LinearLayout>
