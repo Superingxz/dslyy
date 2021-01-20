@@ -13,6 +13,8 @@ import com.dsl.network.ExceptionHandle
 import com.dsl.state.ResultState
 import com.dsl.state.paresException
 import com.dsl.state.paresResult
+import com.dsl.util.DebugLog
+import com.dsl.util.NonCachedSharedPreferencesManager
 import kotlinx.coroutines.*
 
 /**
@@ -47,6 +49,19 @@ fun <T> BaseVmDbActivity<*, *>.parseState(
         is ResultState.Error -> {
             dismissLoading()
             onError?.run { this(resultState.error) }
+            when (resultState.error.errCode) {
+                300 -> {
+                    //token失效
+                    NonCachedSharedPreferencesManager.setToken("")
+                    //跳转登录页面
+                }
+                else -> {
+                    DebugLog.e("BaseViewModelExt->服务器自定义错误message:" + resultState.error.errorMsg + "\n响应体:" + resultState.error.errorLog)
+                    if (resultState.error.errorMsg == "?") {//自定义错误类型判断
+
+                    }
+                }
+            }
         }
     }
 }
