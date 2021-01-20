@@ -48,19 +48,9 @@ fun <T> BaseVmDbActivity<*, *>.parseState(
         }
         is ResultState.Error -> {
             dismissLoading()
-            onError?.run { this(resultState.error) }
-            when (resultState.error.errCode) {
-                300 -> {
-                    //token失效
-                    NonCachedSharedPreferencesManager.setToken("")
-                    //跳转登录页面
-                }
-                else -> {
-                    DebugLog.e("BaseViewModelExt->服务器自定义错误message:" + resultState.error.errorMsg + "\n响应体:" + resultState.error.errorLog)
-                    if (resultState.error.errorMsg == "?") {//自定义错误类型判断
-
-                    }
-                }
+            onError?.run {
+                this(resultState.error)
+                parseAppException(resultState.error)
             }
         }
     }
@@ -304,7 +294,7 @@ suspend fun <T> executeResponse(
     coroutineScope {
         if (response.isSucces()) success(response.getResponseData())
         else {
-            val appException: AppException = AppException(
+            val appException = AppException(
                 response.getResponseCode(),
                 response.getResponseMsg(),
                 response.getResponseMsg()
