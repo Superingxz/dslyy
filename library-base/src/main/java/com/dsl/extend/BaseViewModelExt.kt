@@ -294,7 +294,7 @@ suspend fun <T> executeResponse(
     coroutineScope {
         if (response.isSucces()) success(response.getResponseData())
         else {
-            val appException: AppException = AppException(
+            val appException = AppException(
                 response.getResponseCode(),
                 response.getResponseMsg(),
                 response.getResponseMsg()
