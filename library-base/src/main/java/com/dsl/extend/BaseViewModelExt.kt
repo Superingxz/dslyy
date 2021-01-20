@@ -8,8 +8,8 @@ import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.network.AppException
 import com.dsl.extend.util.loge
 import kotlinx.coroutines.*
-import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
-import me.hgj.jetpackmvvm.network.BaseResponse
+import com.dsl.base.activity.BaseVmDbActivity
+import com.dsl.network.BaseResponse
 import com.dsl.network.ExceptionHandle
 import com.dsl.state.ResultState
 

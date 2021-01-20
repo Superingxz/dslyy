@@ -1,7 +1,5 @@
 package com.dsl.network
 
-import me.hgj.jetpackmvvm.network.Error
-
 /**
  * 作者　: hegaojian
  * 时间　: 2019/12/17

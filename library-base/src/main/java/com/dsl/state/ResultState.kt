@@ -1,7 +1,7 @@
 package com.dsl.state
 import androidx.lifecycle.MutableLiveData
 import com.dsl.network.AppException
-import me.hgj.jetpackmvvm.network.BaseResponse
+import com.dsl.network.BaseResponse
 import com.dsl.network.ExceptionHandle
 
 /**

@@ -2,7 +2,7 @@ package com.dsl.extend.util
 
 import android.util.Log
 
-const val TAG = "JetpackMvvm"
+const val TAG = "DslPlus"
 
 /**
  *

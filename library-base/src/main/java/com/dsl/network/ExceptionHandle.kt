@@ -3,7 +3,6 @@ package com.dsl.network
 import android.net.ParseException
 import com.google.gson.JsonParseException
 import com.google.gson.stream.MalformedJsonException
-import me.hgj.jetpackmvvm.network.Error
 import org.apache.http.conn.ConnectTimeoutException
 import org.json.JSONException
 import retrofit2.HttpException

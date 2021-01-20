@@ -1,4 +1,4 @@
-package me.hgj.jetpackmvvm.demo.app.network.stateCallback
+package com.dsl.network.stateCallback
 
 /**
  * 作者　: hegaojian

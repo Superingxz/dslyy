@@ -2,14 +2,12 @@ package com.dsl.base.activity
 
 import android.content.res.Resources
 import android.os.Bundle
-import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.databinding.ViewDataBinding
 import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.extend.dismissLoadingExt
 import com.dsl.extend.getAppViewModel
 import com.dsl.extend.showLoadingExt
-import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
 import com.dsl.base.event.AppViewModel
 import com.dsl.base.event.EventViewModel
 import com.dsl.util.ToastKit

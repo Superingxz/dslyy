@@ -77,9 +77,9 @@ fun View.px2dp(px: Int): Int {
 /**
  * 复制文本到粘贴板
  */
-fun Context.copyToClipboard(text: String, label: String = "JetpackMvvm") {
+fun Context.copyToClipboard(text: String, label: String = "DslPlus") {
     val clipData = ClipData.newPlainText(label, text)
-    clipboardManager?.setPrimaryClip(clipData)
+    clipboardManager?.primaryClip = clipData
 }
 
 /**

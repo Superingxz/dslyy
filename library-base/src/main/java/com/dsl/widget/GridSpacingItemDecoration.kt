@@ -1,4 +1,4 @@
-package com.dsl.doctorplus.widget
+package com.dsl.widget
 
 import android.graphics.Rect
 import android.view.View

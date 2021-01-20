@@ -1,4 +1,4 @@
-package me.hgj.jetpackmvvm.network
+package com.dsl.network
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
 import retrofit2.*

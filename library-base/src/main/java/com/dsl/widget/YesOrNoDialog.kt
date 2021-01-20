@@ -1,4 +1,4 @@
-package com.dsl.doctorplus.widget
+package com.dsl.widget
 
 import android.annotation.SuppressLint
 import android.app.Dialog
