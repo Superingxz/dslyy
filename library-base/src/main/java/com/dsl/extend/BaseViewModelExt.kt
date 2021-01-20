@@ -91,7 +91,10 @@ fun <T> BaseVmActivity<*>.parseState(
         }
         is ResultState.Error -> {
             dismissLoading()
-            onError?.run { this(resultState.error) }
+            onError?.run {
+                this(resultState.error)
+                parseAppException(resultState.error)
+            }
         }
     }
 }
@@ -121,7 +124,10 @@ fun <T> BaseVmFragment<*>.parseState(
         }
         is ResultState.Error -> {
             dismissLoading()
-            onError?.run { this(resultState.error) }
+            onError?.run {
+                this(resultState.error)
+                parseAppException(resultState.error)
+            }
         }
     }
 }
@@ -143,7 +149,10 @@ fun <T> BaseVmFragment<*>.parseStateNull(
         }
         is ResultState.Error -> {
             dismissLoading()
-            onError?.run { this(resultState.error) }
+            onError?.run {
+                this(resultState.error)
+                parseAppException(resultState.error)
+            }
         }
     }
 }
@@ -294,11 +303,34 @@ suspend fun <T> executeResponse(
 ) {
     coroutineScope {
         if (response.isSucces()) success(response.getResponseData())
-        else throw AppException(
-            response.getResponseCode(),
-            response.getResponseMsg(),
-            response.getResponseMsg()
-        )
+        else {
+            val appException: AppException = AppException(
+                response.getResponseCode(),
+                response.getResponseMsg(),
+                response.getResponseMsg()
+            )
+            parseAppException(appException)
+            throw appException
+        }
+    }
+}
+
+/**
+ * 解析AppException(非200)
+ */
+fun parseAppException(error: AppException) {
+    when (error.errCode) {
+        300 -> {
+            //token失效
+            NonCachedSharedPreferencesManager.setToken("")
+            //跳转登录页面
+        }
+        else -> {
+            DebugLog.e("BaseViewModelExt->服务器自定义错误message:" + error.errorMsg + "\n响应体:" + error.errorLog)
+            if (error.errorMsg == "?") {//自定义错误类型判断
+
+            }
+        }
     }
 }
 
