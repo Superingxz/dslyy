@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.dsl.base.activity.BaseActivity
 import com.dsl.constant.RouterActivityPath
