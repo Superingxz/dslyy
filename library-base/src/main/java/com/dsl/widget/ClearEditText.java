@@ -26,7 +26,7 @@ public class ClearEditText extends AppCompatEditText implements
     private Drawable mClearDrawable;
     private OnClearClickListener onClearClickListener;
 
-    public interface OnClearClickListener{
+    public interface OnClearClickListener {
         void onClearClick();
     }
 
@@ -43,7 +43,7 @@ public class ClearEditText extends AppCompatEditText implements
         init();
     }
 
-    public ClearEditText setOnClearClickListener(OnClearClickListener onClearClickListener){
+    public ClearEditText setOnClearClickListener(OnClearClickListener onClearClickListener) {
         this.onClearClickListener = onClearClickListener;
         return this;
     }
@@ -69,7 +69,7 @@ public class ClearEditText extends AppCompatEditText implements
                         - getPaddingRight() - mClearDrawable.getIntrinsicWidth())
                         && (event.getX() < ((getWidth() - getPaddingRight())));
                 if (touchable) {
-                    if(onClearClickListener!=null){
+                    if (onClearClickListener != null) {
                         onClearClickListener.onClearClick();
                     }
                     this.setText("");

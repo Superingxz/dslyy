@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
  * @author dsl-abben
  * on 2020/02/20.
  */
-open class BaseApp : MultiDexApplication() , ViewModelStoreOwner {
+open class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
     private lateinit var mAppViewModelStore: ViewModelStore
 
     private var mFactory: ViewModelProvider.Factory? = null
@@ -23,7 +23,7 @@ open class BaseApp : MultiDexApplication() , ViewModelStoreOwner {
     companion object {
         private var appInstance: BaseApp? = null
 
-        var bindJpush = false
+        var bindJPush = false
         var imConnected: Boolean = false
 
         /**

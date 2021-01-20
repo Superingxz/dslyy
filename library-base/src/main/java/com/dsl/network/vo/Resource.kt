@@ -10,7 +10,7 @@ class Resource<T>(
     val message: String?
 ) {
     companion object {
-        fun <T> success(message: String?,data: T?): Resource<T> {
+        fun <T> success(message: String?, data: T?): Resource<T> {
             return Resource(Status.SUCCESS, data, message)
         }
 

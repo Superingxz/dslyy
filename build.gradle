@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext{
+    ext {
         compileSdkVersion = 30
         minSdkVersion = 21
         targetSdkVersion = 30
@@ -17,7 +17,7 @@ buildscript {
         //友盟 maven仓库地址
         maven { url 'https://dl.bintray.com/umsdk/release' }
         //华为远程仓库
-        maven {url 'https://developer.huawei.com/repo/'}
+        maven { url 'https://developer.huawei.com/repo/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
@@ -39,7 +39,7 @@ allprojects {
         //友盟 maven仓库地址
         maven { url 'https://dl.bintray.com/umsdk/release' }
         //华为远程仓库
-        maven {url 'https://developer.huawei.com/repo/'}
+        maven { url 'https://developer.huawei.com/repo/' }
     }
 }
 

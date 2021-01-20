@@ -8,10 +8,11 @@ package com.dsl.constant
  *     desc  : 各个组件中的路径路由
  * </pre>
  */
-class RouterActivityPath private constructor(){
+class RouterActivityPath private constructor() {
     companion object Main {
         private const val MAIN = "/main"
         private const val DOCTOR = "/doctor"
+
         /*主业务界面*/
         const val PAGER_MAIN = "$MAIN/Main"
 

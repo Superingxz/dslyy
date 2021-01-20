@@ -151,7 +151,7 @@ object DownLoadManager {
         } else {
             ShareDownLoadUtil.getLong(tag, 0)
         }
-        if (file.exists()&&currentLength == 0L && !reDownload) {
+        if (file.exists() && currentLength == 0L && !reDownload) {
             //文件已存在了
             loadListener.onDownLoadSuccess(tag, file.path, file.length())
             return
@@ -168,7 +168,8 @@ object DownLoadManager {
                 loadListener.onDownLoadPrepare(key = tag)
             }
             val response = retrofitBuilder.create(
-                DownLoadService::class.java)
+                DownLoadService::class.java
+            )
                 .downloadFile("bytes=$currentLength-", url)
             val responseBody = response.body()
             if (responseBody == null) {

@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 class TabAdapter(
     fragmentManager: FragmentManager, private val fragmentList: List<Fragment>,
     private val titleList: List<String>
-) : FragmentPagerAdapter(fragmentManager,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(p0: Int): Fragment {
         return fragmentList[p0]

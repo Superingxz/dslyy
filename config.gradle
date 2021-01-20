@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 //apply plugin: 'com.huawei.agconnect'
 
-kapt{
+kapt {
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
     }

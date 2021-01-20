@@ -1,5 +1,6 @@
 package com.dsl.widget
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +14,6 @@ import com.dsl.base.R
  * on 2019/08/05.
  */
 class WarnDialog : BaseDialogFragment() {
-
     companion object {
         private const val KEY_WARNTEXT = "KEY_WARNTEXT"
         private const val KEY_POSITIVE_TEXT = "KEY_POSITIVE_TEXT"
@@ -35,8 +35,9 @@ class WarnDialog : BaseDialogFragment() {
     var cancelableSet: Boolean = true
     var onWarnDialogClickListener: OnWarnDialogClickListener? = null
 
+    @SuppressLint("InflateParams")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = Dialog(context!!, R.style.CustomDialog)
+        val dialog = Dialog(requireContext(), R.style.CustomDialog)
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_warn, null, false)
         val warnText = view.findViewById<TextView>(R.id.warn_text)
         val positiveButton = view.findViewById<TextView>(R.id.positive_button)

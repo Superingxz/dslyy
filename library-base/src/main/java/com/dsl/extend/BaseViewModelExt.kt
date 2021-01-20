@@ -3,18 +3,17 @@ package com.dsl.extend
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dsl.base.activity.BaseVmActivity
+import com.dsl.base.activity.BaseVmDbActivity
 import com.dsl.base.fragment.BaseVmFragment
 import com.dsl.base.viewmodel.BaseViewModel
-import com.dsl.network.AppException
 import com.dsl.extend.util.loge
-import kotlinx.coroutines.*
-import com.dsl.base.activity.BaseVmDbActivity
+import com.dsl.network.AppException
 import com.dsl.network.BaseResponse
 import com.dsl.network.ExceptionHandle
 import com.dsl.state.ResultState
-
 import com.dsl.state.paresException
 import com.dsl.state.paresResult
+import kotlinx.coroutines.*
 
 /**
  * 作者　: hegaojian
@@ -111,6 +110,7 @@ fun <T> BaseVmFragment<*>.parseState(
         }
     }
 }
+
 fun <T> BaseVmFragment<*>.parseStateNull(
     resultState: ResultState<T?>,
     onSuccess: (T?) -> Unit,

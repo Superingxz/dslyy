@@ -229,12 +229,13 @@ fun BottomNavigationViewEx.init(navigationItemSelectedAction: (Int) -> Unit): Bo
  * @receiver BottomNavigationViewEx
  * @param ids IntArray
  */
-fun BottomNavigationViewEx.interceptLongClick(vararg ids:Int) {
+fun BottomNavigationViewEx.interceptLongClick(vararg ids: Int) {
     val bottomNavigationMenuView: ViewGroup = (this.getChildAt(0) as ViewGroup)
-    for (index in ids.indices){
-        bottomNavigationMenuView.getChildAt(index).findViewById<View>(ids[index]).setOnLongClickListener {
-            true
-        }
+    for (index in ids.indices) {
+        bottomNavigationMenuView.getChildAt(index).findViewById<View>(ids[index])
+            .setOnLongClickListener {
+                true
+            }
     }
 }
 

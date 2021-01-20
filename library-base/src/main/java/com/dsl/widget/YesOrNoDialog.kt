@@ -46,7 +46,7 @@ class YesOrNoDialog : BaseDialogFragment() {
 
     @SuppressLint("InflateParams")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = Dialog(context!!, R.style.CustomDialog)
+        val dialog = Dialog(requireContext(), R.style.CustomDialog)
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_yes_or_no, null, false)
         val dialogContent = view.findViewById<TextView>(R.id.dialog_content)
         val positiveTextView = view.findViewById<TextView>(R.id.positive)

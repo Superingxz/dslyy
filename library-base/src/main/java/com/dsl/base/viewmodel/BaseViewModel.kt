@@ -18,6 +18,7 @@ open class BaseViewModel : ViewModel() {
     inner class UiLoadingChange {
         //显示加载框
         val showDialog by lazy { EventLiveData<String>() }
+
         //隐藏
         val dismissDialog by lazy { EventLiveData<Boolean>() }
     }

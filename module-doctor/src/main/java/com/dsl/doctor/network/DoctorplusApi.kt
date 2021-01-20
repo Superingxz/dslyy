@@ -34,6 +34,7 @@ interface DoctorplusApi {
      */
     @GET("app/tactic/getTacticPage.do")
     suspend fun fetchTactisList(@QueryMap map: Map<String, @JvmSuppressWildcards Any>): BaseApiResponse<TacticsResponseData>
+
     /**
      * 首页执业成就
      */

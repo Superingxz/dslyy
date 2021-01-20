@@ -8,24 +8,24 @@
 
     <ImageView
         android:id="@+id/loading_errorimg"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
         android:src="@drawable/load_error" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="数据获取失败"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:text="@string/string_data_error"
         android:textColor="#333333"
-        android:textSize="14dp" />
+        android:textSize="@dimen/text_size_14" />
 
     <TextView
         android:id="@+id/error_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:textSize="12dp"
-        android:text="请检查网络后点击重新加载" />
+        android:text="@string/string_net_check_click_retry"
+        android:textSize="@dimen/text_size_12" />
 </LinearLayout>

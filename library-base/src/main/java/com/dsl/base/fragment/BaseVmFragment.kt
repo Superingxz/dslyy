@@ -138,8 +138,8 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      * 将非该Fragment绑定的ViewModel添加 loading回调 防止出现请求时不显示 loading 弹窗bug
      * @param viewModels Array<out BaseViewModel>
      */
-    protected fun addLoadingObserve(vararg viewModels: BaseViewModel){
-        viewModels.forEach {viewModel ->
+    protected fun addLoadingObserve(vararg viewModels: BaseViewModel) {
+        viewModels.forEach { viewModel ->
             //显示弹窗
             viewModel.loadingChange.showDialog.observe(viewLifecycleOwner, Observer {
                 showLoading(it)

@@ -18,7 +18,7 @@ sealed class DownloadResultState {
                 progress
             )
 
-        fun onSuccess(filePath: String,totalBytes:Long): DownloadResultState =
+        fun onSuccess(filePath: String, totalBytes: Long): DownloadResultState =
             Success(
                 filePath,
                 totalBytes
@@ -32,8 +32,10 @@ sealed class DownloadResultState {
     }
 
     object Pending : DownloadResultState()
-    data class Progress(val soFarBytes: Long, val totalBytes: Long,val progress: Int) : DownloadResultState()
-    data class Success(val filePath: String,val totalBytes:Long) : DownloadResultState()
+    data class Progress(val soFarBytes: Long, val totalBytes: Long, val progress: Int) :
+        DownloadResultState()
+
+    data class Success(val filePath: String, val totalBytes: Long) : DownloadResultState()
     object Pause : DownloadResultState()
     data class Error(val errorMsg: String) : DownloadResultState()
 }

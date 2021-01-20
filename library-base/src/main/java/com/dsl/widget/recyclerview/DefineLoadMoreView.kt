@@ -1,7 +1,6 @@
 package com.dsl.widget.recyclerview
 
 import android.annotation.SuppressLint
-import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.PorterDuff
@@ -10,17 +9,19 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.ProgressBar
 import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.TextView
 import com.blankj.utilcode.util.ConvertUtils
 import com.dsl.base.R
 import com.dsl.util.SettingUtil
+import com.yanzhenjie.recyclerview.SwipeRecyclerView
 
 /**
  * 这是这个类的主角，如何自定义LoadMoreView。
  */
-class DefineLoadMoreView(context: Context) : LinearLayout(context), SwipeRecyclerView.LoadMoreView, View.OnClickListener {
+class DefineLoadMoreView(context: Context) : LinearLayout(context), SwipeRecyclerView.LoadMoreView,
+    View.OnClickListener {
 
     val mProgressBar: ProgressBar
     private val mTvMessage: TextView
@@ -105,7 +106,7 @@ class DefineLoadMoreView(context: Context) : LinearLayout(context), SwipeRecycle
         mTvMessage.visibility = View.VISIBLE
         // 这里要不直接设置错误信息，要不根据errorCode动态设置错误数据。
         mTvMessage.text = errorMessage
-        Log.i("hgj","加载失败啦")
+        Log.i("hgj", "加载失败啦")
     }
 
     /**
@@ -116,12 +117,13 @@ class DefineLoadMoreView(context: Context) : LinearLayout(context), SwipeRecycle
         //为什么加后面那个判断，因为Wandroid第0页能够请求完所有数据的情况下， 再去请求第1页 也能取到值，
         // 所以这里要判断没有更多数据的时候禁止在响应点击事件了,同时在加载中时也不能触发加载更多的监听
         mLoadMoreListener?.let {
-            if (mTvMessage.text != "没有更多数据啦"&&mProgressBar.visibility!=View.VISIBLE){
+            if (mTvMessage.text != "没有更多数据啦" && mProgressBar.visibility != View.VISIBLE) {
                 it.onLoadMore()
             }
         }
     }
-    fun setLoadViewColor(colorstatelist: ColorStateList){
+
+    fun setLoadViewColor(colorstatelist: ColorStateList) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mProgressBar.indeterminateTintMode = PorterDuff.Mode.SRC_ATOP
             mProgressBar.indeterminateTintList = colorstatelist

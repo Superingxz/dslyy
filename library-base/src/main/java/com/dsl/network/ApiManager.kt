@@ -49,7 +49,7 @@ object ApiManager {
         }
     }
 
-     fun <T> getService(service: Class<T>): T {
+    fun <T> getService(service: Class<T>): T {
         return getRetrofit().create(service) as T
     }
 }

@@ -21,24 +21,28 @@ fun String.logv(tag: String = TAG) =
         tag,
         this
     )
+
 fun String.logd(tag: String = TAG) =
     log(
         LEVEL.D,
         tag,
         this
     )
+
 fun String.logi(tag: String = TAG) =
     log(
         LEVEL.I,
         tag,
         this
     )
+
 fun String.logw(tag: String = TAG) =
     log(
         LEVEL.W,
         tag,
         this
     )
+
 fun String.loge(tag: String = TAG) =
     log(
         LEVEL.E,

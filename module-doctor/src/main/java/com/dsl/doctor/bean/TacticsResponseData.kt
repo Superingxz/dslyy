@@ -5,27 +5,27 @@ package com.dsl.doctor.bean
  * on 2020/03/03.
  */
 data class TacticsResponseData(
-    val next:Boolean,
-    val pageNum:Long,
-    val list:List<TacticsBean>
+    val next: Boolean,
+    val pageNum: Long,
+    val list: List<TacticsBean>
 )
 
 data class TacticsBean(
     /**
      * 创建时间
      */
-    val createTime:Long,
-    val id:Long,
+    val createTime: Long,
+    val id: Long,
     /**
      * 阅读量
      */
-    val readNum:Long,
+    val readNum: Long,
     /**
      * 标题
      */
-    val title:String,
+    val title: String,
     /**
      * 封面
      */
-    val top:String
+    val top: String
 )

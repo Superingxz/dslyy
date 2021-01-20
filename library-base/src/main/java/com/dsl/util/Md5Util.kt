@@ -1,4 +1,4 @@
-package com.dsl.doctorplus.util
+package com.dsl.util
 
 import java.security.MessageDigest
 

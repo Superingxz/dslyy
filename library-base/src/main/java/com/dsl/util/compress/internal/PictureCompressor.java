@@ -165,7 +165,6 @@ public class PictureCompressor implements Handler.Callback {
         }
 
 
-
         public File get() throws IOException {
             return build().get(context);
         }

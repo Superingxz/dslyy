@@ -15,7 +15,9 @@ object LogUtils {
         if (!dslPlusLog || TextUtils.isEmpty(msg)) {
             return
         }
-        Log.d(tag, msg)
+        if (msg != null) {
+            Log.d(tag, msg)
+        }
     }
 
     fun debugInfo(msg: String?) {
@@ -29,7 +31,9 @@ object LogUtils {
         if (!dslPlusLog || TextUtils.isEmpty(msg)) {
             return
         }
-        Log.w(tag, msg)
+        if (msg != null) {
+            Log.w(tag, msg)
+        }
     }
 
     fun warnInfo(msg: String?) {

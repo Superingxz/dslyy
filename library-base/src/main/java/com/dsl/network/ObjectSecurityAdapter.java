@@ -12,11 +12,11 @@ import java.util.List;
 
 /**
  * 由于更深一层的object无法自动解析，所以更深一层的错误处理需要使用该适配器
+ *
  * @author dsl-abben
  * on 2020/09/02.
  */
 public class ObjectSecurityAdapter<T> implements JsonDeserializer<T> {
-
     @Override
     public T deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         T temp = null;

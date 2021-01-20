@@ -8,7 +8,7 @@ import com.dsl.util.DebugLog
 import com.dsl.network.vo.ApiResponse
 import com.dsl.network.vo.RealResponseBody
 import com.dsl.network.vo.Resource
-import com.dsl.doctorplus.util.NonCachedSharedPreferencesManager
+import com.dsl.util.NonCachedSharedPreferencesManager
 
 /**
  * 参考谷歌应用架构指南 https://developer.android.google.cn/jetpack/docs/guide

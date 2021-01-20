@@ -13,7 +13,8 @@ import java.util.concurrent.atomic.AtomicBoolean
  *  @author abben
  *  on 2019/1/18
  */
-class LiveDataCallAdapter<R>(private val responseType: Type) : CallAdapter<R, LiveData<ApiResponse<R>>> {
+class LiveDataCallAdapter<R>(private val responseType: Type) :
+    CallAdapter<R, LiveData<ApiResponse<R>>> {
     override fun adapt(call: Call<R>): LiveData<ApiResponse<R>> {
         return object : LiveData<ApiResponse<R>>() {
             var started = AtomicBoolean(false)

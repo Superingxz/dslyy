@@ -17,7 +17,8 @@ object ShareDownLoadUtil {
 
     init {
         sp = appContext.getSharedPreferences(
-            path, Context.MODE_PRIVATE)
+            path, Context.MODE_PRIVATE
+        )
     }
 
 

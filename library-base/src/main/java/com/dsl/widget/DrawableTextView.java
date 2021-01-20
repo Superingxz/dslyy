@@ -100,8 +100,8 @@ public class DrawableTextView extends AppCompatTextView {
         translateText(canvas, drawablePadding);
         super.onDraw(canvas);
 
-        float centerX = (getWidth() + getPaddingLeft() - getPaddingRight()) / 2;
-        float centerY = (getHeight() + getPaddingTop() - getPaddingBottom()) / 2;
+        float centerX = (getWidth() + getPaddingLeft() - getPaddingRight()) / 2f;
+        float centerY = (getHeight() + getPaddingTop() - getPaddingBottom()) / 2f;
 
         float halfTextWidth = getPaint().measureText(getText().toString().isEmpty() ? getHint().toString() : getText().toString()) / 2;
         Paint.FontMetrics fontMetrics = getPaint().getFontMetrics();
