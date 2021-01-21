@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.doctor_activity_main.*
  * </pre>
  */
 @Route(path = RouterActivityPath.PAGER_DOCTOR_MAIN2)
-class Home2Activity : BaseActivity<HomepageViewModel, DoctorActivityMainBinding>(),
+class HomeLaunchActivity : BaseActivity<HomepageViewModel, DoctorActivityMainBinding>(),
     OnLoadMoreListener {
     private lateinit var tacticsAdapter: TacticsAdapter
     override fun layoutId(): Int {
