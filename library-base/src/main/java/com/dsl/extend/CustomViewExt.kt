@@ -20,12 +20,17 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.dsl.base.R
 import com.dsl.base.appContext
 import com.dsl.extend.util.toHtml
+import com.dsl.loadCallBack.EmptyCallback
+import com.dsl.loadCallBack.ErrorCallback
+import com.dsl.loadCallBack.LoadingCallback
+import com.dsl.network.stateCallback.ListDataUiState
+import com.dsl.util.SettingUtil
+import com.dsl.widget.recyclerview.DefineLoadMoreView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import com.kingja.loadsir.core.LoadService
+import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
-import com.dsl.util.SettingUtil
-import com.dsl.widget.recyclerview.DefineLoadMoreView
 
 /**
  * 作者　: hegaojian
@@ -33,6 +38,46 @@ import com.dsl.widget.recyclerview.DefineLoadMoreView
  * 描述　:项目中自定义类的拓展函数
  */
 
+fun LoadService<*>.setErrorText(message: String) {
+    if (message.isNotEmpty()) {
+        this.setCallBack(ErrorCallback::class.java) { _, view ->
+            view.findViewById<TextView>(R.id.error_text).text = message
+        }
+    }
+}
+
+/**
+ * 设置错误布局
+ * @param message 错误布局显示的提示内容
+ */
+fun LoadService<*>.showError(message: String = "") {
+    this.setErrorText(message)
+    this.showCallback(ErrorCallback::class.java)
+}
+
+/**
+ * 设置空布局
+ */
+fun LoadService<*>.showEmpty() {
+    this.showCallback(EmptyCallback::class.java)
+}
+
+/**
+ * 设置加载中
+ */
+fun LoadService<*>.showLoading() {
+    this.showCallback(LoadingCallback::class.java)
+}
+
+fun loadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
+    val loadsir = LoadSir.getDefault().register(view) {
+        //点击重试时触发的操作
+        callback.invoke()
+    }
+    loadsir.showSuccess()
+    SettingUtil.setLoadingColor(SettingUtil.getColor(appContext), loadsir)
+    return loadsir
+}
 
 //绑定普通的Recyclerview
 fun RecyclerView.init(
@@ -252,6 +297,49 @@ fun hideSoftKeyboard(activity: Activity?) {
                 view.windowToken,
                 InputMethodManager.HIDE_NOT_ALWAYS
             )
+        }
+    }
+}
+
+/**
+ * 加载列表数据
+ */
+fun <T> loadListData(
+    data: ListDataUiState<T>,
+    baseQuickAdapter: BaseQuickAdapter<T, *>,
+    loadService: LoadService<*>,
+    recyclerView: SwipeRecyclerView,
+    swipeRefreshLayout: SwipeRefreshLayout
+) {
+    swipeRefreshLayout.isRefreshing = false
+
+    recyclerView.loadMoreFinish(data.isEmpty, data.hasMore)
+
+    if (data.isSuccess) {
+        //成功
+        when {
+            //第一页并没有数据 显示空布局界面
+            data.isFirstEmpty -> {
+                loadService.showEmpty()
+            }
+            //是第一页
+            data.isRefresh -> {
+                baseQuickAdapter.setList(data.listData)
+                loadService.showSuccess()
+            }
+            //不是第一页
+            else -> {
+                baseQuickAdapter.addData(data.listData)
+                loadService.showSuccess()
+            }
+        }
+    } else {
+        //失败
+        if (data.isRefresh) {
+            //如果是第一页，则显示错误界面，并提示错误信息
+            loadService.showError(data.errMessage)
+        } else {
+            recyclerView.loadMoreError(0, data.errMessage)
         }
     }
 }

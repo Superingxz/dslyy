@@ -178,6 +178,7 @@ dependencies {
     api 'com.tencent.imsdk:imsdk:4.8.10'
     //腾讯Bugly
     implementation 'com.tencent.bugly:crashreport:3.2.422'
+    implementation'com.tencent.bugly:nativecrashreport:3.7.1'
     //极光推送
 //    implementation 'cn.jiguang.sdk:jpush:3.8.0'
 //    implementation 'cn.jiguang.sdk:jcore:2.4.2'
