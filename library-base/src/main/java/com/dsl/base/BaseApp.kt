@@ -5,6 +5,11 @@ import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
+import com.dsl.loadCallBack.EmptyCallback
+import com.dsl.loadCallBack.ErrorCallback
+import com.dsl.loadCallBack.LoadingCallback
+import com.kingja.loadsir.callback.SuccessCallback
+import com.kingja.loadsir.core.LoadSir
 
 
 /**
@@ -50,6 +55,13 @@ open class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
         super.onCreate()
         mAppViewModelStore = ViewModelStore()
         appInstance = this
+        //界面加载管理 初始化
+        LoadSir.beginBuilder()
+            .addCallback(LoadingCallback())//加载
+            .addCallback(ErrorCallback())//错误
+            .addCallback(EmptyCallback())//空
+            .setDefaultCallback(SuccessCallback::class.java)//设置默认加载状态页
+            .commit()
         //判断是否是在主线程
 //        if (SessionWrapper.isMainProcess(applicationContext)) {
 //            //初始化腾讯云IM
