@@ -76,7 +76,19 @@ class NetworkApi : BaseNetworkApi() {
      */
     override fun setRetrofitBuilder(builder: Retrofit.Builder): Retrofit.Builder {
         return builder.apply {
-            addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+            addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder().enableComplexMapKeySerialization()
+                        .serializeNulls()
+                        .registerTypeAdapter(Long::class.java, LongSecurityAdapter())
+                        .registerTypeAdapter(Int::class.java, IntSecurityAdapter())
+                        .registerTypeAdapter(Float::class.java, FloatSecurityAdapter())
+                        .registerTypeAdapter(
+                            List::class.java,
+                            ArraySecurityAdapter()
+                        ).create()
+                )
+            )
         }
     }
 
