@@ -28,18 +28,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    sourceSets {
-        main {
-            if (isBuildModule.toBoolean()) {
-                //独立运行
-                manifest.srcFile 'src/main/alone/AndroidManifest.xml'
-            } else {
-                //合并到宿主
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            }
-        }
-    }
-
     dataBinding {
         enabled true
     }

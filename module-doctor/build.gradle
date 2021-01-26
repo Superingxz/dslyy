@@ -1,15 +1,14 @@
-apply plugin: 'com.android.library'
+if (isBuildModule.toBoolean()) {
+    //作为独立App应用运行
+    apply plugin: 'com.android.application'
+} else {
+    //作为组件运行
+    apply plugin: 'com.android.library'
+}
 apply from: '../config.gradle'
 
 android {
     defaultConfig {
-        if (isBuildModule.toBoolean()) {
-            //作为独立App应用运行
-            apply plugin: 'com.android.application'
-        } else {
-            //作为组件运行
-            apply plugin: 'com.android.library'
-        }
         //如果是独立模块，则使用当前组件的包名
         if (isBuildModule.toBoolean()) {
             applicationId "com.dsl.doctor"
@@ -23,6 +22,13 @@ android {
         main {
             res {
                 srcDirs "libs", 'src/main/res', 'src/main/res/layout', 'src/main/res/values'
+            }
+
+            //独立调试与集成调试使用不同AndroidManifest.xml文件
+            if (isBuildModule.toBoolean()) {
+                manifest.srcFile 'src/main/moduleManifest/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
             }
         }
     }
