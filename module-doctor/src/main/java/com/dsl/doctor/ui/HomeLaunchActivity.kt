@@ -34,18 +34,7 @@ class HomeLaunchActivity : BaseActivity<HomepageViewModel, DoctorActivityMainBin
         return R.layout.doctor_activity_main
     }
 
-    override fun initView(savedInstanceState: Bundle?) {
-        //设置攻略文章
-        tactics_recyclerview.isNestedScrollingEnabled = false
-        tactics_recyclerview.layoutManager = LinearLayoutManager(this)
-        tactics_recyclerview.addItemDecoration(DividerLine())
-        tacticsAdapter = TacticsAdapter(null)
-        tacticsAdapter.setOnItemClickListener { adapter, _, position ->
-            val itemData = adapter.getItem(position) as TacticsBean
-            ToastKit.show(this, itemData.title)
-        }
-        tacticsAdapter.loadMoreModule.setOnLoadMoreListener(this)
-        tactics_recyclerview.adapter = tacticsAdapter
+    override fun createObserver() {
         mViewModel.fetchTactics.observe(this, Observer { resultState ->
             parseState(resultState, {
                 tacticsAdapter.loadMoreModule.loadMoreEnd(!it.next || it.list.isEmpty())
@@ -60,6 +49,22 @@ class HomeLaunchActivity : BaseActivity<HomepageViewModel, DoctorActivityMainBin
             })
         })
         mViewModel.refreshTactics()
+    }
+
+    override fun initView(savedInstanceState: Bundle?) {
+        //强烈注意：使用addLoadingObserve 将非绑定当前activity的viewmodel绑定loading回调 防止出现请求时不显示 loading 弹窗bug
+        addLoadingObserve(mViewModel)
+        //设置攻略文章
+        tactics_recyclerview.isNestedScrollingEnabled = false
+        tactics_recyclerview.layoutManager = LinearLayoutManager(this)
+        tactics_recyclerview.addItemDecoration(DividerLine())
+        tacticsAdapter = TacticsAdapter(null)
+        tacticsAdapter.setOnItemClickListener { adapter, _, position ->
+            val itemData = adapter.getItem(position) as TacticsBean
+            ToastKit.show(this, itemData.title)
+        }
+        tacticsAdapter.loadMoreModule.setOnLoadMoreListener(this)
+        tactics_recyclerview.adapter = tacticsAdapter
     }
 
     override fun showLoading(message: String) {
