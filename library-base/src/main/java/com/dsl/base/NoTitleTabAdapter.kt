@@ -19,5 +19,4 @@ class NoTitleTabAdapter(
     override fun getCount(): Int {
         return fragmentList.size
     }
-
 }

@@ -31,11 +31,9 @@ class HomepageRepository : BaseRepository() {
             }
 
             override fun onFetchFailed() {
-
             }
 
             override fun onFetchSuccess(item: HomepageModuleResponseData?) {
-
             }
         }.asLiveData()
     }
@@ -49,11 +47,9 @@ class HomepageRepository : BaseRepository() {
             }
 
             override fun onFetchFailed() {
-
             }
 
             override fun onFetchSuccess(item: TacticsResponseData?) {
-
             }
         }.asLiveData()
     }
@@ -67,11 +63,9 @@ class HomepageRepository : BaseRepository() {
             }
 
             override fun onFetchFailed() {
-
             }
 
             override fun onFetchSuccess(item: HomepagerAchievementResponseData?) {
-
             }
         }.asLiveData()
     }

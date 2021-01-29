@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.dsl.base.viewmodel.BaseViewModel
 
-
 /**
  * 作者　: hegaojian
  * 时间　: 2019/12/12
@@ -29,5 +28,4 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Base
         mDatabind.lifecycleOwner = this
         return mDatabind.root
     }
-
 }

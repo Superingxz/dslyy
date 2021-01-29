@@ -2,14 +2,13 @@ package com.dsl.base.fragment
 
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
+import com.dsl.base.event.AppViewModel
+import com.dsl.base.event.EventViewModel
 import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.extend.dismissLoadingExt
 import com.dsl.extend.getAppViewModel
 import com.dsl.extend.hideSoftKeyboard
 import com.dsl.extend.showLoadingExt
-import com.dsl.base.event.AppViewModel
-import com.dsl.base.event.EventViewModel
-
 
 /**
  * 作者　: hegaojian
@@ -31,7 +30,6 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
      */
     abstract override fun layoutId(): Int
 
-
     abstract override fun initView(savedInstanceState: Bundle?)
 
     /**
@@ -48,7 +46,6 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
      * Fragment执行onViewCreated后触发
      */
     override fun initData() {
-
     }
 
     /**

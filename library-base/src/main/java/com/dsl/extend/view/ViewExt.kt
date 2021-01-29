@@ -14,7 +14,6 @@ fun View.visible() {
     visibility = View.VISIBLE
 }
 
-
 /**
  * 设置view占位隐藏
  */
@@ -98,7 +97,6 @@ fun createBitmapSafely(width: Int, height: Int, config: Bitmap.Config, retryCoun
     }
 }
 
-
 /**
  * 防止重复点击事件 默认0.5秒内不可重复点击
  * @param interval 时间间隔 默认0.5秒
@@ -115,7 +113,6 @@ fun View.clickNoRepeat(interval: Long = 500, action: (view: View) -> Unit) {
         action(it)
     }
 }
-
 
 fun Any?.notNull(notNullAction: (value: Any) -> Unit, nullAction1: () -> Unit) {
     if (this != null) {

@@ -25,5 +25,4 @@ object KtxAppLifeObserver : LifecycleObserver {
     fun onBackground() {
         isForeground.value = false
     }
-
 }

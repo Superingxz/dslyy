@@ -18,7 +18,6 @@ interface DownLoadProgressListener {
     fun onUpdate(key: String, progress: Int, read: Long, count: Long, done: Boolean)
 }
 
-
 interface OnDownLoadListener : DownLoadProgressListener {
 
     //等待下载

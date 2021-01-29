@@ -8,7 +8,6 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-
 class SpaceItemDecoration(
     private val leftRight: Int,
     private val topBottom: Int,
@@ -50,7 +49,5 @@ class SpaceItemDecoration(
             outRect.bottom = topBottom
         }
     }
-
-
 }
 

@@ -14,13 +14,11 @@ object ShareDownLoadUtil {
     private var path = Build.BRAND + "_" + Build.MODEL + "_" + "download_sp"
     private val sp: SharedPreferences
 
-
     init {
         sp = appContext.getSharedPreferences(
             path, Context.MODE_PRIVATE
         )
     }
-
 
     fun setPath(path: String) {
         ShareDownLoadUtil.path = path
@@ -65,6 +63,4 @@ object ShareDownLoadUtil {
     fun clear() {
         sp.edit().clear().apply()
     }
-
-
 }

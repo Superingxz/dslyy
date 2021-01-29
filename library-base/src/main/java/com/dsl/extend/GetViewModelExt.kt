@@ -7,7 +7,6 @@ import com.dsl.base.BaseApp
 import com.dsl.base.viewmodel.BaseViewModel
 import java.lang.reflect.ParameterizedType
 
-
 /**
  * 获取当前类绑定的泛型ViewModel-clazz
  */

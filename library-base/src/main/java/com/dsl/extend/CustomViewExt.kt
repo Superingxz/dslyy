@@ -268,7 +268,6 @@ fun BottomNavigationViewEx.init(navigationItemSelectedAction: (Int) -> Unit): Bo
     return this
 }
 
-
 /**
  * 拦截BottomNavigation长按事件 防止长按时出现Toast ---- 追求完美的大屌群友提的bug
  * @receiver BottomNavigationViewEx

@@ -5,14 +5,12 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.isActive
 import java.util.concurrent.ConcurrentHashMap
 
-
 /**
  * @author : hgj
  * @date   : 2020/7/13
  */
 
 object DownLoadPool {
-
 
     private val scopeMap: ConcurrentHashMap<String, CoroutineScope> = ConcurrentHashMap()
 
@@ -36,7 +34,6 @@ object DownLoadPool {
         pathMap[key] = path
     }
 
-
     fun remove(key: String) {
         pause(key)
         scopeMap.remove(key)
@@ -44,7 +41,6 @@ object DownLoadPool {
         pathMap.remove(key)
         ShareDownLoadUtil.remove(key)
     }
-
 
     fun pause(key: String) {
         val scope = scopeMap[key]
@@ -56,7 +52,6 @@ object DownLoadPool {
     fun removeExitSp(key: String) {
         scopeMap.remove(key)
     }
-
 
     fun getScopeFromKey(key: String): CoroutineScope? {
         return scopeMap[key]
@@ -73,5 +68,4 @@ object DownLoadPool {
     fun getListenerMap(): ConcurrentHashMap<String, OnDownLoadListener> {
         return listenerHashMap
     }
-
 }

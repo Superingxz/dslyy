@@ -48,7 +48,6 @@ object DateTimeUtil {
         return dateFormat.format(date)
     }
 
-
     /**
      * 获得当前时间戳,毫秒级
      */

@@ -52,7 +52,6 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                         DebugLog.e("NetworkBoundResource->服务器自定义错误message:" + it?.errorMessage + "\n响应体:" + it?.body)
                         if (it?.body is RealResponseBody<*>) {
                             if (it.body.message == "?") {//自定义错误类型判断
-
                             } else {
                                 setValue(Resource.error(it.body.message, processResponse(it)))
                                 onFetchFailed()

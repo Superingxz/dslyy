@@ -19,7 +19,6 @@ import com.tencent.mmkv.MMKV
 import java.lang.reflect.InvocationTargetException
 import kotlin.math.roundToInt
 
-
 object SettingUtil {
 
     /**
@@ -34,7 +33,6 @@ object SettingUtil {
         } else {
             color
         }
-
     }
 
     /**
@@ -167,7 +165,6 @@ object SettingUtil {
         } catch (e: IllegalAccessException) {
             e.printStackTrace()
         }
-
     }
 
     /**
@@ -197,6 +194,4 @@ object SettingUtil {
             }
         }
     }
-
-
 }

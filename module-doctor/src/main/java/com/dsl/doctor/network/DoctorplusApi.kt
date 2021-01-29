@@ -7,10 +7,8 @@ import com.dsl.doctor.bean.HomepagerAchievementResponseData
 import com.dsl.doctor.bean.TacticsResponseData
 import com.dsl.network.vo.ApiResponse
 import com.dsl.network.vo.RealResponseBody
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
-
 
 /**
  * @author dsl-abben

@@ -39,5 +39,4 @@ enum class Error(private val code: Int, private val err: String) {
     fun getKey(): Int {
         return code
     }
-
 }

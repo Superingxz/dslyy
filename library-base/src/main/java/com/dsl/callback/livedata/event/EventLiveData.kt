@@ -129,5 +129,4 @@ open class EventLiveData<T> : MutableLiveData<T>() {
             isDelaying = false
         }
     }
-
 }

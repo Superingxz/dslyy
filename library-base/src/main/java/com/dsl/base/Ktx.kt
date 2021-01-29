@@ -47,7 +47,6 @@ class Ktx : ContentProvider() {
         if (watchAppLife) ProcessLifecycleOwner.get().lifecycle.addObserver(KtxAppLifeObserver)
     }
 
-
     override fun insert(uri: Uri, values: ContentValues?): Uri? = null
 
     override fun query(
@@ -57,7 +56,6 @@ class Ktx : ContentProvider() {
         selectionArgs: Array<String>?,
         sortOrder: String?
     ): Cursor? = null
-
 
     override fun update(
         uri: Uri,

@@ -2,7 +2,6 @@ package com.dsl.network.manager
 
 import com.dsl.callback.livedata.UnPeekLiveData
 
-
 /**
  * 作者　: hegaojian
  * 时间　: 2020/5/2
@@ -16,5 +15,4 @@ class NetworkStateManager private constructor() {
             NetworkStateManager()
         }
     }
-
 }

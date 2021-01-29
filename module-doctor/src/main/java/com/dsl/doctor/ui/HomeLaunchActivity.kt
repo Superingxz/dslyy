@@ -17,7 +17,6 @@ import com.dsl.util.ToastKit
 import com.dsl.widget.DividerLine
 import kotlinx.android.synthetic.main.doctor_activity_main.*
 
-
 /**
  * <pre>
  *     author: MoYaoZhi
@@ -68,7 +67,6 @@ class HomeLaunchActivity : BaseActivity<HomepageViewModel, DoctorActivityMainBin
     }
 
     override fun showLoading(message: String) {
-
     }
 
     override fun onLoadMore() {

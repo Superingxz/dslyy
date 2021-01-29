@@ -22,7 +22,6 @@ sealed class ResultState<out T> {
     data class Error(val error: AppException) : ResultState<Nothing>()
 }
 
-
 /**
  * 处理返回值
  * @param result 请求结果

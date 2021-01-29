@@ -19,11 +19,9 @@ fun EditText.afterTextChange(afterTextChanged: (String) -> Unit) {
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
         }
     })
 }
-
 
 /**
  * 获取文本

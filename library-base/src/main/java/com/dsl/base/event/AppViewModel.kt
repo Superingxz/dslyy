@@ -5,7 +5,6 @@ import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.callback.livedata.UnPeekLiveData
 import com.dsl.util.SettingUtil
 
-
 /**
  * 作者　: hegaojian
  * 时间　: 2019/12/23
