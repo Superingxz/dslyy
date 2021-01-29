@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.StringRes;
-import androidx.core.content.ContextCompat;
 
 import com.dsl.base.R;
 
