@@ -40,7 +40,6 @@ object CacheUtil {
             kv.encode("user", Gson().toJson(userResponse))
             setIsLogin(true)
         }
-
     }
 
     /**
@@ -90,7 +89,8 @@ object CacheUtil {
         val kv = MMKV.mmkvWithID("cache")
         val searchCacheStr = kv.decodeString("history")
         if (!TextUtils.isEmpty(searchCacheStr)) {
-            return Gson().fromJson(searchCacheStr
+            return Gson().fromJson(
+                searchCacheStr
                 , object : TypeToken<ArrayList<String>>() {}.type
             )
         }

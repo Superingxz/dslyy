@@ -148,5 +148,4 @@ object NonCachedSharedPreferencesManager {
     fun getUnableRxWarnText(): String {
         return getNonCachedSharedPreferences().getString(keyUnableRxWarnText, "") ?: ""
     }
-
 }

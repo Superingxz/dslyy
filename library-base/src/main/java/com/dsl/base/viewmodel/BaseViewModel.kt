@@ -22,5 +22,4 @@ open class BaseViewModel : ViewModel() {
         //隐藏
         val dismissDialog by lazy { EventLiveData<Boolean>() }
     }
-
 }

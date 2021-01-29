@@ -10,4 +10,4 @@ import com.dsl.base.BaseApp
  *     desc  :
  * </pre>
  */
-class DoctorApp :BaseApp()
+class DoctorApp : BaseApp()

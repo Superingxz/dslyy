@@ -3,7 +3,6 @@ package com.dsl.base.event
 import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.callback.livedata.event.EventLiveData
 
-
 /**
  * 作者　: hegaojian
  * 时间　: 2019/5/2

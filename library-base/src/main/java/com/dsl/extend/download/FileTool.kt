@@ -149,7 +149,6 @@ object FileTool {
     ) =
         if (currentLength == 0L) responseBody.contentLength() else currentLength + responseBody.contentLength()
 
-
     /**
      * 获取下载地址
      * @param savePath String
@@ -161,9 +160,7 @@ object FileTool {
             return null
         }
         return "$savePath/$saveName"
-
     }
-
 
     /**
      * 创建文件夹
@@ -177,7 +174,6 @@ object FileTool {
         }
         return true
     }
-
 
     /**
      * 格式化小数

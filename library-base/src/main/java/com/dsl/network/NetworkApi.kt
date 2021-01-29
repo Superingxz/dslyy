@@ -23,7 +23,6 @@ import java.util.concurrent.TimeUnit
  * 在这里可以添加拦截器，设置构造器可以对Builder做任意操作
  */
 
-
 //双重校验锁式-单例 封装NetApiService 方便直接快速调用简单的接口
 val apiService: PlusApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     NetworkApi.INSTANCE.getApi(PlusApi::class.java, BuildConfig.BASE_URL)
@@ -95,7 +94,6 @@ class NetworkApi : BaseNetworkApi() {
     val cookieJar: PersistentCookieJar by lazy {
         PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(appContext))
     }
-
 }
 
 

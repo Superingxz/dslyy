@@ -16,7 +16,6 @@ class MainActivity : BaseActivity<HomeViewModel>() {
     }
 
     override fun subscribeUi(viewModel: HomeViewModel) {
-
     }
 
     override fun initView() {
@@ -34,5 +33,4 @@ class MainActivity : BaseActivity<HomeViewModel>() {
 
     override fun showLoading(message: String) {
     }
-
 }

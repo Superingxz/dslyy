@@ -18,15 +18,15 @@ import com.afollestad.materialdialogs.utils.MDUtil.dimenPx
  * @CreateDate:     2019/8/12 14:23
  */
 class MyColorCircleView(
-        context: Context,
-        attrs: AttributeSet? = null
+    context: Context,
+    attrs: AttributeSet? = null
 ) : View(context, attrs) {
 
     private val strokePaint = Paint()
     private val fillPaint = Paint()
 
     private val borderWidth = dimenPx(
-            dimen.color_circle_view_border
+        dimen.color_circle_view_border
     )
 
     private var transparentGrid: Drawable? = null
@@ -49,6 +49,7 @@ class MyColorCircleView(
             fillPaint.color = value
             invalidate()
         }
+
     @ColorInt
     var border: Int = Color.DKGRAY
         set(value) {
@@ -58,33 +59,34 @@ class MyColorCircleView(
         }
 
     override fun onMeasure(
-            widthMeasureSpec: Int,
-            heightMeasureSpec: Int
+        widthMeasureSpec: Int,
+        heightMeasureSpec: Int
     ) = super.onMeasure(widthMeasureSpec, widthMeasureSpec)
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         if (color == Color.TRANSPARENT) {
             if (transparentGrid == null) {
-                transparentGrid = ContextCompat.getDrawable(context,
-                        drawable.transparentgrid
+                transparentGrid = ContextCompat.getDrawable(
+                    context,
+                    drawable.transparentgrid
                 )
             }
             transparentGrid?.setBounds(0, 0, measuredWidth, measuredHeight)
             transparentGrid?.draw(canvas)
         } else {
             canvas.drawCircle(
-                    measuredWidth / 2f,
-                    measuredHeight / 2f,
-                    (measuredWidth / 2f) - borderWidth,
-                    fillPaint
-            )
-        }
-        canvas.drawCircle(
                 measuredWidth / 2f,
                 measuredHeight / 2f,
                 (measuredWidth / 2f) - borderWidth,
-                strokePaint
+                fillPaint
+            )
+        }
+        canvas.drawCircle(
+            measuredWidth / 2f,
+            measuredHeight / 2f,
+            (measuredWidth / 2f) - borderWidth,
+            strokePaint
         )
     }
 
@@ -97,6 +99,7 @@ class MyColorCircleView(
         color = parseColor
         border = parseColor
     }
+
     fun setViewSelect(parseColor: Int) {
         color = parseColor
         border = Color.DKGRAY

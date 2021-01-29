@@ -11,7 +11,6 @@ import com.dsl.loadCallBack.LoadingCallback
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 
-
 /**
  * @author dsl-abben
  * on 2020/02/20.

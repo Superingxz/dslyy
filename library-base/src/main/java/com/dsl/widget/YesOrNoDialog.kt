@@ -68,5 +68,4 @@ class YesOrNoDialog : BaseDialogFragment() {
         dialog.setContentView(view)
         return dialog
     }
-
 }

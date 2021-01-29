@@ -59,7 +59,6 @@ class CompressImageManager {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : Observer<List<UploadFileBean>> {
                 override fun onComplete() {
-
                 }
 
                 override fun onSubscribe(d: Disposable?) {

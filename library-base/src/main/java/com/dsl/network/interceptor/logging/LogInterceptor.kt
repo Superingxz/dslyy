@@ -15,7 +15,6 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.jvm.Throws
 
-
 class LogInterceptor : Interceptor {
     private val mPrinter: FormatPrinter = DefaultFormatPrinter()
     private val printLevel =

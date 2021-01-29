@@ -28,14 +28,12 @@ class KtxLifeCycleCallBack : Application.ActivityLifecycleCallbacks {
         "onActivityPaused : ${activity.localClassName}".logd()
     }
 
-
     override fun onActivityDestroyed(activity: Activity) {
         "onActivityDestroyed : ${activity.localClassName}".logd()
         KtxActivityManger.popActivity(activity)
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-
     }
 
     override fun onActivityStopped(activity: Activity) {

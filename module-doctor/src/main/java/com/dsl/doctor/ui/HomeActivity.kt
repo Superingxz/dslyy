@@ -79,7 +79,6 @@ class HomeActivity : BaseActivity<HomepageViewModel>(), OnLoadMoreListener {
     }
 
     override fun showLoading(message: String) {
-
     }
 
     override fun onLoadMore() {

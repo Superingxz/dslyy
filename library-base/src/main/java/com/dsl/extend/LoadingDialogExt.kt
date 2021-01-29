@@ -12,7 +12,6 @@ import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.dsl.base.R
 import com.dsl.util.SettingUtil
 
-
 /**
  * @author : hgj
  * @date : 2020/6/28
@@ -42,7 +41,6 @@ fun AppCompatActivity.showLoadingExt(message: String = "请求网络中") {
         loadingDialog?.show()
     }
 }
-
 
 /**
  * 打开等待框

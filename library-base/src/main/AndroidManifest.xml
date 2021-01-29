@@ -33,6 +33,6 @@
         <provider
             android:authorities="${applicationId}.KtxInstaller"
             android:name=".Ktx"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 </manifest>

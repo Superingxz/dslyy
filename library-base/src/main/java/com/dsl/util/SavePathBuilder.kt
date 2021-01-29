@@ -36,7 +36,6 @@ class SavePathBuilder(
      */
     private val firstDirectory: String = "DslDoctorPlus"
 
-
     var savePath: String = ""
 
     init {

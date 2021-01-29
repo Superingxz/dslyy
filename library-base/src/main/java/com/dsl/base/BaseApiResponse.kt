@@ -20,5 +20,4 @@ data class BaseApiResponse<T>(var status: Int, var message: String, var data: T)
     override fun getResponseData() = data
 
     override fun getResponseMsg() = message
-
 }
