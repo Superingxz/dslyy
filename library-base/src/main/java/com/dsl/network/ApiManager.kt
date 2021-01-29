@@ -23,21 +23,24 @@ object ApiManager {
 
     private fun getRetrofit(): Retrofit {
         return mRetrofit ?: synchronized(this) {
-            val mGson = GsonBuilder()
-                .enableComplexMapKeySerialization()
-                .serializeNulls()
-                .registerTypeAdapter(Long::class.java, LongSecurityAdapter())
-                .registerTypeAdapter(Int::class.java, IntSecurityAdapter())
-                .registerTypeAdapter(Float::class.java, FloatSecurityAdapter())
-                .registerTypeAdapter(
-                    List::class.java,
-                    ArraySecurityAdapter()
-                )
-                .create()
             mRetrofit ?: Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(OkHttpHelper.getOkHttpClient())
-                .addConverterFactory(GsonConverterFactory.create(mGson))
+                .addConverterFactory(
+                    GsonConverterFactory.create(
+                        GsonBuilder()
+                            .enableComplexMapKeySerialization()
+                            .serializeNulls()
+                            .registerTypeAdapter(Long::class.java, LongSecurityAdapter())
+                            .registerTypeAdapter(Int::class.java, IntSecurityAdapter())
+                            .registerTypeAdapter(Float::class.java, FloatSecurityAdapter())
+                            .registerTypeAdapter(
+                                List::class.java,
+                                ArraySecurityAdapter()
+                            )
+                            .create()
+                    )
+                )
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .build()
         }

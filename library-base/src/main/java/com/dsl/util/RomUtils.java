@@ -12,7 +12,7 @@ import java.util.Properties;
  * @author zangpeng on 2018/2/24.
  */
 class RomUtils {
-    class AvailableRomType {
+    static class AvailableRomType {
         static final int MIUI = 1;
         static final int FLYME = 2;
         static final int ANDROID_NATIVE = 3;

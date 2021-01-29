@@ -12,8 +12,7 @@ import com.dsl.base.viewmodel.BaseViewModel
  * 需要使用Databind的清继承它
  */
 abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmActivity<VM>() {
-
-    lateinit var mDatabind: DB
+    lateinit var mBinding: DB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         userDataBinding(true)
@@ -24,7 +23,7 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : Base
      * 创建DataBinding
      */
     override fun initDataBind() {
-        mDatabind = DataBindingUtil.setContentView(this, layoutId())
-        mDatabind.lifecycleOwner = this
+        mBinding = DataBindingUtil.setContentView(this, layoutId())
+        mBinding.lifecycleOwner = this
     }
 }
