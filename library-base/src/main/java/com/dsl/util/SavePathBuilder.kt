@@ -39,11 +39,11 @@ class SavePathBuilder(
     var savePath: String = ""
 
     init {
-        //本地基本路径
+        // 本地基本路径
         val basicPath =
             Environment.getExternalStorageDirectory().absolutePath + File.separatorChar + firstDirectory
         savePath = setSavePath(basicPath, functionalModule, subdirectory)
-        //判断文件夹是否存在，不存在就新建
+        // 判断文件夹是否存在，不存在就新建
         val file = File(savePath)
         if (!file.exists()) {
             file.mkdirs()
@@ -73,7 +73,7 @@ class SavePathBuilder(
         if (!file.exists()) {
             file.mkdirs()
         }
-        //语音文件
+        // 语音文件
         val recordPath = savePath + "record" + File.separatorChar
         val recordFile = File(recordPath)
         if (!recordFile.exists()) {

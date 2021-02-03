@@ -35,4 +35,3 @@ fun NavController.navigateAction(resId: Int, bundle: Bundle? = null, interval: L
         navigate(resId, bundle)
     }
 }
-

@@ -7,29 +7,29 @@ import java.util.concurrent.ConcurrentHashMap
 
 /**
  * @author : hgj
- * @date   : 2020/7/13
+ * @date : 2020/7/13
  */
 
 object DownLoadPool {
 
     private val scopeMap: ConcurrentHashMap<String, CoroutineScope> = ConcurrentHashMap()
 
-    //下载位置
+    // 下载位置
     private val pathMap: ConcurrentHashMap<String, String> = ConcurrentHashMap()
 
-    //监听
+    // 监听
     private val listenerHashMap: ConcurrentHashMap<String, OnDownLoadListener> = ConcurrentHashMap()
 
     fun add(key: String, job: CoroutineScope) {
         scopeMap[key] = job
     }
 
-    //监听
+    // 监听
     fun add(key: String, loadListener: OnDownLoadListener) {
         listenerHashMap[key] = loadListener
     }
 
-    //下载位置
+    // 下载位置
     fun add(key: String, path: String) {
         pathMap[key] = path
     }

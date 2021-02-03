@@ -48,7 +48,7 @@ object SettingUtil {
      */
     fun getListMode(): Int {
         val kv = MMKV.mmkvWithID("app")
-        //0 关闭动画 1.渐显 2.缩放 3.从下到上 4.从左到右 5.从右到左
+        // 0 关闭动画 1.渐显 2.缩放 3.从下到上 4.从左到右 5.从右到左
         return kv.decodeInt("mode", 2)
     }
 
@@ -115,8 +115,8 @@ object SettingUtil {
      */
     fun setShapColor(view: View, color: IntArray, orientation: GradientDrawable.Orientation) {
         val drawable = view.background as GradientDrawable
-        drawable.orientation = orientation//渐变方向
-        drawable.colors = color//渐变颜色数组
+        drawable.orientation = orientation // 渐变方向
+        drawable.colors = color // 渐变颜色数组
     }
 
     /**
@@ -136,24 +136,24 @@ object SettingUtil {
                 slDraClass.getDeclaredMethod("getStateSet", Int::class.javaPrimitiveType)
             val getDrawableMethod =
                 slDraClass.getDeclaredMethod("getStateDrawable", Int::class.javaPrimitiveType)
-            val count = getStateCountMethod.invoke(mySelectorGrad) as Int//对应item标签
+            val count = getStateCountMethod.invoke(mySelectorGrad) as Int // 对应item标签
             for (i in 0 until count) {
                 val stateSet = getStateSetMethod.invoke(
                     mySelectorGrad,
                     i
-                ) as IntArray//对应item标签中的 android:state_xxxx
+                ) as IntArray // 对应item标签中的 android:state_xxxx
                 if (stateSet.isEmpty()) {
                     val drawable = getDrawableMethod.invoke(
                         mySelectorGrad,
                         i
-                    ) as GradientDrawable//这就是你要获得的Enabled为false时候的drawable
+                    ) as GradientDrawable // 这就是你要获得的Enabled为false时候的drawable
                     drawable.setColor(yesColor)
                 } else {
                     for (j in stateSet.indices) {
                         val drawable = getDrawableMethod.invoke(
                             mySelectorGrad,
                             i
-                        ) as GradientDrawable//这就是你要获得的Enabled为false时候的drawable
+                        ) as GradientDrawable // 这就是你要获得的Enabled为false时候的drawable
                         drawable.setColor(noColor)
                     }
                 }

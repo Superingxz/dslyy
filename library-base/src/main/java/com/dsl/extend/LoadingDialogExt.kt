@@ -17,7 +17,7 @@ import com.dsl.util.SettingUtil
  * @date : 2020/6/28
  */
 
-//loading框
+// loading框
 private var loadingDialog: MaterialDialog? = null
 
 /**

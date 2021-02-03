@@ -32,31 +32,34 @@ class HomeActivity : BaseActivity<HomepageViewModel>(), OnLoadMoreListener {
     }
 
     override fun subscribeUi(viewModel: HomepageViewModel) {
-        viewModel.fetchTacticsResponse.observe(this, Observer {
-            when (it?.status) {
-                Status.SUCCESS -> {
-                    it.data?.let { data ->
-                        tacticsAdapter.loadMoreModule.loadMoreEnd(
-                            !data.next || data.list.isEmpty()
-                        )
-                        if (data.pageNum == 1L) {
-                            tacticsAdapter.setNewInstance(data.list.toMutableList())
-                        } else {
-                            tacticsAdapter.addData(data.list.toMutableList())
+        viewModel.fetchTacticsResponse.observe(
+            this,
+            Observer {
+                when (it?.status) {
+                    Status.SUCCESS -> {
+                        it.data?.let { data ->
+                            tacticsAdapter.loadMoreModule.loadMoreEnd(
+                                !data.next || data.list.isEmpty()
+                            )
+                            if (data.pageNum == 1L) {
+                                tacticsAdapter.setNewInstance(data.list.toMutableList())
+                            } else {
+                                tacticsAdapter.addData(data.list.toMutableList())
+                            }
                         }
                     }
-                }
-                Status.ERROR -> {
-                    showToast(it.message)
-                }
-                Status.LOADING -> {
+                    Status.ERROR -> {
+                        showToast(it.message)
+                    }
+                    Status.LOADING -> {
+                    }
                 }
             }
-        })
+        )
     }
 
     override fun initView() {
-        //设置攻略文章
+        // 设置攻略文章
         tactics_recyclerview.isNestedScrollingEnabled = false
         tactics_recyclerview.layoutManager = LinearLayoutManager(this)
         tactics_recyclerview.addItemDecoration(DividerLine())

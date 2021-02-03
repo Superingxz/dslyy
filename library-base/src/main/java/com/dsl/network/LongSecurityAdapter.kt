@@ -22,7 +22,6 @@ class LongSecurityAdapter : TypeAdapter<Long?>() {
             }
             out?.value(tempValue)
         } catch (e: Exception) {
-
         }
     }
 

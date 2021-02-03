@@ -60,4 +60,3 @@ val Context.downloadManager get() = getSystemService<DownloadManager>()
 val Context.batteryManager get() = getSystemService<BatteryManager>()
 val Context.jobScheduler get() = getSystemService<JobScheduler>()
 val Context.accessibilityManager get() = getSystemService<AccessibilityManager>()
-

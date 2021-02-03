@@ -76,9 +76,3 @@ inline fun <reified VM : BaseViewModel> Fragment.getActivityViewModel(): VM {
         ViewModelProvider.AndroidViewModelFactory(this.requireActivity().application)
     ).get(VM::class.java)
 }
-
-
-
-
-
-

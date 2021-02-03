@@ -9,7 +9,7 @@ import retrofit2.http.Url
 
 /**
  * @author : hgj
- * @date   : 2020/7/13
+ * @date : 2020/7/13
  *
  */
 interface DownLoadService {

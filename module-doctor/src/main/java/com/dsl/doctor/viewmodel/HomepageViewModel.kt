@@ -56,12 +56,15 @@ class HomepageViewModel : BaseViewModel() {
     }
 
     private fun fetchTacticsData(next: Long) {
-        request({
-            getService(DoctorplusApi::class.java).fetchTactisList(
-                BeanUtil.beanToMap(
-                    FetchTacticsRequestBean(next.toString())
+        request(
+            {
+                getService(DoctorplusApi::class.java).fetchTactisList(
+                    BeanUtil.beanToMap(
+                        FetchTacticsRequestBean(next.toString())
+                    )
                 )
-            )
-        }, fetchTactics)
+            },
+            fetchTactics
+        )
     }
 }

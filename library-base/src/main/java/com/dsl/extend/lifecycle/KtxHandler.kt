@@ -11,7 +11,8 @@ import androidx.lifecycle.OnLifecycleEvent
  * 时间　: 20120/1/7
  * 描述　:
  */
-class KtxHandler(lifecycleOwner: LifecycleOwner, callback: Callback) : Handler(callback),
+class KtxHandler(lifecycleOwner: LifecycleOwner, callback: Callback) :
+    Handler(callback),
     LifecycleObserver {
 
     private val mLifecycleOwner: LifecycleOwner = lifecycleOwner

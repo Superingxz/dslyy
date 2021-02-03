@@ -9,11 +9,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dsl.base.viewmodel.BaseViewModel
+import com.dsl.network.manager.NetState
 import com.dsl.network.manager.NetworkStateManager
 import com.dsl.util.StatusBarUtil
 import com.dsl.widget.LoadingDialog
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import com.dsl.network.manager.NetState
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
@@ -36,7 +36,7 @@ abstract class BaseActivity<E : BaseViewModel> : AppCompatActivity(), View.OnCli
 
     @Suppress("UNCHECKED_CAST")
     protected val mViewModel: E by lazy {
-        //这里获得到的是类的泛型的类型
+        // 这里获得到的是类的泛型的类型
         val type: Type =
             (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0]
         ViewModelProvider(this)[type as Class<E>]
@@ -57,9 +57,12 @@ abstract class BaseActivity<E : BaseViewModel> : AppCompatActivity(), View.OnCli
         compositeDisposable = CompositeDisposable()
         subscribeBaseUi()
         initView()
-        NetworkStateManager.instance.mNetworkStateCallback.observe(this, Observer {
-            onNetworkStateChanged(it)
-        })
+        NetworkStateManager.instance.mNetworkStateCallback.observe(
+            this,
+            Observer {
+                onNetworkStateChanged(it)
+            }
+        )
     }
 
     /**
@@ -85,14 +88,20 @@ abstract class BaseActivity<E : BaseViewModel> : AppCompatActivity(), View.OnCli
      * 注册UI 事件
      */
     private fun registerUiChange() {
-        //显示弹窗
-        mViewModel.loadingChange.showDialog.observe(this, Observer {
-            showLoading(it)
-        })
-        //关闭弹窗
-        mViewModel.loadingChange.dismissDialog.observe(this, Observer {
-            dismissLoading()
-        })
+        // 显示弹窗
+        mViewModel.loadingChange.showDialog.observe(
+            this,
+            Observer {
+                showLoading(it)
+            }
+        )
+        // 关闭弹窗
+        mViewModel.loadingChange.dismissDialog.observe(
+            this,
+            Observer {
+                dismissLoading()
+            }
+        )
     }
 
     override fun onRestart() {

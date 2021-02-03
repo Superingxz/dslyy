@@ -71,7 +71,7 @@ object NonCachedSharedPreferencesManager {
     fun setToken(token: String) {
         getNonCachedSharedPreferences().edit().putString(keyToken, token).apply()
         if (token.isNotEmpty()) {
-            //记录该次登录时间，防止刚上线就被同步接诊状态，需要刚上线调整为接诊
+            // 记录该次登录时间，防止刚上线就被同步接诊状态，需要刚上线调整为接诊
             getNonCachedSharedPreferences().edit()
                 .putLong(keyLoginUnitTime, DateTimeUtil.getUnixTime()).apply()
         }
@@ -107,7 +107,7 @@ object NonCachedSharedPreferencesManager {
     }
 
     fun setContainChineseMedicine(professionalType: String) {
-        //0西医 1中医 2中西医
+        // 0西医 1中医 2中西医
         getNonCachedSharedPreferences().edit()
             .putBoolean(keyContainChineseMedicine, professionalType != "0").apply()
     }

@@ -106,7 +106,8 @@ task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
     main = "com.github.shyiko.ktlint.Main"
-    args "-a", "src/**/*.kt" // -a 表示代码规范使用 Android Kotlin Style Guide，不需要可以去掉，即改为 args "src/**/*.kt"
+    args "-a", "src/**/*.kt"
+    // -a 表示代码规范使用 Android Kotlin Style Guide，不需要可以去掉，即改为 args "src/**/*.kt"
     // to generate report in checkstyle format prepend following args:
     // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
     // see https://github.com/shyiko/ktlint#usage for more
@@ -192,7 +193,7 @@ dependencies {
     api 'com.tencent.imsdk:imsdk:4.8.10'
     //腾讯Bugly
     implementation 'com.tencent.bugly:crashreport:3.2.422'
-    implementation'com.tencent.bugly:nativecrashreport:3.7.1'
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
     //极光推送
 //    implementation 'cn.jiguang.sdk:jpush:3.8.0'
 //    implementation 'cn.jiguang.sdk:jcore:2.4.2'

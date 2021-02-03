@@ -23,7 +23,7 @@ import javax.xml.transform.stream.StreamSource
  */
 class CharacterHandler private constructor() {
     companion object {
-        //emoji过滤器
+        // emoji过滤器
         val EMOJI_FILTER: InputFilter = object : InputFilter {
             var emoji = Pattern.compile(
                 "[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]",

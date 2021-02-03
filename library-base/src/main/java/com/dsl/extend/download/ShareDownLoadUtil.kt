@@ -7,7 +7,7 @@ import com.dsl.base.appContext
 
 /**
  * @author : hgj
- * @date   : 2020/7/13
+ * @date : 2020/7/13
  */
 object ShareDownLoadUtil {
 

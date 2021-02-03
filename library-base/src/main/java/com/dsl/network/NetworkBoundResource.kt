@@ -4,10 +4,10 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.dsl.util.DebugLog
 import com.dsl.network.vo.ApiResponse
 import com.dsl.network.vo.RealResponseBody
 import com.dsl.network.vo.Resource
+import com.dsl.util.DebugLog
 import com.dsl.util.NonCachedSharedPreferencesManager
 
 /**
@@ -25,12 +25,12 @@ abstract class NetworkBoundResource<ResultType, RequestType>
         val remoteSource = this.createCall()
         result.addSource(remoteSource) {
             result.removeSource(remoteSource)
-            //检查数据加载状态
+            // 检查数据加载状态
             if (it?.code in 200..299) {
-                //http状态码正常，然后判断我们服务器自定义的状态码
+                // http状态码正常，然后判断我们服务器自定义的状态码
                 when (if (it?.body is RealResponseBody<*>) (it.body as RealResponseBody<*>).status else -600) {
                     200 -> {
-                        //成功
+                        // 成功
                         val resultType = processResponse(it)
                         setValue(
                             Resource.success(
@@ -44,14 +44,14 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                         onFetchSuccess(resultType)
                     }
                     300 -> {
-                        //token失效
+                        // token失效
                         NonCachedSharedPreferencesManager.setToken("")
-                        //跳转登录页面
+                        // 跳转登录页面
                     }
                     else -> {
                         DebugLog.e("NetworkBoundResource->服务器自定义错误message:" + it?.errorMessage + "\n响应体:" + it?.body)
                         if (it?.body is RealResponseBody<*>) {
-                            if (it.body.message == "?") {//自定义错误类型判断
+                            if (it.body.message == "?") { // 自定义错误类型判断
                             } else {
                                 setValue(Resource.error(it.body.message, processResponse(it)))
                                 onFetchFailed()
@@ -61,7 +61,8 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                                 Resource.error(
                                     if (it?.body is RealResponseBody<*>) {
                                         it.body.message
-                                    } else null, processResponse(it)
+                                    } else null,
+                                    processResponse(it)
                                 )
                             )
                             onFetchFailed()

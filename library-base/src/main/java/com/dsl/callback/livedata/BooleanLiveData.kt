@@ -13,4 +13,3 @@ class BooleanLiveData : MutableLiveData<Boolean>() {
         return super.getValue() ?: false
     }
 }
-

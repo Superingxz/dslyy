@@ -51,7 +51,7 @@ class CompressImageManager {
             .flatMap { t ->
                 val uploadFileBeans = mutableListOf<UploadFileBean>()
                 for (item in t) {
-                    //压缩后返回
+                    // 压缩后返回
                     uploadFileBeans.add(compressImageAndSave(item))
                 }
                 Observable.just(uploadFileBeans)

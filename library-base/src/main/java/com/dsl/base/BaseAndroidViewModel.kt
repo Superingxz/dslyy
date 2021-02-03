@@ -9,6 +9,5 @@ import androidx.lifecycle.ViewModel
 abstract class BaseAndroidViewModel : ViewModel() {
 
     init {
-
     }
 }

@@ -1,11 +1,11 @@
 package com.dsl.extend.download
 
 import android.os.Looper
+import com.dsl.extend.util.logi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withContext
-import com.dsl.extend.util.logi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import java.io.File
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 /**
  * @author : hgj
- * @date   : 2020/7/13
+ * @date : 2020/7/13
  */
 
 object DownLoadManager {
@@ -121,7 +121,7 @@ object DownLoadManager {
         loadListener: OnDownLoadListener,
         coroutineScope: CoroutineScope
     ) {
-        //判断是否已经在队列中
+        // 判断是否已经在队列中
         val scope = DownLoadPool.getScopeFromKey(tag)
         if (scope != null && scope.isActive) {
             "已经在队列中".logi()
@@ -152,14 +152,14 @@ object DownLoadManager {
             ShareDownLoadUtil.getLong(tag, 0)
         }
         if (file.exists() && currentLength == 0L && !reDownload) {
-            //文件已存在了
+            // 文件已存在了
             loadListener.onDownLoadSuccess(tag, file.path, file.length())
             return
         }
         "startDownLoad current $currentLength".logi()
 
         try {
-            //添加到pool
+            // 添加到pool
             DownLoadPool.add(tag, coroutineScope)
             DownLoadPool.add(tag, "$savePath/$saveName")
             DownLoadPool.add(tag, loadListener)
@@ -199,5 +199,3 @@ object DownLoadManager {
         }
     }
 }
-
-

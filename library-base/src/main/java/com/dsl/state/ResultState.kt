@@ -45,4 +45,3 @@ fun <T> MutableLiveData<ResultState<T>>.paresResult(result: T) {
 fun <T> MutableLiveData<ResultState<T>>.paresException(e: Throwable) {
     this.value = ResultState.onAppError(ExceptionHandle.handleException(e))
 }
-

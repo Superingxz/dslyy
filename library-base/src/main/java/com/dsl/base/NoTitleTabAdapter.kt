@@ -9,7 +9,8 @@ import androidx.fragment.app.FragmentPagerAdapter
  * on 2020/03/02.
  */
 class NoTitleTabAdapter(
-    fragmentManager: FragmentManager, private val fragmentList: List<Fragment>
+    fragmentManager: FragmentManager,
+    private val fragmentList: List<Fragment>
 ) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(p0: Int): Fragment {

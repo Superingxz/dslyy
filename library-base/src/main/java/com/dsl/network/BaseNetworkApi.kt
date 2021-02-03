@@ -40,6 +40,3 @@ abstract class BaseNetworkApi {
             return builder.build()
         }
 }
-
-
-

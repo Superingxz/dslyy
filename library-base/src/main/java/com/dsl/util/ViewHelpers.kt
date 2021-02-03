@@ -29,9 +29,9 @@ object ViewHelpers {
                     val top = location[1]
                     val right = left + view.getWidth()
                     val bootom = top + view.getHeight()
-                    //判断焦点位置坐标是否在空间内，如果位置在控件外，则隐藏键盘
+                    // 判断焦点位置坐标是否在空间内，如果位置在控件外，则隐藏键盘
                     if (event.rawX < left || event.rawX > right || event.y < top || event.rawY > bootom) {
-                        //隐藏键盘
+                        // 隐藏键盘
                         val token = view.getWindowToken()
                         val inputMethodManager =
                             activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

@@ -2,7 +2,7 @@ package com.dsl.extend.download
 
 /**
  * @author : hgj
- * @date   : 2020/7/13
+ * @date : 2020/7/13
  */
 
 interface DownLoadProgressListener {
@@ -20,15 +20,15 @@ interface DownLoadProgressListener {
 
 interface OnDownLoadListener : DownLoadProgressListener {
 
-    //等待下载
+    // 等待下载
     fun onDownLoadPrepare(key: String)
 
-    //下载失败
+    // 下载失败
     fun onDownLoadError(key: String, throwable: Throwable)
 
-    //下载成功
+    // 下载成功
     fun onDownLoadSuccess(key: String, path: String, size: Long)
 
-    //下载暂停
+    // 下载暂停
     fun onDownLoadPause(key: String)
 }

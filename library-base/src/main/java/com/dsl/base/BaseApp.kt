@@ -54,14 +54,14 @@ open class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
         super.onCreate()
         mAppViewModelStore = ViewModelStore()
         appInstance = this
-        //界面加载管理 初始化
+        // 界面加载管理 初始化
         LoadSir.beginBuilder()
-            .addCallback(LoadingCallback())//加载
-            .addCallback(ErrorCallback())//错误
-            .addCallback(EmptyCallback())//空
-            .setDefaultCallback(SuccessCallback::class.java)//设置默认加载状态页
+            .addCallback(LoadingCallback()) // 加载
+            .addCallback(ErrorCallback()) // 错误
+            .addCallback(EmptyCallback()) // 空
+            .setDefaultCallback(SuccessCallback::class.java) // 设置默认加载状态页
             .commit()
-        //判断是否是在主线程
+        // 判断是否是在主线程
 //        if (SessionWrapper.isMainProcess(applicationContext)) {
 //            //初始化腾讯云IM
 //            val sdkAppId = if (BuildConfig.BUILD_VARIANTS_RELEASES) 1400320074 else 1400340742
@@ -85,9 +85,9 @@ open class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
 //            DebugLog.i("onCreate初始化极光推送结果: ${it.returnCode}")
 //        }
 
-        if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
-            ARouter.openLog()     // 打印日志
-            ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        if (BuildConfig.DEBUG) { // 这两行必须写在init之前，否则这些配置在init过程中将无效
+            ARouter.openLog() // 打印日志
+            ARouter.openDebug() // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this) // 尽可能早，推荐在Application中初始化
     }
