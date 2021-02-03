@@ -13,19 +13,19 @@ import com.dsl.util.SettingUtil
  */
 class AppViewModel : BaseViewModel() {
 
-    //App的账户信息
+    // App的账户信息
 
-    //App主题颜色 中大型项目不推荐以这种方式改变主题颜色，比较繁琐耦合，且容易有遗漏某些控件没有设置主题色
+    // App主题颜色 中大型项目不推荐以这种方式改变主题颜色，比较繁琐耦合，且容易有遗漏某些控件没有设置主题色
     var appColor = UnPeekLiveData<Int>()
 
-    //App 列表动画
+    // App 列表动画
     var appAnimation = UnPeekLiveData<Int>()
 
     init {
-        //默认值保存的账户信息，没有登陆过则为null
-        //默认值颜色
+        // 默认值保存的账户信息，没有登陆过则为null
+        // 默认值颜色
         appColor.value = SettingUtil.getColor(appContext)
-        //初始化列表动画
+        // 初始化列表动画
         appAnimation.value = SettingUtil.getListMode()
     }
 }

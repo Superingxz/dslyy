@@ -11,18 +11,18 @@ import java.text.DecimalFormat
 
 /**
  * @author : hgj
- * @date   : 2020/7/13
+ * @date : 2020/7/13
  */
 
 object FileTool {
 
-    //定义GB的计算常量
+    // 定义GB的计算常量
     private const val GB = 1024 * 1024 * 1024
 
-    //定义MB的计算常量
+    // 定义MB的计算常量
     private const val MB = 1024 * 1024
 
-    //定义KB的计算常量
+    // 定义KB的计算常量
     private const val KB = 1024
 
     /**
@@ -52,7 +52,7 @@ object FileTool {
                 DownLoadPool.remove(key)
                 return
             }
-            //保存到文件
+            // 保存到文件
             saveToFile(
                 currentLength,
                 responseBody,
@@ -99,7 +99,7 @@ object FileTool {
         val buffer = ByteArray(1024 * 4)
         var len = 0
         var lastProgress = 0
-        var currentSaveLength = currentLength //当前的长度
+        var currentSaveLength = currentLength // 当前的长度
 
         while (inputStream.read(buffer).also { len = it } != -1) {
             mappedBuffer.put(buffer, 0, len)
@@ -108,7 +108,7 @@ object FileTool {
             val progress = (currentSaveLength.toFloat() / fileLength * 100).toInt() // 计算百分比
             if (lastProgress != progress) {
                 lastProgress = progress
-                //记录已经下载的长度
+                // 记录已经下载的长度
                 ShareDownLoadUtil.putLong(
                     key,
                     currentSaveLength
@@ -184,16 +184,16 @@ object FileTool {
         val format = DecimalFormat("###.0")
         return when {
             bytes / GB >= 1 -> {
-                format.format(bytes / GB) + "GB";
+                format.format(bytes / GB) + "GB"
             }
             bytes / MB >= 1 -> {
-                format.format(bytes / MB) + "MB";
+                format.format(bytes / MB) + "MB"
             }
             bytes / KB >= 1 -> {
-                format.format(bytes / KB) + "KB";
+                format.format(bytes / KB) + "KB"
             }
             else -> {
-                "${bytes}B";
+                "${bytes}B"
             }
         }
     }
@@ -211,4 +211,3 @@ object FileTool {
         return p ?: ""
     }
 }
-

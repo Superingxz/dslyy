@@ -45,7 +45,7 @@ class HeaderInterceptor : Interceptor {
                 } else {
                     var msg = it
                     while (msg.length > segmentSize) {
-                        //循环分段打印日志
+                        // 循环分段打印日志
                         val logContent = msg.substring(0, segmentSize)
                         msg = msg.replace(logContent, "")
                         DebugLog.i(String.format("请求body：%s", logContent))

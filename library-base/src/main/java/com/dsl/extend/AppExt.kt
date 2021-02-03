@@ -10,8 +10,8 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
-import com.dsl.util.ToastKit
 import com.dsl.util.SettingUtil
+import com.dsl.util.ToastKit
 import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException
@@ -164,17 +164,16 @@ fun List<*>?.isNotNull(): Boolean {
  * @return T?
  */
 inline fun <reified T> List<T>?.getChild(position: Int): T? {
-    //如果List为null 返回null
+    // 如果List为null 返回null
     return if (this == null) {
         null
     } else {
-        //如果position大于集合的size 返回null
+        // 如果position大于集合的size 返回null
         if (position + 1 > this.size) {
             null
         } else {
-            //返回正常数据
+            // 返回正常数据
             this[position]
         }
     }
 }
-

@@ -23,7 +23,6 @@ class FloatSecurityAdapter : TypeAdapter<Float?>() {
             }
             out?.value(tempValue)
         } catch (e: Exception) {
-
         }
     }
 

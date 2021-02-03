@@ -9,7 +9,8 @@ import androidx.fragment.app.FragmentPagerAdapter
  * on 2020/03/01.
  */
 class TabAdapter(
-    fragmentManager: FragmentManager, private val fragmentList: List<Fragment>,
+    fragmentManager: FragmentManager,
+    private val fragmentList: List<Fragment>,
     private val titleList: List<String>
 ) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 

@@ -17,7 +17,7 @@ object DateTimeUtil {
     fun formatDate(datetime: String, format: String = "yyyy-MM-dd"): String {
         val dateFormat = SimpleDateFormat(format, Locale.getDefault())
         return try {
-            val date = dateFormat.parse(datetime);
+            val date = dateFormat.parse(datetime)
             dateFormat.format(date)
         } catch (e: ParseException) {
             datetime
@@ -67,7 +67,7 @@ object DateTimeUtil {
         val dateFormat = SimpleDateFormat(pattern, Locale.getDefault())
         var date = Date()
         try {
-            date = dateFormat.parse(dateString);
+            date = dateFormat.parse(dateString)
         } catch (e: ParseException) {
             e.printStackTrace()
         }

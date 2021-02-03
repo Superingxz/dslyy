@@ -8,7 +8,6 @@ import com.dsl.doctor.bean.HomepageModuleResponseData
 import com.dsl.doctor.bean.HomepagerAchievementResponseData
 import com.dsl.doctor.bean.TacticsResponseData
 import com.dsl.doctor.network.DoctorplusApi
-
 import com.dsl.network.ApiManager
 import com.dsl.network.NetworkBoundResource
 import com.dsl.network.vo.ApiResponse

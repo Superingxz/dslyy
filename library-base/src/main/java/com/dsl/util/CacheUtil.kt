@@ -90,8 +90,7 @@ object CacheUtil {
         val searchCacheStr = kv.decodeString("history")
         if (!TextUtils.isEmpty(searchCacheStr)) {
             return Gson().fromJson(
-                searchCacheStr
-                , object : TypeToken<ArrayList<String>>() {}.type
+                searchCacheStr, object : TypeToken<ArrayList<String>>() {}.type
             )
         }
         return arrayListOf()

@@ -17,7 +17,8 @@ import com.dsl.util.DateTimeUtil
 class TacticsAdapter(dataList: MutableList<TacticsBean>?) :
     BaseQuickAdapter<TacticsBean, BaseViewHolder>(
         R.layout.doctor_item_tactics, dataList
-    ), LoadMoreModule {
+    ),
+    LoadMoreModule {
     override fun convert(holder: BaseViewHolder, item: TacticsBean) {
         item.run {
             val image = holder.getView<ImageView>(R.id.image)

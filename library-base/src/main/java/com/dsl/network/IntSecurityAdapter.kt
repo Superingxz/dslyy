@@ -22,7 +22,6 @@ class IntSecurityAdapter : TypeAdapter<Int?>() {
             }
             out?.value(tempValue)
         } catch (e: Exception) {
-
         }
     }
 

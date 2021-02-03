@@ -65,9 +65,13 @@ open class ClearEditText @JvmOverloads constructor(
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (compoundDrawables[2] != null) {
             if (event.action == MotionEvent.ACTION_UP) {
-                val touchable = (event.x > (width
-                        - paddingRight - mClearDrawable!!.intrinsicWidth)
-                        && event.x < width - paddingRight)
+                val touchable = (
+                    event.x > (
+                        width -
+                            paddingRight - mClearDrawable!!.intrinsicWidth
+                        ) &&
+                        event.x < width - paddingRight
+                    )
                 if (touchable) {
                     if (onClearClickListener != null) {
                         onClearClickListener!!.onClearClick()
@@ -96,14 +100,18 @@ open class ClearEditText @JvmOverloads constructor(
     }
 
     override fun onTextChanged(
-        s: CharSequence, start: Int, count: Int,
+        s: CharSequence,
+        start: Int,
+        count: Int,
         after: Int
     ) {
         setClearIconVisible(s.isNotEmpty())
     }
 
     override fun beforeTextChanged(
-        s: CharSequence, start: Int, count: Int,
+        s: CharSequence,
+        start: Int,
+        count: Int,
         after: Int
     ) {
     }

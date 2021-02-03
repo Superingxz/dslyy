@@ -4,14 +4,13 @@ import android.content.res.Resources
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.databinding.ViewDataBinding
+import com.dsl.base.event.AppViewModel
+import com.dsl.base.event.EventViewModel
 import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.extend.dismissLoadingExt
 import com.dsl.extend.getAppViewModel
 import com.dsl.extend.showLoadingExt
-import com.dsl.base.event.AppViewModel
-import com.dsl.base.event.EventViewModel
 import com.dsl.util.ToastKit
-
 import me.jessyan.autosize.AutoSizeCompat
 
 /**
@@ -23,10 +22,10 @@ import me.jessyan.autosize.AutoSizeCompat
  */
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbActivity<VM, DB>() {
 
-    //Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
+    // Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
     val appViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
 
-    //Application全局的ViewModel，用于发送全局通知操作
+    // Application全局的ViewModel，用于发送全局通知操作
     val eventViewModel: EventViewModel by lazy { getAppViewModel<EventViewModel>() }
 
     abstract override fun layoutId(): Int

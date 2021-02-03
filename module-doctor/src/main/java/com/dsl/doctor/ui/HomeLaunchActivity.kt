@@ -26,7 +26,8 @@ import kotlinx.android.synthetic.main.doctor_activity_main.*
  * </pre>
  */
 @Route(path = RouterActivityPath.PAGER_DOCTOR_MAIN2)
-class HomeLaunchActivity : BaseActivity<HomepageViewModel, DoctorActivityMainBinding>(),
+class HomeLaunchActivity :
+    BaseActivity<HomepageViewModel, DoctorActivityMainBinding>(),
     OnLoadMoreListener {
     private lateinit var tacticsAdapter: TacticsAdapter
     override fun layoutId(): Int {
@@ -34,26 +35,33 @@ class HomeLaunchActivity : BaseActivity<HomepageViewModel, DoctorActivityMainBin
     }
 
     override fun createObserver() {
-        mViewModel.fetchTactics.observe(this, Observer { resultState ->
-            parseState(resultState, {
-                tacticsAdapter.loadMoreModule.loadMoreEnd(!it.next || it.list.isEmpty())
-                mViewModel.nextPageNum = it.pageNum
-                if (it.pageNum == 1L) {
-                    tacticsAdapter.setNewInstance(it.list.toMutableList())
-                } else {
-                    tacticsAdapter.addData(it.list.toMutableList())
-                }
-            }, {
-                showToast(it.errorMsg)
-            })
-        })
+        mViewModel.fetchTactics.observe(
+            this,
+            Observer { resultState ->
+                parseState(
+                    resultState,
+                    {
+                        tacticsAdapter.loadMoreModule.loadMoreEnd(!it.next || it.list.isEmpty())
+                        mViewModel.nextPageNum = it.pageNum
+                        if (it.pageNum == 1L) {
+                            tacticsAdapter.setNewInstance(it.list.toMutableList())
+                        } else {
+                            tacticsAdapter.addData(it.list.toMutableList())
+                        }
+                    },
+                    {
+                        showToast(it.errorMsg)
+                    }
+                )
+            }
+        )
         mViewModel.refreshTactics()
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        //强烈注意：使用addLoadingObserve 将非绑定当前activity的viewmodel绑定loading回调 防止出现请求时不显示 loading 弹窗bug
+        // 强烈注意：使用addLoadingObserve 将非绑定当前activity的viewmodel绑定loading回调 防止出现请求时不显示 loading 弹窗bug
         addLoadingObserve(mViewModel)
-        //设置攻略文章
+        // 设置攻略文章
         tactics_recyclerview.isNestedScrollingEnabled = false
         tactics_recyclerview.layoutManager = LinearLayoutManager(this)
         tactics_recyclerview.addItemDecoration(DividerLine())

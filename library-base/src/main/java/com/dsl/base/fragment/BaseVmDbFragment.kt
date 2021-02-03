@@ -16,7 +16,7 @@ import com.dsl.base.viewmodel.BaseViewModel
  */
 abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmFragment<VM>() {
 
-    //该类绑定的ViewDataBinding
+    // 该类绑定的ViewDataBinding
     lateinit var mDatabind: DB
 
     override fun onCreateView(

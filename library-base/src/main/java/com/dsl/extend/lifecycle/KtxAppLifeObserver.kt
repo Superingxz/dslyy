@@ -14,13 +14,13 @@ object KtxAppLifeObserver : LifecycleObserver {
 
     var isForeground = BooleanLiveData()
 
-    //在前台
+    // 在前台
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onForeground() {
         isForeground.value = true
     }
 
-    //在后台
+    // 在后台
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun onBackground() {
         isForeground.value = false

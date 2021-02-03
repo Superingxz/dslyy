@@ -39,9 +39,6 @@ inline fun <reified T> T?.notNull(notNullAction: (T) -> Unit, nullAction: () -> 
     return if (this != null) f() else t()
 }*/
 
-
-
-
 /**
  * dp值转换为px
  */
@@ -136,5 +133,3 @@ fun String.toHtml(flag: Int = Html.FROM_HTML_MODE_LEGACY): Spanned {
         Html.fromHtml(this)
     }
 }
-
-

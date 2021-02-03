@@ -57,21 +57,24 @@ open class EventLiveData<T> : MutableLiveData<T>() {
         owner: LifecycleOwner,
         observer: Observer<in T>
     ) {
-        super.observe(owner, Observer {
-            if (isCleaning) {
-                hasHandled = true
-                isDelaying = false
-                isCleaning = false
-                return@Observer
+        super.observe(
+            owner,
+            Observer {
+                if (isCleaning) {
+                    hasHandled = true
+                    isDelaying = false
+                    isCleaning = false
+                    return@Observer
+                }
+                if (!hasHandled) {
+                    hasHandled = true
+                    isDelaying = true
+                    observer.onChanged(it)
+                } else if (isDelaying) {
+                    observer.onChanged(it)
+                }
             }
-            if (!hasHandled) {
-                hasHandled = true
-                isDelaying = true
-                observer.onChanged(it)
-            } else if (isDelaying) {
-                observer.onChanged(it)
-            }
-        })
+        )
     }
 
     /**
