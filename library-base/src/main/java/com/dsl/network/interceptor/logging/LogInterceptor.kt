@@ -5,13 +5,13 @@ import com.dsl.util.CharacterHandler.Companion.jsonFormat
 import com.dsl.util.UrlEncoderUtils.Companion.hasUrlEncoded
 import com.dsl.util.ZipHelper.Companion.decompressForGzip
 import com.dsl.util.ZipHelper.Companion.decompressToStringForZlib
-import okhttp3.*
+import okhttp3.* // ktlint-disable no-wildcard-imports
 import okio.Buffer
 import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
 import java.nio.charset.Charset
-import java.util.*
+import java.util.* // ktlint-disable no-wildcard-imports
 import java.util.concurrent.TimeUnit
 import kotlin.jvm.Throws
 
@@ -138,21 +138,25 @@ class LogInterceptor : Interceptor {
             charset = contentType.charset(charset)
         }
         // content 使用 gzip 压缩
-        return if ("gzip".equals(encoding, ignoreCase = true)) {
-            // 解压
-            decompressForGzip(
-                clone.readByteArray(),
-                convertCharset(charset)
-            )
-        } else if ("zlib".equals(encoding, ignoreCase = true)) {
-            // content 使用 zlib 压缩
-            decompressToStringForZlib(
-                clone.readByteArray(),
-                convertCharset(charset)
-            )
-        } else {
-            // content 没有被压缩, 或者使用其他未知压缩方式
-            clone.readString(charset)
+        return when {
+            "gzip".equals(encoding, ignoreCase = true) -> {
+                // 解压
+                decompressForGzip(
+                    clone.readByteArray(),
+                    convertCharset(charset)
+                )
+            }
+            "zlib".equals(encoding, ignoreCase = true) -> {
+                // content 使用 zlib 压缩
+                decompressToStringForZlib(
+                    clone.readByteArray(),
+                    convertCharset(charset)
+                )
+            }
+            else -> {
+                // content 没有被压缩, 或者使用其他未知压缩方式
+                clone.readString(charset)
+            }
         }
     }
 
@@ -190,14 +194,14 @@ class LogInterceptor : Interceptor {
         fun parseParams(request: Request): String {
             return try {
                 val body = request.newBuilder().build().body() ?: return ""
-                val requestbuffer = Buffer()
-                body.writeTo(requestbuffer)
+                val requestBuffer = Buffer()
+                body.writeTo(requestBuffer)
                 var charset = Charset.forName("UTF-8")
                 val contentType = body.contentType()
                 if (contentType != null) {
                     charset = contentType.charset(charset)
                 }
-                var json = requestbuffer.readString(charset)
+                var json = requestBuffer.readString(charset)
                 if (hasUrlEncoded(json!!)) {
                     json = URLDecoder.decode(
                         json,
