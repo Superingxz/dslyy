@@ -2,7 +2,7 @@ package com.dsl.network
 
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
-import retrofit2.*
+import retrofit2.* // ktlint-disable no-wildcard-imports
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
