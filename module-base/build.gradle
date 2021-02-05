@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+apply from: '../config.gradle'
+
+android {
+
+
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src/main/res', 'src/main/res/', 'src/main/res/mipmap', 'src/main/res/values',
+                        'src/main/res/layout', 'src/main/res/drawable', 'src/main/res/raw', 'src/main/res/menu'
+            }
+        }
+    }
+}
+
+dependencies {
+    api project(':library-base')
+}

@@ -36,5 +36,5 @@ android {
 
 dependencies {
 //组件依赖基础库
-    api project(':library-base')
+    api project(':module-base')
 }

@@ -16,7 +16,7 @@ import java.util.List;
  * @author dsl-abben
  * on 2020/09/02.
  */
-class ArraySecurityAdapter implements JsonDeserializer<List<?>> {
+public class ArraySecurityAdapter implements JsonDeserializer<List<?>> {
 
     @Override
     public List<?> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {

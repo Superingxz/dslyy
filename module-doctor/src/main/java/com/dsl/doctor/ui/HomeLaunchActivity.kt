@@ -12,7 +12,7 @@ import com.dsl.doctor.adapter.TacticsAdapter
 import com.dsl.doctor.bean.TacticsBean
 import com.dsl.doctor.databinding.DoctorActivityMainBinding
 import com.dsl.doctor.viewmodel.HomepageViewModel
-import com.dsl.extend.parseState
+import com.dsl.base.ext.parseState
 import com.dsl.util.ToastKit
 import com.dsl.widget.DividerLine
 import kotlinx.android.synthetic.main.doctor_activity_main.*
