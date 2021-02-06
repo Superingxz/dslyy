@@ -6,10 +6,10 @@ import androidx.annotation.StringRes
 import androidx.databinding.ViewDataBinding
 import com.dsl.base.event.AppViewModel
 import com.dsl.base.event.EventViewModel
-import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.base.ext.dismissLoadingExt
-import com.dsl.extend.getAppViewModel
 import com.dsl.base.ext.showLoadingExt
+import com.dsl.base.viewmodel.BaseViewModel
+import com.dsl.extend.getAppViewModel
 import com.dsl.util.ToastKit
 import me.jessyan.autosize.AutoSizeCompat
 

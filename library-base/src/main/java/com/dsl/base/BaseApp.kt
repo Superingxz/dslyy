@@ -10,6 +10,7 @@ import com.dsl.loadCallBack.ErrorCallback
 import com.dsl.loadCallBack.LoadingCallback
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
+import com.tencent.mmkv.MMKV
 
 /**
  * @author dsl-abben
@@ -54,6 +55,7 @@ open class BaseApp : MultiDexApplication(), ViewModelStoreOwner {
         super.onCreate()
         mAppViewModelStore = ViewModelStore()
         appInstance = this
+        MMKV.initialize(this.filesDir.absolutePath + "/mmkv")
         // 界面加载管理 初始化
         LoadSir.beginBuilder()
             .addCallback(LoadingCallback()) // 加载

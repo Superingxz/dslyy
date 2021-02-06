@@ -1,4 +1,4 @@
-package com.dsl.base
+package com.dsl.base.util
 
 import android.text.TextUtils
 import com.google.gson.Gson
@@ -8,7 +8,7 @@ import com.google.gson.Gson
  * on 2020/02/19.
  */
 open class BaseRequestBean {
-    val app_token: String = com.dsl.base.util.NonCachedSharedPreferencesManager.getToken()
+    val app_token: String = NonCachedSharedPreferencesManager.getToken()
 
     /**
      * 平台标识，Andorid、iOS、H5、Server、WXApp、Web 等
@@ -61,7 +61,8 @@ open class BaseRequestBean {
     /**
      * 访问令牌，标识已登录用户（或医生）的唯一标识。 需要先登录的接口都需要传输该参数
      */
-    val accessToken: String = com.dsl.base.util.NonCachedSharedPreferencesManager.getToken()
+    val accessToken: String =
+        NonCachedSharedPreferencesManager.getToken()
 
     /**
      * 刷新令牌（预留字段）
@@ -71,7 +72,8 @@ open class BaseRequestBean {
     /**
      * JSON 字符格式，分页参数
      */
-    val page: Page = Page()
+    val page: Page =
+        Page()
 
     private fun getSign(
         timeStamp: String,

@@ -1,6 +1,6 @@
 package com.dsl.base.network
 
-import com.dsl.base.util.DebugLog
+import com.dsl.extend.util.logi
 import okhttp3.Interceptor
 import okhttp3.Response
 import okio.Buffer
@@ -15,7 +15,7 @@ class HeaderInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        if (ApiManager.showDebug) {
+        if (showDebug) {
             val requestBody = request.body()
             var requestBodyString: String? = null
             if (requestBody != null) {
@@ -28,29 +28,27 @@ class HeaderInterceptor : Interceptor {
                 }
                 requestBodyString = buffer.readString(charset)
             }
-            DebugLog.i(
-                String.format(
-                    Locale.getDefault(),
-                    "请求method:%s\n请求url：%s",
-                    request.method(),
-                    request.url()
-                )
-            )
+            String.format(
+                Locale.getDefault(),
+                "请求method:%s\n请求url：%s",
+                request.method(),
+                request.url()
+            ).logi()
             requestBodyString?.let {
                 val segmentSize = 3 * 1024
                 val length = it.length
                 if (length <= segmentSize) {
                     // 长度小于等于限制直接打印
-                    DebugLog.i(String.format("请求body：%s", it))
+                    String.format("请求body：%s", it).logi()
                 } else {
                     var msg = it
                     while (msg.length > segmentSize) {
                         // 循环分段打印日志
                         val logContent = msg.substring(0, segmentSize)
                         msg = msg.replace(logContent, "")
-                        DebugLog.i(String.format("请求body：%s", logContent))
+                        String.format("请求body：%s", logContent).logi()
                     }
-                    DebugLog.i(String.format("%s", it))
+                    String.format("%s", it).logi()
                 }
             }
         }

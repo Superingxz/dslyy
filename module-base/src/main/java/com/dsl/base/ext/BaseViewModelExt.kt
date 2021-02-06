@@ -5,15 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.dsl.base.activity.BaseVmActivity
 import com.dsl.base.activity.BaseVmDbActivity
 import com.dsl.base.fragment.BaseVmFragment
+import com.dsl.base.util.NonCachedSharedPreferencesManager
 import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.extend.util.loge
+import com.dsl.extend.util.logi
 import com.dsl.network.AppException
 import com.dsl.network.BaseResponse
 import com.dsl.network.ExceptionHandle
 import com.dsl.state.ResultState
 import com.dsl.state.paresException
 import com.dsl.state.paresResult
-import com.dsl.base.util.DebugLog
 import kotlinx.coroutines.*
 
 /**
@@ -311,15 +312,19 @@ fun parseAppException(error: AppException) {
     when (error.errCode) {
         300 -> {
             // token失效
-            com.dsl.base.util.NonCachedSharedPreferencesManager.setToken("")
+            NonCachedSharedPreferencesManager.setToken("")
             // 跳转登录页面
         }
         else -> {
-            DebugLog.e("BaseViewModelExt->服务器自定义错误message:" + error.errorMsg + "\n响应体:" + error.errorLog)
+            "BaseViewModelExt->服务器自定义错误message:" + error.errorMsg + "\n响应体:" + error.errorLog?.logi()
             if (error.errorMsg == "?") { // 自定义错误类型判断
             }
         }
     }
+}
+
+fun parseAppException(error: AppException, parse: (error: AppException) -> Unit) {
+    parse.invoke(error)
 }
 
 /**

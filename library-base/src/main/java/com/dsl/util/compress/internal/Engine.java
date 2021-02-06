@@ -1,4 +1,4 @@
-package com.dsl.base.util.compress.internal;
+package com.dsl.util.compress.internal;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

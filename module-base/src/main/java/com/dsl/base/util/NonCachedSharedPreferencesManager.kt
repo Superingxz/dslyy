@@ -61,120 +61,92 @@ object NonCachedSharedPreferencesManager {
     private var sharedPreferences: SharedPreferences? = null
 
     private fun getNonCachedSharedPreferences(): SharedPreferences {
-        return sharedPreferences
-            ?: synchronized(this) {
-            sharedPreferences
-                ?: BaseApp.getInstance().getSharedPreferences(
-                    sharedprefeName,
+        return sharedPreferences ?: synchronized(this) {
+            sharedPreferences ?: BaseApp.getInstance().getSharedPreferences(
+                sharedprefeName,
                 Context.MODE_PRIVATE
             )
         }
     }
 
     fun setToken(token: String) {
-        getNonCachedSharedPreferences()
-            .edit().putString(keyToken, token).apply()
+        getNonCachedSharedPreferences().edit().putString(keyToken, token).apply()
         if (token.isNotEmpty()) {
             // 记录该次登录时间，防止刚上线就被同步接诊状态，需要刚上线调整为接诊
-            getNonCachedSharedPreferences()
-                .edit()
-                .putLong(
-                    keyLoginUnitTime,
-                    DateTimeUtil.getUnixTime()
-                ).apply()
+            getNonCachedSharedPreferences().edit()
+                .putLong(keyLoginUnitTime, DateTimeUtil.getUnixTime()).apply()
         }
     }
 
     fun getToken(): String {
-        return getNonCachedSharedPreferences()
-            .getString(keyToken, "") ?: ""
+        return getNonCachedSharedPreferences().getString(keyToken, "") ?: ""
     }
 
     fun getLastLoginUnitTime(): Long {
-        return getNonCachedSharedPreferences()
-            .getLong(
-                keyLoginUnitTime,
-                DateTimeUtil.getUnixTime()
-            )
+        return getNonCachedSharedPreferences().getLong(keyLoginUnitTime, DateTimeUtil.getUnixTime())
     }
 
     fun setLastUseVersion(version: String) {
-        getNonCachedSharedPreferences()
-            .edit().putString(keyLastUseVersion, version).apply()
+        getNonCachedSharedPreferences().edit().putString(keyLastUseVersion, version).apply()
     }
 
     fun getLastUseVersion(): String {
-        return getNonCachedSharedPreferences()
-            .getString(keyLastUseVersion, "") ?: ""
+        return getNonCachedSharedPreferences().getString(keyLastUseVersion, "") ?: ""
     }
 
     fun setAccountAndPassword(account: String, password: String) {
-        getNonCachedSharedPreferences()
-            .edit().putString(keyAccount, account).apply()
-        getNonCachedSharedPreferences()
-            .edit().putString(keyPassword, password).apply()
+        getNonCachedSharedPreferences().edit().putString(keyAccount, account).apply()
+        getNonCachedSharedPreferences().edit().putString(keyPassword, password).apply()
     }
 
     fun getAccount(): String {
-        return getNonCachedSharedPreferences()
-            .getString(keyAccount, "") ?: ""
+        return getNonCachedSharedPreferences().getString(keyAccount, "") ?: ""
     }
 
     fun getPassword(): String {
-        return getNonCachedSharedPreferences()
-            .getString(keyPassword, "") ?: ""
+        return getNonCachedSharedPreferences().getString(keyPassword, "") ?: ""
     }
 
     fun setContainChineseMedicine(professionalType: String) {
         // 0西医 1中医 2中西医
-        getNonCachedSharedPreferences()
-            .edit()
+        getNonCachedSharedPreferences().edit()
             .putBoolean(keyContainChineseMedicine, professionalType != "0").apply()
     }
 
     fun isContainChineseMedicine(): Boolean {
-        return getNonCachedSharedPreferences()
-            .getBoolean(keyContainChineseMedicine, false)
+        return getNonCachedSharedPreferences().getBoolean(keyContainChineseMedicine, false)
     }
 
     fun setDoctorId(doctorId: Long) {
-        getNonCachedSharedPreferences()
-            .edit().putLong(keyDoctorId, doctorId).apply()
+        getNonCachedSharedPreferences().edit().putLong(keyDoctorId, doctorId).apply()
     }
 
     fun getDoctorId(): Long {
-        return getNonCachedSharedPreferences()
-            .getLong(keyDoctorId, 0L)
+        return getNonCachedSharedPreferences().getLong(keyDoctorId, 0L)
     }
 
     fun setShowOnlineTip(show: Boolean) {
-        getNonCachedSharedPreferences()
-            .edit().putBoolean(keyOnlineTip, show).apply()
+        getNonCachedSharedPreferences().edit().putBoolean(keyOnlineTip, show).apply()
     }
 
     fun isShowOnlineTip(): Boolean {
-        return getNonCachedSharedPreferences()
-            .getBoolean(keyOnlineTip, true)
+        return getNonCachedSharedPreferences().getBoolean(keyOnlineTip, true)
     }
 
     fun setEnableRx(enableRx: Boolean) {
-        getNonCachedSharedPreferences()
-            .edit().putBoolean(keyEnableRx, enableRx).apply()
+        getNonCachedSharedPreferences().edit().putBoolean(keyEnableRx, enableRx).apply()
     }
 
     fun isEnableRx(): Boolean {
-        return getNonCachedSharedPreferences()
-            .getBoolean(keyEnableRx, true)
+        return getNonCachedSharedPreferences().getBoolean(keyEnableRx, true)
     }
 
     fun setUnableRxWarnText(unableRxWarnText: String) {
-        getNonCachedSharedPreferences()
-            .edit().putString(keyUnableRxWarnText, unableRxWarnText)
+        getNonCachedSharedPreferences().edit().putString(keyUnableRxWarnText, unableRxWarnText)
             .apply()
     }
 
     fun getUnableRxWarnText(): String {
-        return getNonCachedSharedPreferences()
-            .getString(keyUnableRxWarnText, "") ?: ""
+        return getNonCachedSharedPreferences().getString(keyUnableRxWarnText, "") ?: ""
     }
 }

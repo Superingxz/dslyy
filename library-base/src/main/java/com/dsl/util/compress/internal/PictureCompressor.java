@@ -1,4 +1,4 @@
-package com.dsl.base.util.compress.internal;
+package com.dsl.util.compress.internal;
 
 import android.content.Context;
 import android.os.Handler;
@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import androidx.annotation.WorkerThread;
 
-import com.dsl.doctorplus.util.compress.listener.OnCompressListener;
+import com.dsl.util.compress.listener.OnCompressListener;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.dsl.doctorplus.util.compress
+package com.dsl.util.compress
 
 /**
  * @author dsl-abben

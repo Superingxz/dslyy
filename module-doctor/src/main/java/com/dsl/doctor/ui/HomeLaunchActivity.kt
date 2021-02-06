@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.dsl.base.activity.BaseActivity
+import com.dsl.base.ext.parseState
 import com.dsl.constant.RouterActivityPath
 import com.dsl.doctor.R
 import com.dsl.doctor.adapter.TacticsAdapter
 import com.dsl.doctor.bean.TacticsBean
 import com.dsl.doctor.databinding.DoctorActivityMainBinding
 import com.dsl.doctor.viewmodel.HomepageViewModel
-import com.dsl.base.ext.parseState
 import com.dsl.util.ToastKit
 import com.dsl.widget.DividerLine
 import kotlinx.android.synthetic.main.doctor_activity_main.*

@@ -2,7 +2,7 @@ package com.dsl.base.fragment
 
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import com.dsl.base.util.DebugLog
+import com.dsl.extend.util.logd
 
 /**
  * try.catch弹框显示与消失时候IllegalStateException错误，参考https://www.jianshu.com/p/f6570ce9e413
@@ -15,7 +15,7 @@ open class BaseDialogFragment : DialogFragment() {
         try {
             super.show(manager, tag)
         } catch (e: IllegalStateException) {
-            DebugLog.e("${javaClass.name} show error:$e")
+            "${javaClass.name} show error:$e".logd()
         }
     }
 
@@ -23,7 +23,7 @@ open class BaseDialogFragment : DialogFragment() {
         try {
             super.dismiss()
         } catch (e: IllegalStateException) {
-            DebugLog.e("${javaClass.name} dismiss error:$e")
+            "${javaClass.name} dismiss error:$e".logd()
         }
     }
 }

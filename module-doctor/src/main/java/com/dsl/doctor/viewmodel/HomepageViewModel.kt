@@ -3,13 +3,13 @@ package com.dsl.doctor.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.dsl.base.ext.request
+import com.dsl.base.network.getService
 import com.dsl.base.viewmodel.BaseViewModel
 import com.dsl.doctor.bean.FetchTacticsRequestBean
 import com.dsl.doctor.bean.TacticsResponseData
 import com.dsl.doctor.network.DoctorplusApi
 import com.dsl.doctor.repository.HomepageRepository
-import com.dsl.base.ext.request
-import com.dsl.base.network.getService
 import com.dsl.network.vo.AbsentLiveData
 import com.dsl.network.vo.Resource
 import com.dsl.state.ResultState

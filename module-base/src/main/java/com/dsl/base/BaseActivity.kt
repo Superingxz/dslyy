@@ -9,10 +9,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dsl.base.viewmodel.BaseViewModel
+import com.dsl.base.widget.LoadingDialog
 import com.dsl.network.manager.NetState
 import com.dsl.network.manager.NetworkStateManager
 import com.dsl.util.StatusBarUtil
-import com.dsl.base.widget.LoadingDialog
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
@@ -125,14 +125,20 @@ abstract class BaseActivity<E : BaseViewModel> : AppCompatActivity(), View.OnCli
     }
 
     fun showPostLoading() {
-        loadingDialog = LoadingDialog.onNewInstance(getString(
-            R.string.post_loading))
+        loadingDialog = LoadingDialog.onNewInstance(
+            getString(
+                R.string.post_loading
+            )
+        )
         loadingDialog?.show(supportFragmentManager, "PostLoading")
     }
 
     fun showFetchLoading() {
-        loadingDialog = LoadingDialog.onNewInstance(getString(
-            R.string.fetch_loading))
+        loadingDialog = LoadingDialog.onNewInstance(
+            getString(
+                R.string.fetch_loading
+            )
+        )
         loadingDialog?.show(supportFragmentManager, "PostLoading")
     }
 
