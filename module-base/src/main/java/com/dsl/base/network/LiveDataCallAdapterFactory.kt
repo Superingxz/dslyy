@@ -32,6 +32,6 @@ class LiveDataCallAdapterFactory : CallAdapter.Factory() {
             throw IllegalArgumentException("resource must be parameterized")
         }
         val bodyType = getParameterUpperBound(0, observableType)
-        return com.dsl.base.network.LiveDataCallAdapter<Any>(bodyType)
+        return LiveDataCallAdapter<Any>(bodyType)
     }
 }

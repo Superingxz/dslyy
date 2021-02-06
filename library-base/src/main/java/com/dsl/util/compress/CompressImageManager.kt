@@ -1,10 +1,10 @@
-package com.dsl.base.util.compress
+package com.dsl.util.compress
 
 import com.dsl.base.BaseApp
-import com.dsl.doctorplus.util.compress.UploadFileBean
-import com.dsl.base.util.DebugLog
+import com.dsl.extend.util.logd
+import com.dsl.extend.util.logi
 import com.dsl.util.SavePathBuilder
-import com.dsl.base.util.compress.internal.PictureCompressor
+import com.dsl.util.compress.internal.PictureCompressor
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
@@ -95,11 +95,11 @@ class CompressImageManager {
                     .load(file)
                     .get()
             if (compressFIle != null) {
-                DebugLog.i("CompressImageManager->compressImageAndSave压缩图片成功:${compressFIle.absolutePath}")
+                "CompressImageManager->compressImageAndSave压缩图片成功:${compressFIle.absolutePath}".logi()
                 fileBean.localFilePath = compressFIle.absolutePath
             }
         } catch (e: IOException) {
-            DebugLog.e("CompressImageManager->compressImageAndSave压缩图片失败:$e")
+            ("CompressImageManager->compressImageAndSave压缩图片失败:$e").logd()
             fileBean.localFilePath = wantCompressImagePath
             e.printStackTrace()
         }

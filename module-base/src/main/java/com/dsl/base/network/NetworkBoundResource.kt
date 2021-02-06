@@ -6,8 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.dsl.base.network.vo.ApiResponse
 import com.dsl.base.network.vo.RealResponseBody
+import com.dsl.base.util.NonCachedSharedPreferencesManager
+import com.dsl.extend.util.logd
+import com.dsl.extend.util.logi
 import com.dsl.network.vo.Resource
-import com.dsl.base.util.DebugLog
 
 /**
  * 参考谷歌应用架构指南 https://developer.android.google.cn/jetpack/docs/guide
@@ -39,16 +41,16 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                                 resultType
                             )
                         )
-                        DebugLog.i("NetworkBoundResource响应体: $resultType")
+                        "NetworkBoundResource响应体: $resultType".logi()
                         onFetchSuccess(resultType)
                     }
                     300 -> {
                         // token失效
-                        com.dsl.base.util.NonCachedSharedPreferencesManager.setToken("")
+                        NonCachedSharedPreferencesManager.setToken("")
                         // 跳转登录页面
                     }
                     else -> {
-                        DebugLog.e("NetworkBoundResource->服务器自定义错误message:" + it?.errorMessage + "\n响应体:" + it?.body)
+                        ("NetworkBoundResource->服务器自定义错误message:" + it?.errorMessage + "\n响应体:" + it?.body).logd()
                         if (it?.body is RealResponseBody<*>) {
                             if (it.body.message == "?") { // 自定义错误类型判断
                             } else {
@@ -69,7 +71,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                     }
                 }
             } else {
-                DebugLog.e("NetworkBoundResource->onChanged->Http状态错误:${it?.code} .. ${it?.errorMessage} \n${it?.body}")
+                ("NetworkBoundResource->onChanged->Http状态错误:${it?.code} .. ${it?.errorMessage} \n${it?.body}").logd()
                 setValue(Resource.error(it?.errorMessage, processResponse(it)))
                 onFetchFailed()
             }

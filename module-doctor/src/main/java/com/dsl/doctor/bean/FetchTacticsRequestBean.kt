@@ -1,6 +1,6 @@
 package com.dsl.doctor.bean
 
-import com.dsl.base.BaseRequestBean
+import com.dsl.base.util.BaseRequestBean
 
 /**
  * @author dsl-abben

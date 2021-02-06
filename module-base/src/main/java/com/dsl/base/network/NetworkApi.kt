@@ -15,6 +15,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 /**
  * 作者　: hegaojian
@@ -37,9 +40,25 @@ fun <T> getService(service: Class<T>): T {
     return NetworkApi.INSTANCE.getApi(service, BuildConfig.BASE_URL)
 }
 
+const val showDebug = true
+
 class NetworkApi : BaseNetworkApi() {
 
     companion object {
+        /**
+         * 连接超时
+         */
+        private const val CONNECT_TIMEOUT: Long = 30
+
+        /**
+         * 读取超时
+         */
+        private const val READ_TIMEOUT: Long = 25
+
+        /**
+         * 写入超时
+         */
+        private const val WRITE_TIMEOUT: Long = 25
         val INSTANCE: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             NetworkApi()
         }
@@ -50,21 +69,45 @@ class NetworkApi : BaseNetworkApi() {
      * 在这里可以添加拦截器，可以对 OkHttpClient.Builder 做任意操作
      */
     override fun setHttpClientBuilder(builder: OkHttpClient.Builder): OkHttpClient.Builder {
+        val sslContext = SSLContext.getInstance("TLS")
+        val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+            override fun checkClientTrusted(
+                chain: Array<java.security.cert.X509Certificate>,
+                authType: String
+            ) {
+            }
+
+            override fun checkServerTrusted(
+                chain: Array<java.security.cert.X509Certificate>,
+                authType: String
+            ) {
+            }
+
+            override fun getAcceptedIssuers(): Array<java.security.cert.X509Certificate> {
+                return arrayOf()
+            }
+        })
+        sslContext.init(null, trustAllCerts, java.security.SecureRandom())
         builder.apply {
             // 设置缓存配置 缓存最大10M
             cache(Cache(File(appContext.cacheDir, "cxk_cache"), 10 * 1024 * 1024))
             // 添加Cookies自动持久化
             cookieJar(cookieJar)
             // 示例：添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息
-            addInterceptor(com.dsl.base.network.MyHeadInterceptor())
+            addInterceptor(MyHeadInterceptor())
+            addInterceptor(HeaderInterceptor())
             // 添加缓存拦截器 可传入缓存天数，不传默认7天
             addInterceptor(CacheInterceptor())
             // 日志拦截器
             addInterceptor(LogInterceptor())
             // 超时时间 连接、读、写
-            connectTimeout(10, TimeUnit.SECONDS)
-            readTimeout(5, TimeUnit.SECONDS)
-            writeTimeout(5, TimeUnit.SECONDS)
+            connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+            readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+            writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+            sslSocketFactory(sslContext.socketFactory)
+            hostnameVerifier { _, _ ->
+                true
+            }
         }
         return builder
     }

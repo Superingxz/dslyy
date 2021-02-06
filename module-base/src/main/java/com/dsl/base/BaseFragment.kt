@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.dsl.base.widget.LoadingDialog
 import com.dsl.network.manager.NetState
 import com.dsl.network.manager.NetworkStateManager
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -43,7 +44,7 @@ abstract class BaseFragment<E : BaseAndroidViewModel> : Fragment(), View.OnClick
 
     private var mViewModel: E? = null
     var compositeDisposable: CompositeDisposable? = null
-    private var loadingDialog: com.dsl.base.widget.LoadingDialog? = null
+    private var loadingDialog: LoadingDialog? = null
 
     private fun getViewModel(): E {
         return if (mViewModel != null) mViewModel!! else {
@@ -139,25 +140,29 @@ abstract class BaseFragment<E : BaseAndroidViewModel> : Fragment(), View.OnClick
 
     fun showPostLoading() {
         activity?.let {
-            loadingDialog = com.dsl.base.widget.LoadingDialog.onNewInstance(getString(
-                R.string.post_loading
-            ))
+            loadingDialog = LoadingDialog.onNewInstance(
+                getString(
+                    R.string.post_loading
+                )
+            )
             loadingDialog?.show(it.supportFragmentManager, "PostLoading")
         }
     }
 
     fun showPostLoading(loadingMessage: String) {
         activity?.let {
-            loadingDialog = com.dsl.base.widget.LoadingDialog.onNewInstance(loadingMessage)
+            loadingDialog = LoadingDialog.onNewInstance(loadingMessage)
             loadingDialog?.show(it.supportFragmentManager, "PostLoading")
         }
     }
 
     fun showfetchLoading() {
         activity?.let {
-            loadingDialog = com.dsl.base.widget.LoadingDialog.onNewInstance(getString(
-                R.string.fetch_loading
-            ))
+            loadingDialog = LoadingDialog.onNewInstance(
+                getString(
+                    R.string.fetch_loading
+                )
+            )
             loadingDialog?.show(it.supportFragmentManager, "PostLoading")
         }
     }
