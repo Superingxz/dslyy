@@ -6,7 +6,7 @@ import retrofit2.Response
  * @author dsl-abben
  * on 2020/02/14.
  */
-public class ApiResponse<T>(
+class ApiResponse<T>(
     val code: Int,
     val body: T?,
     val errorMessage: String?
