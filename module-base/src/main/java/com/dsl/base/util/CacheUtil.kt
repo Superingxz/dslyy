@@ -22,6 +22,7 @@ object CacheUtil {
     private const val APP_LOGIN = "login"
     private const val APP_FIRST = "first"
     private const val CACHE_HISTORY = "history"
+
     /**
      * 获取保存的账户信息
      */

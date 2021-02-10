@@ -118,6 +118,7 @@ class NetworkApi : BaseNetworkApi() {
      */
     override fun setRetrofitBuilder(builder: Retrofit.Builder): Retrofit.Builder {
         return builder.apply {
+            addCallAdapterFactory(LiveDataCallAdapterFactory())
             addConverterFactory(
                 GsonConverterFactory.create(
                     GsonBuilder().enableComplexMapKeySerialization()
